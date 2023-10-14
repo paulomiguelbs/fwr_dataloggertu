@@ -1,0 +1,352 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"22 uart.h
+[v _rxBuffer `uc  -> 30 `i e ]
+"23 uart.h
+[v _cmd `uc  -> 30 `i e ]
+"24 uart.h
+[v _rxBufferLength `uc  1 e ]
+"25 uart.h
+[v _dataRX `uc  1 e ]
+"26 uart.h
+[v _rxBufferPos `uc  1 e ]
+"27 uart.h
+[v _serialTimeOut `uc  1 e ]
+"28 uart.h
+[v _flagRxBufferOk `b  1 e ]
+"7 i2c.h
+[v _i2cStart `(v  0 ef ]
+"26 i2c.h
+[v _i2cWrite `(uc  0 ef1`uc ]
+"9 i2c.h
+[v _i2cStop `(v  0 ef ]
+"27 i2c.h
+[v _i2cRead `(uc  0 ef ]
+"30 i2c.h
+[v _i2cNack `(v  0 ef ]
+"29 i2c.h
+[v _i2cAck `(v  0 ef ]
+"7 aht10.c
+[v _readUmidity `uc  0 e ]
+"8 aht10.c
+[v _readTemperature `uc  0 e ]
+"9 aht10.c
+[v _readTemperatureDec `uc  0 e ]
+[; ;aht10.h: 4: void initAht10 (void);
+[; ;aht10.h: 5: unsigned char readStatusBitAht10 (void);
+[; ;aht10.h: 7: void sendTriggerMeasurementCmd (void);
+[; ;aht10.h: 9: char readTemp (void);
+[; ;i2c.h: 5: void i2cInitialize(const unsigned long feq_K);
+[; ;i2c.h: 6: void i2cWait();
+[; ;i2c.h: 7: void i2cStart();
+[; ;i2c.h: 8: void i2cRestart();
+[; ;i2c.h: 9: void i2cStop();
+[; ;i2c.h: 21: void scl_out (unsigned char value);
+[; ;i2c.h: 22: void sda_out (unsigned char value);
+[; ;i2c.h: 23: void halfclockdelay(void);
+[; ;i2c.h: 26: unsigned char i2cWrite(unsigned char);
+[; ;i2c.h: 27: unsigned char i2cRead(void);
+[; ;i2c.h: 29: void i2cAck(void);
+[; ;i2c.h: 30: void i2cNack(void);
+[; ;i2c.h: 32: void findDevice(void);
+[; ;uart.h: 12: void initUART(void);
+[; ;uart.h: 13: void UART_send_char(char);
+[; ;uart.h: 14: void UART_send_String(char*, unsigned char);
+[; ;uart.h: 15: char UART_get_char(void);
+[; ;uart.h: 16: void bufferCreator(char);
+[; ;uart.h: 17: void bufferCreator2(char);
+[; ;uart.h: 22: char rxBuffer[30];
+[; ;uart.h: 23: char cmd[30];
+[; ;uart.h: 24: char rxBufferLength;
+[; ;uart.h: 25: char dataRX;
+"26 uart.h
+[i _rxBufferPos
+-> -> 0 `i `uc
+]
+[; ;uart.h: 26: char rxBufferPos = 0;
+"27
+[i _serialTimeOut
+-> -> 0 `i `uc
+]
+[; ;uart.h: 27: char serialTimeOut = 0;
+[; ;uart.h: 28: bit flagRxBufferOk;
+[; ;aht10.c: 7: extern unsigned char readUmidity;
+[; ;aht10.c: 8: extern unsigned char readTemperature;
+[; ;aht10.c: 9: extern unsigned char readTemperatureDec;
+"12 aht10.c
+[v _initAht10 `(v  1 ef ]
+{
+[; ;aht10.c: 12: void initAht10 (void){
+[e :U _initAht10 ]
+[f ]
+[; ;aht10.c: 13: i2cStart();
+"13
+[e ( _i2cStart ..  ]
+[; ;aht10.c: 14: i2cWrite(0x70);
+"14
+[e ( _i2cWrite (1 -> -> 112 `i `uc ]
+[; ;aht10.c: 15: i2cWrite(0xE1);
+"15
+[e ( _i2cWrite (1 -> -> 225 `i `uc ]
+[; ;aht10.c: 16: i2cWrite(0x08);
+"16
+[e ( _i2cWrite (1 -> -> 8 `i `uc ]
+[; ;aht10.c: 17: i2cWrite(0x00);
+"17
+[e ( _i2cWrite (1 -> -> 0 `i `uc ]
+[; ;aht10.c: 18: i2cStop();
+"18
+[e ( _i2cStop ..  ]
+[; ;aht10.c: 19: }
+"19
+[e :UE 1 ]
+}
+"21
+[v _readStatusBitAht10 `(uc  1 ef ]
+{
+[; ;aht10.c: 21: unsigned char readStatusBitAht10 (void){
+[e :U _readStatusBitAht10 ]
+[f ]
+"22
+[v _buff `uc  1 a ]
+[; ;aht10.c: 22: unsigned char buff;
+[; ;aht10.c: 23: i2cStart();
+"23
+[e ( _i2cStart ..  ]
+[; ;aht10.c: 24: i2cWrite(0x71);
+"24
+[e ( _i2cWrite (1 -> -> 113 `i `uc ]
+[; ;aht10.c: 25: buff = i2cRead();
+"25
+[e = _buff ( _i2cRead ..  ]
+[; ;aht10.c: 26: i2cNack();
+"26
+[e ( _i2cNack ..  ]
+[; ;aht10.c: 27: i2cStop();
+"27
+[e ( _i2cStop ..  ]
+[; ;aht10.c: 28: return buff;
+"28
+[e ) _buff ]
+[e $UE 2  ]
+[; ;aht10.c: 29: }
+"29
+[e :UE 2 ]
+}
+"33
+[v _sendTriggerMeasurementCmd `(v  1 ef ]
+{
+[; ;aht10.c: 33: void sendTriggerMeasurementCmd (void){
+[e :U _sendTriggerMeasurementCmd ]
+[f ]
+[; ;aht10.c: 34: i2cStart();
+"34
+[e ( _i2cStart ..  ]
+[; ;aht10.c: 35: i2cWrite(0x70);
+"35
+[e ( _i2cWrite (1 -> -> 112 `i `uc ]
+[; ;aht10.c: 36: i2cWrite(0xAC);
+"36
+[e ( _i2cWrite (1 -> -> 172 `i `uc ]
+[; ;aht10.c: 37: i2cWrite(0x33);
+"37
+[e ( _i2cWrite (1 -> -> 51 `i `uc ]
+[; ;aht10.c: 38: i2cWrite(0x00);
+"38
+[e ( _i2cWrite (1 -> -> 0 `i `uc ]
+[; ;aht10.c: 39: i2cStop();
+"39
+[e ( _i2cStop ..  ]
+[; ;aht10.c: 40: }
+"40
+[e :UE 3 ]
+}
+"42
+[v _readTemp `(uc  1 ef ]
+{
+[; ;aht10.c: 42: char readTemp (void){
+[e :U _readTemp ]
+[f ]
+"44
+[v _aux `ul  1 a ]
+"46
+[v _buff `uc  -> 6 `i a ]
+[; ;aht10.c: 44: unsigned long aux;
+[; ;aht10.c: 46: unsigned char buff[6];
+[; ;aht10.c: 47: i2cStart();
+"47
+[e ( _i2cStart ..  ]
+[; ;aht10.c: 48: i2cWrite(0x71);
+"48
+[e ( _i2cWrite (1 -> -> 113 `i `uc ]
+[; ;aht10.c: 49: buff[0] = i2cRead();
+"49
+[e = *U + &U _buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 51: if( ((buff[0]&0x80)>>7 == 1) || ((buff[0]&0x08)>>3 == 0) ){
+"51
+[e $ ! || == >> & -> *U + &U _buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _buff `ui `ux `i -> 128 `i -> 7 `i -> 1 `i == >> & -> *U + &U _buff * -> -> -> 0 `i `ui `ux -> -> # *U &U _buff `ui `ux `i -> 8 `i -> 3 `i -> 0 `i 5  ]
+{
+[; ;aht10.c: 52: i2cNack();
+"52
+[e ( _i2cNack ..  ]
+[; ;aht10.c: 53: i2cStop();
+"53
+[e ( _i2cStop ..  ]
+[; ;aht10.c: 54: return 0;
+"54
+[e ) -> -> 0 `i `uc ]
+[e $UE 4  ]
+"55
+}
+[; ;aht10.c: 55: }
+[e $U 6  ]
+"56
+[e :U 5 ]
+[; ;aht10.c: 56: else{
+{
+[; ;aht10.c: 57: i2cAck();
+"57
+[e ( _i2cAck ..  ]
+"58
+}
+[e :U 6 ]
+[; ;aht10.c: 58: }
+[; ;aht10.c: 60: buff[1] = i2cRead();
+"60
+[e = *U + &U _buff * -> -> -> 1 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 61: i2cAck();
+"61
+[e ( _i2cAck ..  ]
+[; ;aht10.c: 63: buff[2] = i2cRead();
+"63
+[e = *U + &U _buff * -> -> -> 2 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 64: i2cAck();
+"64
+[e ( _i2cAck ..  ]
+[; ;aht10.c: 66: buff[3] = i2cRead();
+"66
+[e = *U + &U _buff * -> -> -> 3 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 67: i2cAck();
+"67
+[e ( _i2cAck ..  ]
+[; ;aht10.c: 69: buff[4] = i2cRead();
+"69
+[e = *U + &U _buff * -> -> -> 4 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 70: i2cAck();
+"70
+[e ( _i2cAck ..  ]
+[; ;aht10.c: 72: buff[5] = i2cRead();
+"72
+[e = *U + &U _buff * -> -> -> 5 `i `ui `ux -> -> # *U &U _buff `ui `ux ( _i2cRead ..  ]
+[; ;aht10.c: 73: i2cNack();
+"73
+[e ( _i2cNack ..  ]
+[; ;aht10.c: 74: i2cStop();
+"74
+[e ( _i2cStop ..  ]
+[; ;aht10.c: 76: aux = 0x00;
+"76
+[e = _aux -> -> -> 0 `i `l `ul ]
+[; ;aht10.c: 77: aux = buff[1];
+"77
+[e = _aux -> *U + &U _buff * -> -> -> 1 `i `ui `ux -> -> # *U &U _buff `ui `ux `ul ]
+[; ;aht10.c: 78: aux <<= 8;
+"78
+[e =<< _aux -> 8 `i ]
+[; ;aht10.c: 79: aux += buff[2];
+"79
+[e =+ _aux -> *U + &U _buff * -> -> -> 2 `i `ui `ux -> -> # *U &U _buff `ui `ux `ul ]
+[; ;aht10.c: 80: aux <<= 8;
+"80
+[e =<< _aux -> 8 `i ]
+[; ;aht10.c: 81: aux += buff[3];
+"81
+[e =+ _aux -> *U + &U _buff * -> -> -> 3 `i `ui `ux -> -> # *U &U _buff `ui `ux `ul ]
+[; ;aht10.c: 82: aux >>= 4;
+"82
+[e =>> _aux -> 4 `i ]
+[; ;aht10.c: 84: aux *= 100;
+"84
+[e =* _aux -> -> -> 100 `i `l `ul ]
+[; ;aht10.c: 85: aux >>=20;
+"85
+[e =>> _aux -> 20 `i ]
+[; ;aht10.c: 87: readUmidity = aux/10;
+"87
+[e = _readUmidity -> / _aux -> -> -> 10 `i `l `ul `uc ]
+[; ;aht10.c: 88: readUmidity <<= 4;
+"88
+[e =<< _readUmidity -> 4 `i ]
+[; ;aht10.c: 89: aux %= 10;
+"89
+[e =% _aux -> -> 10 `uc `ul ]
+[; ;aht10.c: 90: readUmidity+=aux;
+"90
+[e =+ _readUmidity -> _aux `uc ]
+[; ;aht10.c: 92: aux = 0;
+"92
+[e = _aux -> -> -> 0 `i `l `ul ]
+[; ;aht10.c: 93: aux = (buff[3] & 0x0F);
+"93
+[e = _aux -> -> & -> *U + &U _buff * -> -> -> 3 `i `ui `ux -> -> # *U &U _buff `ui `ux `i -> 15 `i `l `ul ]
+[; ;aht10.c: 94: aux <<= 8;
+"94
+[e =<< _aux -> 8 `i ]
+[; ;aht10.c: 95: aux += buff[4];
+"95
+[e =+ _aux -> *U + &U _buff * -> -> -> 4 `i `ui `ux -> -> # *U &U _buff `ui `ux `ul ]
+[; ;aht10.c: 96: aux <<= 8;
+"96
+[e =<< _aux -> 8 `i ]
+[; ;aht10.c: 97: aux += buff[5];
+"97
+[e =+ _aux -> *U + &U _buff * -> -> -> 5 `i `ui `ux -> -> # *U &U _buff `ui `ux `ul ]
+[; ;aht10.c: 99: aux *= 1000;
+"99
+[e =* _aux -> -> -> 1000 `i `l `ul ]
+[; ;aht10.c: 100: aux >>= 10;
+"100
+[e =>> _aux -> 10 `i ]
+[; ;aht10.c: 101: aux *= 200;
+"101
+[e =* _aux -> -> -> 200 `i `l `ul ]
+[; ;aht10.c: 102: aux >>= 10;
+"102
+[e =>> _aux -> 10 `i ]
+[; ;aht10.c: 103: aux -= 50000;
+"103
+[e =- _aux -> -> 50000 `l `ul ]
+"105
+[v _aux2 `uc  1 a ]
+[; ;aht10.c: 105: unsigned char aux2;
+[; ;aht10.c: 107: aux2 = aux/10000;
+"107
+[e = _aux2 -> / _aux -> -> -> 10000 `i `l `ul `uc ]
+[; ;aht10.c: 108: aux2 <<= 4;
+"108
+[e =<< _aux2 -> 4 `i ]
+[; ;aht10.c: 109: readTemperature = aux2;
+"109
+[e = _readTemperature _aux2 ]
+[; ;aht10.c: 110: aux2 = (aux/1000)%10;
+"110
+[e = _aux2 -> % / _aux -> -> -> 1000 `i `l `ul -> -> -> 10 `i `l `ul `uc ]
+[; ;aht10.c: 111: readTemperature += aux2;
+"111
+[e =+ _readTemperature _aux2 ]
+[; ;aht10.c: 113: readTemperatureDec = (aux/100)%10;
+"113
+[e = _readTemperatureDec -> % / _aux -> -> -> 100 `i `l `ul -> -> -> 10 `i `l `ul `uc ]
+[; ;aht10.c: 114: readTemperatureDec <<= 4;
+"114
+[e =<< _readTemperatureDec -> 4 `i ]
+[; ;aht10.c: 115: readTemperatureDec += (aux/10)%10;
+"115
+[e =+ _readTemperatureDec -> % / _aux -> -> -> 10 `i `l `ul -> -> -> 10 `i `l `ul `uc ]
+[; ;aht10.c: 116: return 1;
+"116
+[e ) -> -> 1 `i `uc ]
+[e $UE 4  ]
+[; ;aht10.c: 118: }
+"118
+[e :UE 4 ]
+}
