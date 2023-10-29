@@ -15,7 +15,7 @@ Linker command line:
   -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
   -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
   -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Paulo\AppData\Local\Temp\s9hk.obj \
+  C:\Users\Paulo\AppData\Local\Temp\sam8.obj \
   dist/default/production\TU_DataLogger.X.production.obj 
 
 Object code version is 3.10
@@ -25,7 +25,7 @@ Machine type is 16F690
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Paulo\AppData\Local\Temp\s9hk.obj
+C:\Users\Paulo\AppData\Local\Temp\sam8.obj
                 end_init                              D        D        2        8       0
                 reset_vec                             0        0        2        0       0
 dist/default/production\TU_DataLogger.X.production.obj

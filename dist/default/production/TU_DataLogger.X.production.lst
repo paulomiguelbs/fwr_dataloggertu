@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
-                                                                                               Sat Oct 14 10:12:43 2023
+                                                                                               Sun Oct 29 19:21:58 2023
 
 HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
      1                           	processor	16F690
@@ -1491,7 +1491,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1485                           
   1486 ;; *************** function _main *****************
   1487 ;; Defined at:
-  1488 ;;		line 57 in file "Main.c"
+  1488 ;;		line 56 in file "Main.c"
   1489 ;; Parameters:    Size  Location     Type
   1490 ;;  argc            2   41[BANK0 ] int 
   1491 ;;  argv            2   43[BANK0 ] PTR PTR unsigned char 
@@ -1530,16 +1530,16 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1524 ;;
   1525  000F                     _main:	
   1526                           
-  1527                           ;Main.c: 58: initGPIO();
+  1527                           ;Main.c: 57: initGPIO();
   1528                           
   1529 ;; hardware stack exceeded
   1530                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
   1531  000F  118A  22FA  118A   	fcall	_initGPIO
   1532                           
-  1533                           ;Main.c: 59: initUART();
+  1533                           ;Main.c: 58: initUART();
   1534  0012  118A  2325  118A   	fcall	_initUART
   1535                           
-  1536                           ;Main.c: 60: i2cInitialize(1000);
+  1536                           ;Main.c: 59: i2cInitialize(1000);
   1537  0015  3000               	movlw	0
   1538  0016  00A3               	movwf	?_i2cInitialize+3
   1539  0017  00A2               	movwf	?_i2cInitialize+2
@@ -1549,14 +1549,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1543  001B  00A0               	movwf	?_i2cInitialize
   1544  001C  118A  2368  118A   	fcall	_i2cInitialize
   1545                           
-  1546                           ;Main.c: 61: initInterrupt();
+  1546                           ;Main.c: 60: initInterrupt();
   1547  001F  118A  22DD  118A   	fcall	_initInterrupt
   1548  0022  3082               	movlw	130
   1549                           
-  1550                           ;Main.c: 62: RC4 = 1;
+  1550                           ;Main.c: 61: RC4 = 1;
   1551  0023  1607               	bsf	7,4
   1552                           
-  1553                           ;Main.c: 63: _delay((unsigned long)((100)*(4000000/4000.0)));
+  1553                           ;Main.c: 62: _delay((unsigned long)((100)*(4000000/4000.0)));
   1554  0024  00CE               	movwf	??_main+1
   1555  0025  30DD               	movlw	221
   1556  0026  00CD               	movwf	??_main
@@ -1567,13 +1567,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1561  002A  2827               	goto	u1507
   1562  002B  282C               	nop2
   1563                           
-  1564                           ;Main.c: 64: initVars();
+  1564                           ;Main.c: 63: initVars();
   1565  002C  158A  235B  118A   	fcall	_initVars
   1566                           
-  1567                           ;Main.c: 65: initAht10();
+  1567                           ;Main.c: 64: initAht10();
   1568  002F  158A  2015  118A   	fcall	_initAht10
   1569                           
-  1570                           ;Main.c: 66: _delay((unsigned long)((5)*(4000000/4000.0)));
+  1570                           ;Main.c: 65: _delay((unsigned long)((5)*(4000000/4000.0)));
   1571  0032  3007               	movlw	7
   1572  0033  00CE               	movwf	??_main+1
   1573  0034  307D               	movlw	125
@@ -1584,10 +1584,10 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1578  0038  0BCE               	decfsz	??_main+1,f
   1579  0039  2836               	goto	u1517
   1580                           
-  1581                           ;Main.c: 67: jdyConfig();
+  1581                           ;Main.c: 66: jdyConfig();
   1582  003A  118A  216D  118A   	fcall	_jdyConfig
   1583                           
-  1584                           ;Main.c: 68: _delay((unsigned long)((250)*(4000000/4000.0)));
+  1584                           ;Main.c: 67: _delay((unsigned long)((250)*(4000000/4000.0)));
   1585  003D  3002               	movlw	2
   1586  003E  00CF               	movwf	??_main+2
   1587  003F  3045               	movlw	69
@@ -1603,7 +1603,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1597  0048  2843               	goto	u1527
   1598  0049  284A               	nop2
   1599                           
-  1600                           ;Main.c: 69: memset(rxBuffer,0,30);
+  1600                           ;Main.c: 68: memset(rxBuffer,0,30);
   1601  004A  1283               	bcf	3,5	;RP0=0, select bank0
   1602  004B  301E               	movlw	30
   1603  004C  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1615,7 +1615,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1609  0052  118A  233A  118A   	fcall	_memset
   1610  0055                     l8364:	
   1611                           
-  1612                           ;Main.c: 72: if(logStatus == 1 && contTimer == 0){
+  1612                           ;Main.c: 71: if(logStatus == 1 && contTimer == 0){
   1613  0055  1E7A               	btfss	_logStatus/(0+8),_logStatus& (0+7)
   1614  0056  2864               	goto	l8372
   1615  0057  1283               	bcf	3,5	;RP0=0, select bank0
@@ -1625,31 +1625,31 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1619  005B  1D03               	skipz
   1620  005C  2864               	goto	l8372
   1621                           
-  1622                           ;Main.c: 73: contTimer = timer;
+  1622                           ;Main.c: 72: contTimer = timer;
   1623  005D  085B               	movf	_timer+1,w
   1624  005E  00DD               	movwf	_contTimer+1
   1625  005F  085A               	movf	_timer,w
   1626  0060  00DC               	movwf	_contTimer
   1627                           
-  1628                           ;Main.c: 75: logSave();
+  1628                           ;Main.c: 74: logSave();
   1629  0061  158A  21B7  118A   	fcall	_logSave
   1630  0064                     l8372:	
   1631                           
-  1632                           ;Main.c: 76: }
-  1633                           ;Main.c: 78: if (flagRxBufferOk){
+  1632                           ;Main.c: 75: }
+  1633                           ;Main.c: 77: if (flagRxBufferOk){
   1634  0064  1D7A               	btfss	_flagRxBufferOk/(0+8),_flagRxBufferOk& (0+7)
   1635  0065  2895               	goto	l8390
   1636  0066  3003               	movlw	3
   1637                           
-  1638                           ;Main.c: 79: flagRxBufferOk = 0;
+  1638                           ;Main.c: 78: flagRxBufferOk = 0;
   1639  0067  117A               	bcf	_flagRxBufferOk/(0+8),_flagRxBufferOk& (0+7)
   1640                           
-  1641                           ;Main.c: 80: if (rxBufferLength >= 3){
+  1641                           ;Main.c: 79: if (rxBufferLength >= 3){
   1642  0068  027B               	subwf	_rxBufferLength,w
   1643  0069  1C03               	skipc
   1644  006A  2895               	goto	l8390
   1645                           
-  1646                           ;Main.c: 81: if (rxBuffer[2]+5 == rxBufferLength){
+  1646                           ;Main.c: 80: if (rxBuffer[2]+5 == rxBufferLength){
   1647  006B  1283               	bcf	3,5	;RP0=0, select bank2
   1648  006C  1703               	bsf	3,6	;RP1=1, select bank2
   1649  006D  0840               	movf	(_rxBuffer^(0+256)+2),w
@@ -1666,7 +1666,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1660  0078  1D03               	skipz
   1661  0079  2895               	goto	l8390
   1662                           
-  1663                           ;Main.c: 82: if (rxBuffer[0] == 0x55 && rxBuffer[rxBufferLength-1] == 0x0A){
+  1663                           ;Main.c: 81: if (rxBuffer[0] == 0x55 && rxBuffer[rxBufferLength-1] == 0x0A){
   1664  007A  1703               	bsf	3,6	;RP1=1, select bank2
   1665  007B  083E               	movf	_rxBuffer^(0+256),w
   1666  007C  3A55               	xorlw	85
@@ -1681,13 +1681,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1675  0085  1D03               	skipz
   1676  0086  2895               	goto	l8390
   1677                           
-  1678                           ;Main.c: 83: comandoRx();
+  1678                           ;Main.c: 82: comandoRx();
   1679  0087  158A  2024  118A   	fcall	_comandoRx
   1680                           
-  1681                           ;Main.c: 84: rxBufferPos = 0;
+  1681                           ;Main.c: 83: rxBufferPos = 0;
   1682  008A  01FC               	clrf	_rxBufferPos
   1683                           
-  1684                           ;Main.c: 85: memset(rxBuffer,0,rxBufferLength);
+  1684                           ;Main.c: 84: memset(rxBuffer,0,rxBufferLength);
   1685  008B  1283               	bcf	3,5	;RP0=0, select bank0
   1686  008C  01A0               	clrf	?_memset
   1687  008D  01A1               	clrf	?_memset+1
@@ -1698,64 +1698,64 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1692  0092  118A  233A  118A   	fcall	_memset
   1693  0095                     l8390:	
   1694                           
-  1695                           ;Main.c: 86: }
-  1696                           ;Main.c: 87: }
-  1697                           ;Main.c: 88: }
-  1698                           ;Main.c: 89: }
-  1699                           ;Main.c: 91: if(RC0 == 1){
+  1695                           ;Main.c: 85: }
+  1696                           ;Main.c: 86: }
+  1697                           ;Main.c: 87: }
+  1698                           ;Main.c: 88: }
+  1699                           ;Main.c: 90: if(RC0 == 1){
   1700  0095  1283               	bcf	3,5	;RP0=0, select bank0
   1701  0096  1303               	bcf	3,6	;RP1=0, select bank0
   1702  0097  1C07               	btfss	7,0
   1703  0098  289D               	goto	l8400
   1704                           
-  1705                           ;Main.c: 92: flagConection = 1;
+  1705                           ;Main.c: 91: flagConection = 1;
   1706  0099  147A               	bsf	_flagConection/(0+8),_flagConection& (0+7)
   1707                           
-  1708                           ;Main.c: 93: timeToConnect = 0;
+  1708                           ;Main.c: 92: timeToConnect = 0;
   1709  009A  01E6               	clrf	_timeToConnect
   1710                           
-  1711                           ;Main.c: 94: RC4 = 1;
+  1711                           ;Main.c: 93: RC4 = 1;
   1712  009B  1607               	bsf	7,4
   1713                           
-  1714                           ;Main.c: 95: RC1 = 0;
+  1714                           ;Main.c: 94: RC1 = 0;
   1715  009C  1087               	bcf	7,1
   1716  009D                     l8400:	
   1717                           
-  1718                           ;Main.c: 96: }
-  1719                           ;Main.c: 97: if (RC0 == 0 && timeToConnect > 0){
+  1718                           ;Main.c: 95: }
+  1719                           ;Main.c: 96: if (RC0 == 0 && timeToConnect > 0){
   1720  009D  1807               	btfsc	7,0
   1721  009E  28A9               	goto	l8408
   1722  009F  0866               	movf	_timeToConnect,w
   1723  00A0  1903               	btfsc	3,2
   1724  00A1  28A9               	goto	l8408
   1725                           
-  1726                           ;Main.c: 98: if (timeBlinkLed == 0){
+  1726                           ;Main.c: 97: if (timeBlinkLed == 0){
   1727  00A2  08E5               	movf	_timeBlinkLed,f
   1728  00A3  1D03               	skipz
   1729  00A4  28A9               	goto	l8408
   1730                           
-  1731                           ;Main.c: 99: timeBlinkLed = 5;
+  1731                           ;Main.c: 98: timeBlinkLed = 5;
   1732  00A5  3005               	movlw	5
   1733  00A6  00E5               	movwf	_timeBlinkLed
   1734                           
-  1735                           ;Main.c: 100: RC1 = !RC1;
+  1735                           ;Main.c: 99: RC1 = !RC1;
   1736  00A7  3002               	movlw	2
   1737  00A8  0687               	xorwf	7,f
   1738  00A9                     l8408:	
   1739                           
-  1740                           ;Main.c: 102: }
-  1741                           ;Main.c: 103: }
-  1742                           ;Main.c: 106: if(RC0 == 0 && timeToConnect == 0){
+  1740                           ;Main.c: 101: }
+  1741                           ;Main.c: 102: }
+  1742                           ;Main.c: 105: if(RC0 == 0 && timeToConnect == 0){
   1743  00A9  1807               	btfsc	7,0
   1744  00AA  2855               	goto	l8364
   1745  00AB  08E6               	movf	_timeToConnect,f
   1746  00AC  1D03               	skipz
   1747  00AD  2855               	goto	l8364
   1748                           
-  1749                           ;Main.c: 107: RC1 = 1;
+  1749                           ;Main.c: 106: RC1 = 1;
   1750  00AE  1487               	bsf	7,1
   1751                           
-  1752                           ;Main.c: 108: if (flagTryConnect == 1 || flagConection == 1){
+  1752                           ;Main.c: 107: if (flagTryConnect == 1 || flagConection == 1){
   1753  00AF  19FA               	btfsc	_flagTryConnect/(0+8),_flagTryConnect& (0+7)
   1754  00B0  28B3               	goto	l4865
   1755  00B1  1C7A               	btfss	_flagConection/(0+8),_flagConection& (0+7)
@@ -1763,16 +1763,16 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1757  00B3                     l4865:	
   1758  00B3  3082               	movlw	130
   1759                           
-  1760                           ;Main.c: 109: flagConection = 0;
+  1760                           ;Main.c: 108: flagConection = 0;
   1761  00B4  107A               	bcf	_flagConection/(0+8),_flagConection& (0+7)
   1762                           
-  1763                           ;Main.c: 110: flagTryConnect = 0;
+  1763                           ;Main.c: 109: flagTryConnect = 0;
   1764  00B5  11FA               	bcf	_flagTryConnect/(0+8),_flagTryConnect& (0+7)
   1765                           
-  1766                           ;Main.c: 111: RC4 = 0;
+  1766                           ;Main.c: 110: RC4 = 0;
   1767  00B6  1207               	bcf	7,4
   1768                           
-  1769                           ;Main.c: 112: _delay((unsigned long)((100)*(4000000/4000.0)));
+  1769                           ;Main.c: 111: _delay((unsigned long)((100)*(4000000/4000.0)));
   1770  00B7  00CE               	movwf	??_main+1
   1771  00B8  30DD               	movlw	221
   1772  00B9  00CD               	movwf	??_main
@@ -1783,7 +1783,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1777  00BD  28BA               	goto	u1537
   1778  00BE  28BF               	nop2
   1779                           
-  1780                           ;Main.c: 113: UART_send_String("AT+SLEEP2\r\n",11);
+  1780                           ;Main.c: 112: UART_send_String("AT+SLEEP2\r\n",11);
   1781  00BF  300B               	movlw	11
   1782  00C0  1283               	bcf	3,5	;RP0=0, select bank0
   1783  00C1  1303               	bcf	3,6	;RP1=0, select bank0
@@ -1791,7 +1791,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1785  00C3  301B               	movlw	(STR_1-__stringbase)& (0+255)
   1786  00C4  118A  21BA  118A   	fcall	_UART_send_String
   1787                           
-  1788                           ;Main.c: 114: _delay((unsigned long)((350)*(4000000/4000.0)));
+  1788                           ;Main.c: 113: _delay((unsigned long)((350)*(4000000/4000.0)));
   1789  00C7  3002               	movlw	2
   1790  00C8  00CF               	movwf	??_main+2
   1791  00C9  30C7               	movlw	199
@@ -1807,7 +1807,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1801  00D2  28CD               	goto	u1547
   1802  00D3  0064               	clrwdt
   1803                           
-  1804                           ;Main.c: 115: RC4 = 1;
+  1804                           ;Main.c: 114: RC4 = 1;
   1805  00D4  1283               	bcf	3,5	;RP0=0, select bank0
   1806  00D5  1303               	bcf	3,6	;RP1=0, select bank0
   1807  00D6  1607               	bsf	7,4
@@ -1958,7 +1958,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   1952                           
   1953 ;; *************** function _comandoRx *****************
   1954 ;; Defined at:
-  1955 ;;		line 188 in file "Main.c"
+  1955 ;;		line 187 in file "Main.c"
   1956 ;; Parameters:    Size  Location     Type
   1957 ;;		None
   1958 ;; Auto vars:     Size  Location     Type
@@ -2006,7 +2006,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2000 ;;
   2001  0824                     _comandoRx:	
   2002                           
-  2003                           ;Main.c: 191: unsigned int logsToSend = 0;
+  2003                           ;Main.c: 190: unsigned int logsToSend = 0;
   2004                           
   2005 ;; hardware stack exceeded
   2006                           ; Regs used in _comandoRx: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
@@ -2014,12 +2014,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2008  0825  01BC               	clrf	comandoRx@logsToSend
   2009  0826  01BD               	clrf	comandoRx@logsToSend+1
   2010                           
-  2011                           ;Main.c: 192: if (checksumVerify()){
+  2011                           ;Main.c: 191: if (checksumVerify()){
   2012  0827  27B8  158A         	fcall	_checksumVerify
   2013  0829  1C03               	btfss	3,0
   2014  082A  29A9               	goto	l8338
   2015                           
-  2016                           ;Main.c: 193: memcpy(cmd, rxBuffer, rxBufferLength);
+  2016                           ;Main.c: 192: memcpy(cmd, rxBuffer, rxBufferLength);
   2017  082B  303E               	movlw	_rxBuffer& (0+255)
   2018  082C  00A0               	movwf	?_memcpy
   2019  082D  087B               	movf	_rxBufferLength,w
@@ -2028,74 +2028,74 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2022  0830  01A2               	clrf	?_memcpy+2
   2023  0831  27E3  158A         	fcall	_memcpy
   2024                           
-  2025                           ;Main.c: 194: switch (cmd[1]){
+  2025                           ;Main.c: 193: switch (cmd[1]){
   2026  0833  2995               	goto	l8332
   2027  0834                     l8162:	
   2028                           
-  2029                           ;Main.c: 196: getClockCmd();
+  2029                           ;Main.c: 195: getClockCmd();
   2030  0834  118A  223A  158A   	fcall	_getClockCmd
   2031  0837                     l8164:	
   2032                           
-  2033                           ;Main.c: 197: flagRespostaBLE = 1;
+  2033                           ;Main.c: 196: flagRespostaBLE = 1;
   2034  0837  14FA               	bsf	_flagRespostaBLE/(0+8),_flagRespostaBLE& (0+7)
   2035                           
-  2036                           ;Main.c: 198: break;
+  2036                           ;Main.c: 197: break;
   2037  0838  29A5               	goto	l4887
   2038  0839                     l8166:	
   2039                           
-  2040                           ;Main.c: 201: setTimerCmd();
+  2040                           ;Main.c: 200: setTimerCmd();
   2041  0839  118A  229E  158A   	fcall	_setTimerCmd
   2042  083C  2837               	goto	l8164
   2043  083D                     l8170:	
   2044                           
-  2045                           ;Main.c: 206: getTimerCmd();
+  2045                           ;Main.c: 205: getTimerCmd();
   2046  083D  118A  22BF  158A   	fcall	_getTimerCmd
   2047  0840  2837               	goto	l8164
   2048  0841                     l8174:	
   2049                           
-  2050                           ;Main.c: 211: startLogCmd();
+  2050                           ;Main.c: 210: startLogCmd();
   2051  0841  223C  158A         	fcall	_startLogCmd
   2052  0843  2837               	goto	l8164
   2053  0844                     l8178:	
   2054                           
-  2055                           ;Main.c: 216: stopLogCmd();
+  2055                           ;Main.c: 215: stopLogCmd();
   2056  0844  118A  2310  158A   	fcall	_stopLogCmd
   2057  0847  2837               	goto	l8164
   2058  0848                     l8182:	
   2059                           
-  2060                           ;Main.c: 221: readLogStatus();
+  2060                           ;Main.c: 220: readLogStatus();
   2061  0848  118A  21CB  158A   	fcall	_readLogStatus
   2062  084B  2837               	goto	l8164
   2063  084C                     l8186:	
   2064                           
-  2065                           ;Main.c: 226: chk = 0;
+  2065                           ;Main.c: 225: chk = 0;
   2066  084C  1283               	bcf	3,5	;RP0=0, select bank0
   2067  084D  300E               	movlw	14
   2068  084E  01BB               	clrf	comandoRx@chk
   2069                           
-  2070                           ;Main.c: 227: bufferTxLen = 14;
+  2070                           ;Main.c: 226: bufferTxLen = 14;
   2071  084F  00E0               	movwf	_bufferTxLen
   2072                           
-  2073                           ;Main.c: 228: bufferTx[0] = 0x55;
+  2073                           ;Main.c: 227: bufferTx[0] = 0x55;
   2074  0850  3055               	movlw	85
   2075  0851  1683               	bsf	3,5	;RP0=1, select bank1
   2076  0852  00A0               	movwf	_bufferTx^(0+128)
   2077                           
-  2078                           ;Main.c: 229: bufferTx[1] = 0x37;
+  2078                           ;Main.c: 228: bufferTx[1] = 0x37;
   2079  0853  3037               	movlw	55
   2080  0854  00A1               	movwf	(_bufferTx^(0+128)+1)
   2081                           
-  2082                           ;Main.c: 230: chk ^= bufferTx[1];
+  2082                           ;Main.c: 229: chk ^= bufferTx[1];
   2083  0855  1283               	bcf	3,5	;RP0=0, select bank0
   2084  0856  06BB               	xorwf	comandoRx@chk,f
   2085                           
-  2086                           ;Main.c: 231: logsToSend = numOfLogs;
+  2086                           ;Main.c: 230: logsToSend = numOfLogs;
   2087  0857  085F               	movf	_numOfLogs+1,w
   2088  0858  00BD               	movwf	comandoRx@logsToSend+1
   2089  0859  085E               	movf	_numOfLogs,w
   2090  085A  00BC               	movwf	comandoRx@logsToSend
   2091                           
-  2092                           ;Main.c: 232: numOfBytes = logsToSend*3;
+  2092                           ;Main.c: 231: numOfBytes = logsToSend*3;
   2093  085B  083D               	movf	comandoRx@logsToSend+1,w
   2094  085C  00A1               	movwf	?___wmul+1
   2095  085D  083C               	movf	comandoRx@logsToSend,w
@@ -2112,7 +2112,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2106  0869  01B7               	clrf	comandoRx@numOfBytes+2
   2107  086A  01B8               	clrf	comandoRx@numOfBytes+3
   2108                           
-  2109                           ;Main.c: 233: numOfBytes+= 9;
+  2109                           ;Main.c: 232: numOfBytes+= 9;
   2110  086B  07B5               	addwf	comandoRx@numOfBytes,f
   2111  086C  3001               	movlw	1
   2112  086D  1803               	skipnc
@@ -2122,120 +2122,120 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2116  0871  1803               	skipnc
   2117  0872  07B8               	addwf	comandoRx@numOfBytes+3,f
   2118                           
-  2119                           ;Main.c: 234: bufferTx[2] = (numOfBytes>>16)&0xFF;
+  2119                           ;Main.c: 233: bufferTx[2] = (numOfBytes>>16)&0xFF;
   2120  0873  0837               	movf	comandoRx@numOfBytes+2,w
   2121  0874  1683               	bsf	3,5	;RP0=1, select bank1
   2122  0875  00A2               	movwf	(_bufferTx^(0+128)+2)
   2123                           
-  2124                           ;Main.c: 235: chk ^= bufferTx[2];
+  2124                           ;Main.c: 234: chk ^= bufferTx[2];
   2125  0876  1283               	bcf	3,5	;RP0=0, select bank0
   2126  0877  06BB               	xorwf	comandoRx@chk,f
   2127                           
-  2128                           ;Main.c: 236: bufferTx[3] = (numOfBytes>>8)&0xFF;
+  2128                           ;Main.c: 235: bufferTx[3] = (numOfBytes>>8)&0xFF;
   2129  0878  0836               	movf	comandoRx@numOfBytes+1,w
   2130  0879  1683               	bsf	3,5	;RP0=1, select bank1
   2131  087A  00A3               	movwf	(_bufferTx^(0+128)+3)
   2132                           
-  2133                           ;Main.c: 237: chk ^= bufferTx[3];
+  2133                           ;Main.c: 236: chk ^= bufferTx[3];
   2134  087B  1283               	bcf	3,5	;RP0=0, select bank0
   2135  087C  06BB               	xorwf	comandoRx@chk,f
   2136                           
-  2137                           ;Main.c: 238: bufferTx[4] = (numOfBytes&0xFF);
+  2137                           ;Main.c: 237: bufferTx[4] = (numOfBytes&0xFF);
   2138  087D  0835               	movf	comandoRx@numOfBytes,w
   2139  087E  1683               	bsf	3,5	;RP0=1, select bank1
   2140  087F  00A4               	movwf	(_bufferTx^(0+128)+4)
   2141                           
-  2142                           ;Main.c: 239: chk ^= bufferTx[4];
+  2142                           ;Main.c: 238: chk ^= bufferTx[4];
   2143  0880  1283               	bcf	3,5	;RP0=0, select bank0
   2144  0881  06BB               	xorwf	comandoRx@chk,f
   2145                           
-  2146                           ;Main.c: 241: bufferTx[5] = startTime>>24;
+  2146                           ;Main.c: 240: bufferTx[5] = startTime>>24;
   2147  0882  0853               	movf	_startTime+3,w
   2148  0883  1683               	bsf	3,5	;RP0=1, select bank1
   2149  0884  00A5               	movwf	(_bufferTx^(0+128)+5)
   2150                           
-  2151                           ;Main.c: 242: chk ^= bufferTx[5];
+  2151                           ;Main.c: 241: chk ^= bufferTx[5];
   2152  0885  1283               	bcf	3,5	;RP0=0, select bank0
   2153  0886  06BB               	xorwf	comandoRx@chk,f
   2154                           
-  2155                           ;Main.c: 243: bufferTx[6] = startTime>>16;
+  2155                           ;Main.c: 242: bufferTx[6] = startTime>>16;
   2156  0887  0852               	movf	_startTime+2,w
   2157  0888  1683               	bsf	3,5	;RP0=1, select bank1
   2158  0889  00A6               	movwf	(_bufferTx^(0+128)+6)
   2159                           
-  2160                           ;Main.c: 244: chk ^= bufferTx[6];
+  2160                           ;Main.c: 243: chk ^= bufferTx[6];
   2161  088A  1283               	bcf	3,5	;RP0=0, select bank0
   2162  088B  06BB               	xorwf	comandoRx@chk,f
   2163                           
-  2164                           ;Main.c: 245: bufferTx[7] = startTime>>8;
+  2164                           ;Main.c: 244: bufferTx[7] = startTime>>8;
   2165  088C  0851               	movf	_startTime+1,w
   2166  088D  1683               	bsf	3,5	;RP0=1, select bank1
   2167  088E  00A7               	movwf	(_bufferTx^(0+128)+7)
   2168                           
-  2169                           ;Main.c: 246: chk ^= bufferTx[7];
+  2169                           ;Main.c: 245: chk ^= bufferTx[7];
   2170  088F  1283               	bcf	3,5	;RP0=0, select bank0
   2171  0890  06BB               	xorwf	comandoRx@chk,f
   2172                           
-  2173                           ;Main.c: 247: bufferTx[8] = startTime;
+  2173                           ;Main.c: 246: bufferTx[8] = startTime;
   2174  0891  0850               	movf	_startTime,w
   2175  0892  1683               	bsf	3,5	;RP0=1, select bank1
   2176  0893  00A8               	movwf	(_bufferTx^(0+128)+8)
   2177                           
-  2178                           ;Main.c: 248: chk ^= bufferTx[8];
+  2178                           ;Main.c: 247: chk ^= bufferTx[8];
   2179  0894  1283               	bcf	3,5	;RP0=0, select bank0
   2180  0895  06BB               	xorwf	comandoRx@chk,f
   2181                           
-  2182                           ;Main.c: 249: bufferTx[9] = timer>>8;
+  2182                           ;Main.c: 248: bufferTx[9] = timer>>8;
   2183  0896  085B               	movf	_timer+1,w
   2184  0897  1683               	bsf	3,5	;RP0=1, select bank1
   2185  0898  00A9               	movwf	(_bufferTx^(0+128)+9)
   2186                           
-  2187                           ;Main.c: 250: chk ^= bufferTx[9];
+  2187                           ;Main.c: 249: chk ^= bufferTx[9];
   2188  0899  1283               	bcf	3,5	;RP0=0, select bank0
   2189  089A  06BB               	xorwf	comandoRx@chk,f
   2190                           
-  2191                           ;Main.c: 251: bufferTx[10] = timer;
+  2191                           ;Main.c: 250: bufferTx[10] = timer;
   2192  089B  085A               	movf	_timer,w
   2193  089C  1683               	bsf	3,5	;RP0=1, select bank1
   2194  089D  00AA               	movwf	(_bufferTx^(0+128)+10)
   2195                           
-  2196                           ;Main.c: 252: chk ^= bufferTx[10];
+  2196                           ;Main.c: 251: chk ^= bufferTx[10];
   2197  089E  1283               	bcf	3,5	;RP0=0, select bank0
   2198  089F  06BB               	xorwf	comandoRx@chk,f
   2199                           
-  2200                           ;Main.c: 253: bufferTx[11] = logsToSend>>8;
+  2200                           ;Main.c: 252: bufferTx[11] = logsToSend>>8;
   2201  08A0  083D               	movf	comandoRx@logsToSend+1,w
   2202  08A1  1683               	bsf	3,5	;RP0=1, select bank1
   2203  08A2  00AB               	movwf	(_bufferTx^(0+128)+11)
   2204                           
-  2205                           ;Main.c: 254: chk ^= bufferTx[11];
+  2205                           ;Main.c: 253: chk ^= bufferTx[11];
   2206  08A3  1283               	bcf	3,5	;RP0=0, select bank0
   2207  08A4  06BB               	xorwf	comandoRx@chk,f
   2208                           
-  2209                           ;Main.c: 255: bufferTx[12] = logsToSend;
+  2209                           ;Main.c: 254: bufferTx[12] = logsToSend;
   2210  08A5  083C               	movf	comandoRx@logsToSend,w
   2211  08A6  1683               	bsf	3,5	;RP0=1, select bank1
   2212  08A7  00AC               	movwf	(_bufferTx^(0+128)+12)
   2213                           
-  2214                           ;Main.c: 256: chk ^= bufferTx[12];
+  2214                           ;Main.c: 255: chk ^= bufferTx[12];
   2215  08A8  1283               	bcf	3,5	;RP0=0, select bank0
   2216  08A9  06BB               	xorwf	comandoRx@chk,f
   2217                           
-  2218                           ;Main.c: 257: bufferTx[13] = logStatus;
+  2218                           ;Main.c: 256: bufferTx[13] = logStatus;
   2219  08AA  3000               	movlw	0
   2220  08AB  1A7A               	btfsc	_logStatus/(0+8),_logStatus& (0+7)
   2221  08AC  3001               	movlw	1
   2222  08AD  1683               	bsf	3,5	;RP0=1, select bank1
   2223  08AE  00AD               	movwf	(_bufferTx^(0+128)+13)
   2224                           
-  2225                           ;Main.c: 258: chk ^= bufferTx[13];
+  2225                           ;Main.c: 257: chk ^= bufferTx[13];
   2226  08AF  1283               	bcf	3,5	;RP0=0, select bank0
   2227  08B0  06BB               	xorwf	comandoRx@chk,f
   2228                           
-  2229                           ;Main.c: 259: resposta();
+  2229                           ;Main.c: 258: resposta();
   2230  08B1  274D  158A         	fcall	_resposta
   2231                           
-  2232                           ;Main.c: 261: for (unsigned int i=0; i<logsToSend; i++){
+  2232                           ;Main.c: 260: for (unsigned int i=0; i<logsToSend; i++){
   2233  08B3  01B3               	clrf	comandoRx@i
   2234  08B4  01B4               	clrf	comandoRx@i+1
   2235  08B5                     l4894:	
@@ -2249,12 +2249,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2243  08BB  1803               	btfsc	3,0
   2244  08BC  28F0               	goto	l8274
   2245                           
-  2246                           ;Main.c: 262: unsigned char readData[3];
-  2247                           ;Main.c: 263: bufferTxLen = 3;
+  2246                           ;Main.c: 261: unsigned char readData[3];
+  2247                           ;Main.c: 262: bufferTxLen = 3;
   2248  08BD  3003               	movlw	3
   2249  08BE  00E0               	movwf	_bufferTxLen
   2250                           
-  2251                           ;Main.c: 264: eepromReadLog(0x0020+(3*i),readData);
+  2251                           ;Main.c: 263: eepromReadLog(0x0020+(3*i),readData);
   2252  08BF  0834               	movf	comandoRx@i+1,w
   2253  08C0  00A1               	movwf	?___wmul+1
   2254  08C1  0833               	movf	comandoRx@i,w
@@ -2275,41 +2275,41 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2269  08D1  00A8               	movwf	?_eepromReadLog+2
   2270  08D2  246F  158A         	fcall	_eepromReadLog
   2271                           
-  2272                           ;Main.c: 265: bufferTx[0] = readData[0];
+  2272                           ;Main.c: 264: bufferTx[0] = readData[0];
   2273  08D4  082D               	movf	comandoRx@readData,w
   2274  08D5  1683               	bsf	3,5	;RP0=1, select bank1
   2275  08D6  00A0               	movwf	_bufferTx^(0+128)
   2276                           
-  2277                           ;Main.c: 266: bufferTx[1] = readData[1];
+  2277                           ;Main.c: 265: bufferTx[1] = readData[1];
   2278  08D7  1283               	bcf	3,5	;RP0=0, select bank0
   2279  08D8  082E               	movf	comandoRx@readData+1,w
   2280  08D9  1683               	bsf	3,5	;RP0=1, select bank1
   2281  08DA  00A1               	movwf	(_bufferTx^(0+128)+1)
   2282                           
-  2283                           ;Main.c: 267: bufferTx[2] = readData[2];
+  2283                           ;Main.c: 266: bufferTx[2] = readData[2];
   2284  08DB  1283               	bcf	3,5	;RP0=0, select bank0
   2285  08DC  082F               	movf	comandoRx@readData+2,w
   2286  08DD  1683               	bsf	3,5	;RP0=1, select bank1
   2287  08DE  00A2               	movwf	(_bufferTx^(0+128)+2)
   2288                           
-  2289                           ;Main.c: 268: chk ^= bufferTx[0];
+  2289                           ;Main.c: 267: chk ^= bufferTx[0];
   2290  08DF  0820               	movf	_bufferTx^(0+128),w
   2291  08E0  1283               	bcf	3,5	;RP0=0, select bank0
   2292  08E1  06BB               	xorwf	comandoRx@chk,f
   2293                           
-  2294                           ;Main.c: 269: chk ^= bufferTx[1];
+  2294                           ;Main.c: 268: chk ^= bufferTx[1];
   2295  08E2  1683               	bsf	3,5	;RP0=1, select bank1
   2296  08E3  0821               	movf	(_bufferTx^(0+128)+1),w
   2297  08E4  1283               	bcf	3,5	;RP0=0, select bank0
   2298  08E5  06BB               	xorwf	comandoRx@chk,f
   2299                           
-  2300                           ;Main.c: 270: chk ^= bufferTx[2];
+  2300                           ;Main.c: 269: chk ^= bufferTx[2];
   2301  08E6  1683               	bsf	3,5	;RP0=1, select bank1
   2302  08E7  0822               	movf	(_bufferTx^(0+128)+2),w
   2303  08E8  1283               	bcf	3,5	;RP0=0, select bank0
   2304  08E9  06BB               	xorwf	comandoRx@chk,f
   2305                           
-  2306                           ;Main.c: 271: resposta();
+  2306                           ;Main.c: 270: resposta();
   2307  08EA  274D  158A         	fcall	_resposta
   2308  08EC  0AB3               	incf	comandoRx@i,f
   2309  08ED  1903               	skipnz
@@ -2317,40 +2317,40 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2311  08EF  28B5               	goto	l4894
   2312  08F0                     l8274:	
   2313                           
-  2314                           ;Main.c: 272: }
-  2315                           ;Main.c: 273: bufferTx[0] = chk;
+  2314                           ;Main.c: 271: }
+  2315                           ;Main.c: 272: bufferTx[0] = chk;
   2316  08F0  083B               	movf	comandoRx@chk,w
   2317  08F1  1683               	bsf	3,5	;RP0=1, select bank1
   2318  08F2  00A0               	movwf	_bufferTx^(0+128)
   2319                           
-  2320                           ;Main.c: 274: bufferTx[1] = 0x0A;
+  2320                           ;Main.c: 273: bufferTx[1] = 0x0A;
   2321  08F3  300A               	movlw	10
   2322  08F4  00A1               	movwf	(_bufferTx^(0+128)+1)
   2323                           
-  2324                           ;Main.c: 275: bufferTxLen = 2;
+  2324                           ;Main.c: 274: bufferTxLen = 2;
   2325  08F5  3002               	movlw	2
   2326  08F6  1283               	bcf	3,5	;RP0=0, select bank0
   2327  08F7  00E0               	movwf	_bufferTxLen
   2328  08F8                     l8276:	
   2329                           
-  2330                           ;Main.c: 276: resposta();
+  2330                           ;Main.c: 275: resposta();
   2331  08F8  274D  158A         	fcall	_resposta
   2332                           
-  2333                           ;Main.c: 277: break;
+  2333                           ;Main.c: 276: break;
   2334  08FA  29A5               	goto	l4887
   2335  08FB                     l8278:	
   2336                           
-  2337                           ;Main.c: 280: logsToSend = cmd[3];
+  2337                           ;Main.c: 279: logsToSend = cmd[3];
   2338  08FB  084B               	movf	(_cmd^(0+128)+3),w
   2339  08FC  1283               	bcf	3,5	;RP0=0, select bank0
   2340  08FD  00BC               	movwf	comandoRx@logsToSend
   2341  08FE  01BD               	clrf	comandoRx@logsToSend+1
   2342                           
-  2343                           ;Main.c: 281: logsToSend <<=8;
+  2343                           ;Main.c: 280: logsToSend <<=8;
   2344  08FF  00BD               	movwf	comandoRx@logsToSend+1
   2345  0900  01BC               	clrf	comandoRx@logsToSend
   2346                           
-  2347                           ;Main.c: 282: logsToSend += cmd[4];
+  2347                           ;Main.c: 281: logsToSend += cmd[4];
   2348  0901  1683               	bsf	3,5	;RP0=1, select bank1
   2349  0902  084C               	movf	(_cmd^(0+128)+4),w
   2350  0903  1283               	bcf	3,5	;RP0=0, select bank0
@@ -2358,12 +2358,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2352  0905  1803               	skipnc
   2353  0906  0ABD               	incf	comandoRx@logsToSend+1,f
   2354                           
-  2355                           ;Main.c: 283: unsigned char readData[3];
-  2356                           ;Main.c: 284: bufferTxLen = 8;
+  2355                           ;Main.c: 282: unsigned char readData[3];
+  2356                           ;Main.c: 283: bufferTxLen = 8;
   2357  0907  3008               	movlw	8
   2358  0908  00E0               	movwf	_bufferTxLen
   2359                           
-  2360                           ;Main.c: 285: eepromReadLog(0x0020+(logsToSend*3),readData);
+  2360                           ;Main.c: 284: eepromReadLog(0x0020+(logsToSend*3),readData);
   2361  0909  083D               	movf	comandoRx@logsToSend+1,w
   2362  090A  00A1               	movwf	?___wmul+1
   2363  090B  083C               	movf	comandoRx@logsToSend,w
@@ -2384,38 +2384,38 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2378  091B  00A8               	movwf	?_eepromReadLog+2
   2379  091C  246F  158A         	fcall	_eepromReadLog
   2380                           
-  2381                           ;Main.c: 287: bufferTx[0] = 0x55;
+  2381                           ;Main.c: 286: bufferTx[0] = 0x55;
   2382  091E  3055               	movlw	85
   2383  091F  1683               	bsf	3,5	;RP0=1, select bank1
   2384  0920  00A0               	movwf	_bufferTx^(0+128)
   2385                           
-  2386                           ;Main.c: 288: bufferTx[1] = 0x38;
+  2386                           ;Main.c: 287: bufferTx[1] = 0x38;
   2387  0921  3038               	movlw	56
   2388  0922  00A1               	movwf	(_bufferTx^(0+128)+1)
   2389                           
-  2390                           ;Main.c: 289: bufferTx[2] = 0x03;
+  2390                           ;Main.c: 288: bufferTx[2] = 0x03;
   2391  0923  3003               	movlw	3
   2392  0924  00A2               	movwf	(_bufferTx^(0+128)+2)
   2393                           
-  2394                           ;Main.c: 290: bufferTx[3] = readData[0];
+  2394                           ;Main.c: 289: bufferTx[3] = readData[0];
   2395  0925  1283               	bcf	3,5	;RP0=0, select bank0
   2396  0926  0830               	movf	comandoRx@readData_6105,w
   2397  0927  1683               	bsf	3,5	;RP0=1, select bank1
   2398  0928  00A3               	movwf	(_bufferTx^(0+128)+3)
   2399                           
-  2400                           ;Main.c: 291: bufferTx[4] = readData[1];
+  2400                           ;Main.c: 290: bufferTx[4] = readData[1];
   2401  0929  1283               	bcf	3,5	;RP0=0, select bank0
   2402  092A  0831               	movf	comandoRx@readData_6105+1,w
   2403  092B  1683               	bsf	3,5	;RP0=1, select bank1
   2404  092C  00A4               	movwf	(_bufferTx^(0+128)+4)
   2405                           
-  2406                           ;Main.c: 292: bufferTx[5] = readData[2];
+  2406                           ;Main.c: 291: bufferTx[5] = readData[2];
   2407  092D  1283               	bcf	3,5	;RP0=0, select bank0
   2408  092E  0832               	movf	comandoRx@readData_6105+2,w
   2409  092F  1683               	bsf	3,5	;RP0=1, select bank1
   2410  0930  00A5               	movwf	(_bufferTx^(0+128)+5)
   2411                           
-  2412                           ;Main.c: 293: bufferTx[6] = checksumCalc(bufferTx,8);
+  2412                           ;Main.c: 292: bufferTx[6] = checksumCalc(bufferTx,8);
   2413  0931  3008               	movlw	8
   2414  0932  1283               	bcf	3,5	;RP0=0, select bank0
   2415  0933  00A0               	movwf	?_checksumCalc
@@ -2424,23 +2424,23 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2418  0937  1683               	bsf	3,5	;RP0=1, select bank1
   2419  0938  00A6               	movwf	(_bufferTx^(0+128)+6)
   2420                           
-  2421                           ;Main.c: 294: bufferTx[7] = 0x0A;
+  2421                           ;Main.c: 293: bufferTx[7] = 0x0A;
   2422  0939  300A               	movlw	10
   2423  093A  00A7               	movwf	(_bufferTx^(0+128)+7)
   2424  093B  28F8               	goto	l8276
   2425  093C                     l8298:	
   2426                           
-  2427                           ;Main.c: 299: logsToSend = cmd[3];
+  2427                           ;Main.c: 298: logsToSend = cmd[3];
   2428  093C  084B               	movf	(_cmd^(0+128)+3),w
   2429  093D  1283               	bcf	3,5	;RP0=0, select bank0
   2430  093E  00BC               	movwf	comandoRx@logsToSend
   2431  093F  01BD               	clrf	comandoRx@logsToSend+1
   2432                           
-  2433                           ;Main.c: 300: logsToSend <<=8;
+  2433                           ;Main.c: 299: logsToSend <<=8;
   2434  0940  00BD               	movwf	comandoRx@logsToSend+1
   2435  0941  01BC               	clrf	comandoRx@logsToSend
   2436                           
-  2437                           ;Main.c: 301: logsToSend += cmd[4];
+  2437                           ;Main.c: 300: logsToSend += cmd[4];
   2438  0942  1683               	bsf	3,5	;RP0=1, select bank1
   2439  0943  084C               	movf	(_cmd^(0+128)+4),w
   2440  0944  1283               	bcf	3,5	;RP0=0, select bank0
@@ -2448,11 +2448,11 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2442  0946  1803               	skipnc
   2443  0947  0ABD               	incf	comandoRx@logsToSend+1,f
   2444                           
-  2445                           ;Main.c: 303: bufferTxLen = 37;
+  2445                           ;Main.c: 302: bufferTxLen = 37;
   2446  0948  3025               	movlw	37
   2447  0949  00E0               	movwf	_bufferTxLen
   2448                           
-  2449                           ;Main.c: 304: eepromReadLogPage(0x0020+(30*logsToSend),readDataBuffer);
+  2449                           ;Main.c: 303: eepromReadLogPage(0x0020+(30*logsToSend),readDataBuffer);
   2450  094A  083D               	movf	comandoRx@logsToSend+1,w
   2451  094B  00A1               	movwf	?___wmul+1
   2452  094C  083C               	movf	comandoRx@logsToSend,w
@@ -2473,34 +2473,34 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2467  095C  00A8               	movwf	?_eepromReadLogPage+2
   2468  095D  2433  158A         	fcall	_eepromReadLogPage
   2469                           
-  2470                           ;Main.c: 306: bufferTx[0] = 0x55;
+  2470                           ;Main.c: 305: bufferTx[0] = 0x55;
   2471  095F  3055               	movlw	85
   2472  0960  1683               	bsf	3,5	;RP0=1, select bank1
   2473  0961  00A0               	movwf	_bufferTx^(0+128)
   2474                           
-  2475                           ;Main.c: 307: bufferTx[1] = 0x39;
+  2475                           ;Main.c: 306: bufferTx[1] = 0x39;
   2476  0962  3039               	movlw	57
   2477  0963  00A1               	movwf	(_bufferTx^(0+128)+1)
   2478                           
-  2479                           ;Main.c: 308: bufferTx[2] = 0x20;
+  2479                           ;Main.c: 307: bufferTx[2] = 0x20;
   2480  0964  3020               	movlw	32
   2481  0965  00A2               	movwf	(_bufferTx^(0+128)+2)
   2482                           
-  2483                           ;Main.c: 309: bufferTx[3] = cmd[3];
+  2483                           ;Main.c: 308: bufferTx[3] = cmd[3];
   2484  0966  084B               	movf	(_cmd^(0+128)+3),w
   2485  0967  00A3               	movwf	(_bufferTx^(0+128)+3)
   2486                           
-  2487                           ;Main.c: 310: bufferTx[4] = cmd[4];
+  2487                           ;Main.c: 309: bufferTx[4] = cmd[4];
   2488  0968  084C               	movf	(_cmd^(0+128)+4),w
   2489  0969  00A4               	movwf	(_bufferTx^(0+128)+4)
   2490                           
-  2491                           ;Main.c: 312: for(int i=0;i<30;i++){
+  2491                           ;Main.c: 311: for(int i=0;i<30;i++){
   2492  096A  1283               	bcf	3,5	;RP0=0, select bank0
   2493  096B  01B9               	clrf	comandoRx@i_6106
   2494  096C  01BA               	clrf	comandoRx@i_6106+1
   2495  096D                     l8318:	
   2496                           
-  2497                           ;Main.c: 313: bufferTx[i+5] = readDataBuffer[i];
+  2497                           ;Main.c: 312: bufferTx[i+5] = readDataBuffer[i];
   2498  096D  1283               	bcf	3,5	;RP0=0, select bank0
   2499  096E  1303               	bcf	3,6	;RP1=0, select bank0
   2500  096F  0839               	movf	comandoRx@i_6106,w
@@ -2531,8 +2531,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2525  0987  1C03               	skipc
   2526  0988  296D               	goto	l8318
   2527                           
-  2528                           ;Main.c: 314: }
-  2529                           ;Main.c: 315: bufferTx[35] = checksumCalc(bufferTx,37);
+  2528                           ;Main.c: 313: }
+  2529                           ;Main.c: 314: bufferTx[35] = checksumCalc(bufferTx,37);
   2530  0989  3025               	movlw	37
   2531  098A  1283               	bcf	3,5	;RP0=0, select bank0
   2532  098B  1303               	bcf	3,6	;RP1=0, select bank0
@@ -2542,7 +2542,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2536  0990  1683               	bsf	3,5	;RP0=1, select bank1
   2537  0991  00C3               	movwf	(_bufferTx^(0+128)+35)
   2538                           
-  2539                           ;Main.c: 316: bufferTx[36] = 0x0A;
+  2539                           ;Main.c: 315: bufferTx[36] = 0x0A;
   2540  0992  300A               	movlw	10
   2541  0993  00C4               	movwf	(_bufferTx^(0+128)+36)
   2542  0994  28F8               	goto	l8276
@@ -2574,35 +2574,35 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2568  09A4  0082               	movwf	2
   2569  09A5                     l4887:	
   2570                           
-  2571                           ;Main.c: 322: if (flagRespostaBLE){
+  2571                           ;Main.c: 321: if (flagRespostaBLE){
   2572  09A5  1CFA               	btfss	_flagRespostaBLE/(0+8),_flagRespostaBLE& (0+7)
   2573  09A6  0008               	return
   2574                           
-  2575                           ;Main.c: 323: flagRespostaBLE = 0;
+  2575                           ;Main.c: 322: flagRespostaBLE = 0;
   2576  09A7  10FA               	bcf	_flagRespostaBLE/(0+8),_flagRespostaBLE& (0+7)
   2577                           
-  2578                           ;Main.c: 324: resposta();
+  2578                           ;Main.c: 323: resposta();
   2579  09A8  2F4D               	ljmp	l7826
   2580  09A9                     l8338:	
   2581                           
-  2582                           ;Main.c: 327: else{
-  2583                           ;Main.c: 328: UART_send_char(0x55);
+  2582                           ;Main.c: 326: else{
+  2583                           ;Main.c: 327: UART_send_char(0x55);
   2584  09A9  3055               	movlw	85
   2585  09AA  2705  158A         	fcall	_UART_send_char
   2586                           
-  2587                           ;Main.c: 329: UART_send_char(0x40);
+  2587                           ;Main.c: 328: UART_send_char(0x40);
   2588  09AC  3040               	movlw	64
   2589  09AD  2705  158A         	fcall	_UART_send_char
   2590                           
-  2591                           ;Main.c: 330: UART_send_char(0x00);
+  2591                           ;Main.c: 329: UART_send_char(0x00);
   2592  09AF  3000               	movlw	0
   2593  09B0  2705  158A         	fcall	_UART_send_char
   2594                           
-  2595                           ;Main.c: 331: UART_send_char(0x40);
+  2595                           ;Main.c: 330: UART_send_char(0x40);
   2596  09B2  3040               	movlw	64
   2597  09B3  2705  158A         	fcall	_UART_send_char
   2598                           
-  2599                           ;Main.c: 332: UART_send_char(0x0A);
+  2599                           ;Main.c: 331: UART_send_char(0x0A);
   2600  09B5  300A               	movlw	10
   2601  09B6  2F05               	ljmp	_UART_send_char
   2602  09B7                     __end_of_comandoRx:	
@@ -2612,7 +2612,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2606                           
   2607 ;; *************** function _logSave *****************
   2608 ;; Defined at:
-  2609 ;;		line 155 in file "Main.c"
+  2609 ;;		line 154 in file "Main.c"
   2610 ;; Parameters:    Size  Location     Type
   2611 ;;		None
   2612 ;; Auto vars:     Size  Location     Type
@@ -2644,7 +2644,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2638 ;;
   2639  09B7                     _logSave:	
   2640                           
-  2641                           ;Main.c: 156: if (numOfLogs < 10912){
+  2641                           ;Main.c: 155: if (numOfLogs < 10912){
   2642                           
   2643                           ; Regs used in _logSave: [wreg+status,2+status,0+pclath+cstack]
   2644  09B7  302A               	movlw	42
@@ -2655,8 +2655,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2649  09BC  1803               	skipnc
   2650  09BD  0008               	return
   2651                           
-  2652                           ;Main.c: 157: unsigned int auxAddr;
-  2653                           ;Main.c: 159: auxAddr = 0x0020+(numOfLogs*3);
+  2652                           ;Main.c: 156: unsigned int auxAddr;
+  2653                           ;Main.c: 158: auxAddr = 0x0020+(numOfLogs*3);
   2654  09BE  085F               	movf	_numOfLogs+1,w
   2655  09BF  00A1               	movwf	?___wmul+1
   2656  09C0  085E               	movf	_numOfLogs,w
@@ -2674,10 +2674,10 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2668  09CD  1803               	skipnc
   2669  09CE  0AC8               	incf	logSave@auxAddr+1,f
   2670                           
-  2671                           ;Main.c: 161: sendTriggerMeasurementCmd();
+  2671                           ;Main.c: 160: sendTriggerMeasurementCmd();
   2672  09CF  2006  158A         	fcall	_sendTriggerMeasurementCmd
   2673                           
-  2674                           ;Main.c: 162: _delay((unsigned long)((100)*(4000000/4000.0)));
+  2674                           ;Main.c: 161: _delay((unsigned long)((100)*(4000000/4000.0)));
   2675  09D1  3082               	movlw	130
   2676  09D2  00C6               	movwf	??_logSave+1
   2677  09D3  30DD               	movlw	221
@@ -2689,10 +2689,10 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2683  09D8  29D5               	goto	u1637
   2684  09D9  29DA               	nop2
   2685                           
-  2686                           ;Main.c: 163: readTemp();
+  2686                           ;Main.c: 162: readTemp();
   2687  09DA  2498  158A         	fcall	_readTemp
   2688                           
-  2689                           ;Main.c: 166: eepromWriteByte(auxAddr,readTemperature);
+  2689                           ;Main.c: 165: eepromWriteByte(auxAddr,readTemperature);
   2690  09DC  0848               	movf	logSave@auxAddr+1,w
   2691  09DD  00A7               	movwf	?_eepromWriteByte+1
   2692  09DE  0847               	movf	logSave@auxAddr,w
@@ -2701,12 +2701,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2695  09E1  00A8               	movwf	?_eepromWriteByte+2
   2696  09E2  2333  158A         	fcall	_eepromWriteByte
   2697                           
-  2698                           ;Main.c: 167: auxAddr++;
+  2698                           ;Main.c: 166: auxAddr++;
   2699  09E4  0AC7               	incf	logSave@auxAddr,f
   2700  09E5  1903               	skipnz
   2701  09E6  0AC8               	incf	logSave@auxAddr+1,f
   2702                           
-  2703                           ;Main.c: 168: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2703                           ;Main.c: 167: _delay((unsigned long)((5)*(4000000/4000.0)));
   2704  09E7  3007               	movlw	7
   2705  09E8  00C6               	movwf	??_logSave+1
   2706  09E9  307D               	movlw	125
@@ -2717,7 +2717,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2711  09ED  0BC6               	decfsz	??_logSave+1,f
   2712  09EE  29EB               	goto	u1647
   2713                           
-  2714                           ;Main.c: 169: eepromWriteByte(auxAddr,readTemperatureDec);
+  2714                           ;Main.c: 168: eepromWriteByte(auxAddr,readTemperatureDec);
   2715  09EF  1283               	bcf	3,5	;RP0=0, select bank0
   2716  09F0  1303               	bcf	3,6	;RP1=0, select bank0
   2717  09F1  0848               	movf	logSave@auxAddr+1,w
@@ -2728,12 +2728,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2722  09F6  00A8               	movwf	?_eepromWriteByte+2
   2723  09F7  2333  158A         	fcall	_eepromWriteByte
   2724                           
-  2725                           ;Main.c: 170: auxAddr++;
+  2725                           ;Main.c: 169: auxAddr++;
   2726  09F9  0AC7               	incf	logSave@auxAddr,f
   2727  09FA  1903               	skipnz
   2728  09FB  0AC8               	incf	logSave@auxAddr+1,f
   2729                           
-  2730                           ;Main.c: 171: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2730                           ;Main.c: 170: _delay((unsigned long)((5)*(4000000/4000.0)));
   2731  09FC  3007               	movlw	7
   2732  09FD  00C6               	movwf	??_logSave+1
   2733  09FE  307D               	movlw	125
@@ -2744,7 +2744,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2738  0A02  0BC6               	decfsz	??_logSave+1,f
   2739  0A03  2A00               	goto	u1657
   2740                           
-  2741                           ;Main.c: 172: eepromWriteByte(auxAddr,readUmidity);
+  2741                           ;Main.c: 171: eepromWriteByte(auxAddr,readUmidity);
   2742  0A04  1283               	bcf	3,5	;RP0=0, select bank0
   2743  0A05  1303               	bcf	3,6	;RP1=0, select bank0
   2744  0A06  0848               	movf	logSave@auxAddr+1,w
@@ -2755,7 +2755,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2749  0A0B  00A8               	movwf	?_eepromWriteByte+2
   2750  0A0C  2333  158A         	fcall	_eepromWriteByte
   2751                           
-  2752                           ;Main.c: 173: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2752                           ;Main.c: 172: _delay((unsigned long)((5)*(4000000/4000.0)));
   2753  0A0E  3007               	movlw	7
   2754  0A0F  00C6               	movwf	??_logSave+1
   2755  0A10  307D               	movlw	125
@@ -2766,14 +2766,14 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2760  0A14  0BC6               	decfsz	??_logSave+1,f
   2761  0A15  2A12               	goto	u1667
   2762                           
-  2763                           ;Main.c: 176: numOfLogs++;
+  2763                           ;Main.c: 175: numOfLogs++;
   2764  0A16  1283               	bcf	3,5	;RP0=0, select bank0
   2765  0A17  1303               	bcf	3,6	;RP1=0, select bank0
   2766  0A18  0ADE               	incf	_numOfLogs,f
   2767  0A19  1903               	skipnz
   2768  0A1A  0ADF               	incf	_numOfLogs+1,f
   2769                           
-  2770                           ;Main.c: 177: eepromWriteByte(0x0006,numOfLogs>>8);
+  2770                           ;Main.c: 176: eepromWriteByte(0x0006,numOfLogs>>8);
   2771  0A1B  3006               	movlw	6
   2772  0A1C  00A6               	movwf	?_eepromWriteByte
   2773  0A1D  01A7               	clrf	?_eepromWriteByte+1
@@ -2781,7 +2781,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2775  0A1F  00A8               	movwf	?_eepromWriteByte+2
   2776  0A20  2333  158A         	fcall	_eepromWriteByte
   2777                           
-  2778                           ;Main.c: 178: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2778                           ;Main.c: 177: _delay((unsigned long)((5)*(4000000/4000.0)));
   2779  0A22  3007               	movlw	7
   2780  0A23  00C6               	movwf	??_logSave+1
   2781  0A24  307D               	movlw	125
@@ -2792,7 +2792,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2786  0A28  0BC6               	decfsz	??_logSave+1,f
   2787  0A29  2A26               	goto	u1677
   2788                           
-  2789                           ;Main.c: 179: eepromWriteByte(0x0007,numOfLogs);
+  2789                           ;Main.c: 178: eepromWriteByte(0x0007,numOfLogs);
   2790  0A2A  3007               	movlw	7
   2791  0A2B  1283               	bcf	3,5	;RP0=0, select bank0
   2792  0A2C  1303               	bcf	3,6	;RP1=0, select bank0
@@ -2802,7 +2802,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   2796  0A30  00A8               	movwf	?_eepromWriteByte+2
   2797  0A31  2333  158A         	fcall	_eepromWriteByte
   2798                           
-  2799                           ;Main.c: 180: _delay((unsigned long)((5)*(4000000/4000.0)));
+  2799                           ;Main.c: 179: _delay((unsigned long)((5)*(4000000/4000.0)));
   2800  0A33  3007               	movlw	7
   2801  0A34  00C6               	movwf	??_logSave+1
   2802  0A35  307D               	movlw	125
@@ -3314,7 +3314,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3308                           
   3309 ;; *************** function _initVars *****************
   3310 ;; Defined at:
-  3311 ;;		line 344 in file "Main.c"
+  3311 ;;		line 343 in file "Main.c"
   3312 ;; Parameters:    Size  Location     Type
   3313 ;;		None
   3314 ;; Auto vars:     Size  Location     Type
@@ -3343,7 +3343,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3337 ;;
   3338  0B5B                     _initVars:	
   3339                           
-  3340                           ;Main.c: 346: timer = eepromReadByte(0x0004);
+  3340                           ;Main.c: 345: timer = eepromReadByte(0x0004);
   3341                           
   3342 ;; hardware stack exceeded
   3343                           ; Regs used in _initVars: [wreg+status,2+status,0+pclath+cstack]
@@ -3356,12 +3356,12 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3350  0B62  00DA               	movwf	_timer
   3351  0B63  01DB               	clrf	_timer+1
   3352                           
-  3353                           ;Main.c: 347: timer<<=8;
+  3353                           ;Main.c: 346: timer<<=8;
   3354  0B64  00DB               	movwf	_timer+1
   3355  0B65  3007               	movlw	7
   3356  0B66  01DA               	clrf	_timer
   3357                           
-  3358                           ;Main.c: 348: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3358                           ;Main.c: 347: _delay((unsigned long)((5)*(4000000/4000.0)));
   3359  0B67  00AA               	movwf	??_initVars+1
   3360  0B68  307D               	movlw	125
   3361  0B69  00A9               	movwf	??_initVars
@@ -3371,7 +3371,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3365  0B6C  0BAA               	decfsz	??_initVars+1,f
   3366  0B6D  2B6A               	goto	u1557
   3367                           
-  3368                           ;Main.c: 349: timer += eepromReadByte(0x0005);
+  3368                           ;Main.c: 348: timer += eepromReadByte(0x0005);
   3369  0B6E  3005               	movlw	5
   3370  0B6F  1283               	bcf	3,5	;RP0=0, select bank0
   3371  0B70  1303               	bcf	3,6	;RP1=0, select bank0
@@ -3382,7 +3382,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3376  0B76  1803               	skipnc
   3377  0B77  0ADB               	incf	_timer+1,f
   3378                           
-  3379                           ;Main.c: 350: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3379                           ;Main.c: 349: _delay((unsigned long)((5)*(4000000/4000.0)));
   3380  0B78  3007               	movlw	7
   3381  0B79  00AA               	movwf	??_initVars+1
   3382  0B7A  307D               	movlw	125
@@ -3393,7 +3393,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3387  0B7E  0BAA               	decfsz	??_initVars+1,f
   3388  0B7F  2B7C               	goto	u1567
   3389                           
-  3390                           ;Main.c: 352: contTimer = timer;
+  3390                           ;Main.c: 351: contTimer = timer;
   3391  0B80  1283               	bcf	3,5	;RP0=0, select bank0
   3392  0B81  1303               	bcf	3,6	;RP1=0, select bank0
   3393  0B82  085B               	movf	_timer+1,w
@@ -3401,13 +3401,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3395  0B84  085A               	movf	_timer,w
   3396  0B85  00DC               	movwf	_contTimer
   3397                           
-  3398                           ;Main.c: 353: newTimer = timer;
+  3398                           ;Main.c: 352: newTimer = timer;
   3399  0B86  085B               	movf	_timer+1,w
   3400  0B87  00D9               	movwf	_newTimer+1
   3401  0B88  085A               	movf	_timer,w
   3402  0B89  00D8               	movwf	_newTimer
   3403                           
-  3404                           ;Main.c: 356: startTime = eepromReadByte(0x0000);
+  3404                           ;Main.c: 355: startTime = eepromReadByte(0x0000);
   3405  0B8A  01A6               	clrf	?_eepromReadByte
   3406  0B8B  01A7               	clrf	?_eepromReadByte+1
   3407  0B8C  241B  158A         	fcall	_eepromReadByte
@@ -3416,7 +3416,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3410  0B90  01D2               	clrf	_startTime+2
   3411  0B91  01D3               	clrf	_startTime+3
   3412                           
-  3413                           ;Main.c: 357: startTime<<=8;
+  3413                           ;Main.c: 356: startTime<<=8;
   3414  0B92  0852               	movf	_startTime+2,w
   3415  0B93  00D3               	movwf	_startTime+3
   3416  0B94  0851               	movf	_startTime+1,w
@@ -3426,7 +3426,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3420  0B98  3007               	movlw	7
   3421  0B99  01D0               	clrf	_startTime
   3422                           
-  3423                           ;Main.c: 358: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3423                           ;Main.c: 357: _delay((unsigned long)((5)*(4000000/4000.0)));
   3424  0B9A  00AA               	movwf	??_initVars+1
   3425  0B9B  307D               	movlw	125
   3426  0B9C  00A9               	movwf	??_initVars
@@ -3436,7 +3436,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3430  0B9F  0BAA               	decfsz	??_initVars+1,f
   3431  0BA0  2B9D               	goto	u1577
   3432                           
-  3433                           ;Main.c: 359: startTime += eepromReadByte(0x0001);
+  3433                           ;Main.c: 358: startTime += eepromReadByte(0x0001);
   3434  0BA1  1283               	bcf	3,5	;RP0=0, select bank0
   3435  0BA2  1303               	bcf	3,6	;RP1=0, select bank0
   3436  0BA3  01A6               	clrf	?_eepromReadByte
@@ -3452,7 +3452,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3446  0BAE  1803               	skipnc
   3447  0BAF  07D3               	addwf	_startTime+3,f
   3448                           
-  3449                           ;Main.c: 360: startTime<<=8;
+  3449                           ;Main.c: 359: startTime<<=8;
   3450  0BB0  0852               	movf	_startTime+2,w
   3451  0BB1  00D3               	movwf	_startTime+3
   3452  0BB2  0851               	movf	_startTime+1,w
@@ -3462,7 +3462,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3456  0BB6  3007               	movlw	7
   3457  0BB7  01D0               	clrf	_startTime
   3458                           
-  3459                           ;Main.c: 361: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3459                           ;Main.c: 360: _delay((unsigned long)((5)*(4000000/4000.0)));
   3460  0BB8  00AA               	movwf	??_initVars+1
   3461  0BB9  307D               	movlw	125
   3462  0BBA  00A9               	movwf	??_initVars
@@ -3472,7 +3472,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3466  0BBD  0BAA               	decfsz	??_initVars+1,f
   3467  0BBE  2BBB               	goto	u1587
   3468                           
-  3469                           ;Main.c: 362: startTime += eepromReadByte(0x0002);
+  3469                           ;Main.c: 361: startTime += eepromReadByte(0x0002);
   3470  0BBF  3002               	movlw	2
   3471  0BC0  1283               	bcf	3,5	;RP0=0, select bank0
   3472  0BC1  1303               	bcf	3,6	;RP1=0, select bank0
@@ -3488,7 +3488,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3482  0BCC  1803               	skipnc
   3483  0BCD  07D3               	addwf	_startTime+3,f
   3484                           
-  3485                           ;Main.c: 363: startTime<<=8;
+  3485                           ;Main.c: 362: startTime<<=8;
   3486  0BCE  0852               	movf	_startTime+2,w
   3487  0BCF  00D3               	movwf	_startTime+3
   3488  0BD0  0851               	movf	_startTime+1,w
@@ -3498,7 +3498,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3492  0BD4  3007               	movlw	7
   3493  0BD5  01D0               	clrf	_startTime
   3494                           
-  3495                           ;Main.c: 364: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3495                           ;Main.c: 363: _delay((unsigned long)((5)*(4000000/4000.0)));
   3496  0BD6  00AA               	movwf	??_initVars+1
   3497  0BD7  307D               	movlw	125
   3498  0BD8  00A9               	movwf	??_initVars
@@ -3508,7 +3508,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3502  0BDB  0BAA               	decfsz	??_initVars+1,f
   3503  0BDC  2BD9               	goto	u1597
   3504                           
-  3505                           ;Main.c: 365: startTime += eepromReadByte(0x0003);
+  3505                           ;Main.c: 364: startTime += eepromReadByte(0x0003);
   3506  0BDD  3003               	movlw	3
   3507  0BDE  1283               	bcf	3,5	;RP0=0, select bank0
   3508  0BDF  1303               	bcf	3,6	;RP1=0, select bank0
@@ -3524,7 +3524,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3518  0BEA  1803               	skipnc
   3519  0BEB  07D3               	addwf	_startTime+3,f
   3520                           
-  3521                           ;Main.c: 366: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3521                           ;Main.c: 365: _delay((unsigned long)((5)*(4000000/4000.0)));
   3522  0BEC  3007               	movlw	7
   3523  0BED  00AA               	movwf	??_initVars+1
   3524  0BEE  307D               	movlw	125
@@ -3535,7 +3535,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3529  0BF2  0BAA               	decfsz	??_initVars+1,f
   3530  0BF3  2BF0               	goto	u1607
   3531                           
-  3532                           ;Main.c: 369: numOfLogs = eepromReadByte(0x0006);
+  3532                           ;Main.c: 368: numOfLogs = eepromReadByte(0x0006);
   3533  0BF4  3006               	movlw	6
   3534  0BF5  1283               	bcf	3,5	;RP0=0, select bank0
   3535  0BF6  1303               	bcf	3,6	;RP1=0, select bank0
@@ -3546,7 +3546,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3540  0BFC  3007               	movlw	7
   3541  0BFD  01DF               	clrf	_numOfLogs+1
   3542                           
-  3543                           ;Main.c: 370: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3543                           ;Main.c: 369: _delay((unsigned long)((5)*(4000000/4000.0)));
   3544  0BFE  00AA               	movwf	??_initVars+1
   3545  0BFF  307D               	movlw	125
   3546  0C00  00A9               	movwf	??_initVars
@@ -3556,7 +3556,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3550  0C03  0BAA               	decfsz	??_initVars+1,f
   3551  0C04  2C01               	goto	u1617
   3552                           
-  3553                           ;Main.c: 371: numOfLogs <<= 8;
+  3553                           ;Main.c: 370: numOfLogs <<= 8;
   3554  0C05  1283               	bcf	3,5	;RP0=0, select bank0
   3555  0C06  1303               	bcf	3,6	;RP1=0, select bank0
   3556  0C07  085E               	movf	_numOfLogs,w
@@ -3564,7 +3564,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3558  0C09  3007               	movlw	7
   3559  0C0A  01DE               	clrf	_numOfLogs
   3560                           
-  3561                           ;Main.c: 372: numOfLogs += eepromReadByte(0x0007);
+  3561                           ;Main.c: 371: numOfLogs += eepromReadByte(0x0007);
   3562  0C0B  00A6               	movwf	?_eepromReadByte
   3563  0C0C  01A7               	clrf	?_eepromReadByte+1
   3564  0C0D  241B  158A         	fcall	_eepromReadByte
@@ -3572,7 +3572,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   3566  0C10  1803               	skipnc
   3567  0C11  0ADF               	incf	_numOfLogs+1,f
   3568                           
-  3569                           ;Main.c: 373: _delay((unsigned long)((5)*(4000000/4000.0)));
+  3569                           ;Main.c: 372: _delay((unsigned long)((5)*(4000000/4000.0)));
   3570  0C12  3007               	movlw	7
   3571  0C13  00AA               	movwf	??_initVars+1
   3572  0C14  307D               	movlw	125
@@ -5278,7 +5278,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5272                           
   5273 ;; *************** function _resposta *****************
   5274 ;; Defined at:
-  5275 ;;		line 336 in file "Main.c"
+  5275 ;;		line 335 in file "Main.c"
   5276 ;; Parameters:    Size  Location     Type
   5277 ;;		None
   5278 ;; Auto vars:     Size  Location     Type
@@ -5310,7 +5310,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5304                           ; Regs used in _resposta: [wreg-fsr0h+status,2+status,0+pclath+cstack]
   5305                           
   5306                           
-  5307                           ;Main.c: 337: for (char i=0 ; i<bufferTxLen ; i++){
+  5307                           ;Main.c: 336: for (char i=0 ; i<bufferTxLen ; i++){
   5308  0F4D  1283               	bcf	3,5	;RP0=0, select bank0
   5309  0F4E  1303               	bcf	3,6	;RP1=0, select bank0
   5310  0F4F  01A1               	clrf	resposta@i
@@ -5320,7 +5320,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5314  0F52  1803               	btfsc	3,0
   5315  0F53  0008               	return
   5316                           
-  5317                           ;Main.c: 338: UART_send_char(bufferTx[i]);
+  5317                           ;Main.c: 337: UART_send_char(bufferTx[i]);
   5318  0F54  0821               	movf	resposta@i,w
   5319  0F55  3EA0               	addlw	_bufferTx& (0+255)
   5320  0F56  0084               	movwf	4
@@ -5470,7 +5470,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5464                           
   5465 ;; *************** function _checksumCalc *****************
   5466 ;; Defined at:
-  5467 ;;		line 397 in file "Main.c"
+  5467 ;;		line 396 in file "Main.c"
   5468 ;; Parameters:    Size  Location     Type
   5469 ;;  buffer          1    wreg     PTR unsigned char 
   5470 ;;		 -> bufferTx(40), 
@@ -5514,10 +5514,10 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5508                           ;checksumCalc@buffer stored from wreg
   5509  0F91  00A3               	movwf	checksumCalc@buffer
   5510                           
-  5511                           ;Main.c: 398: unsigned char chk = 0;
+  5511                           ;Main.c: 397: unsigned char chk = 0;
   5512  0F92  01A4               	clrf	checksumCalc@chk
   5513                           
-  5514                           ;Main.c: 399: for (char i = 1; i< len-2; i++){
+  5514                           ;Main.c: 398: for (char i = 1; i< len-2; i++){
   5515  0F93  01A5               	clrf	checksumCalc@i
   5516  0F94                     l7524:	
   5517  0F94  0AA5               	incf	checksumCalc@i,f
@@ -5538,7 +5538,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5532  0FA2  1803               	btfsc	3,0
   5533  0FA3  2FAE               	goto	l7528
   5534                           
-  5535                           ;Main.c: 400: chk ^= buffer[i];
+  5535                           ;Main.c: 399: chk ^= buffer[i];
   5536  0FA4  1283               	bcf	3,5	;RP0=0, select bank0
   5537  0FA5  1303               	bcf	3,6	;RP1=0, select bank0
   5538  0FA6  0825               	movf	checksumCalc@i,w
@@ -5551,8 +5551,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5545  0FAD  2F94               	goto	l7524
   5546  0FAE                     l7528:	
   5547                           
-  5548                           ;Main.c: 401: }
-  5549                           ;Main.c: 402: return chk;
+  5548                           ;Main.c: 400: }
+  5549                           ;Main.c: 401: return chk;
   5550  0FAE  1283               	bcf	3,5	;RP0=0, select bank0
   5551  0FAF  1303               	bcf	3,6	;RP1=0, select bank0
   5552  0FB0  0824               	movf	checksumCalc@chk,w
@@ -5614,7 +5614,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5608                           
   5609 ;; *************** function _checksumVerify *****************
   5610 ;; Defined at:
-  5611 ;;		line 379 in file "Main.c"
+  5611 ;;		line 378 in file "Main.c"
   5612 ;; Parameters:    Size  Location     Type
   5613 ;;		None
   5614 ;; Auto vars:     Size  Location     Type
@@ -5645,16 +5645,16 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5639 ;;
   5640  0FB8                     _checksumVerify:	
   5641                           
-  5642                           ;Main.c: 380: unsigned char len = rxBufferLength;
+  5642                           ;Main.c: 379: unsigned char len = rxBufferLength;
   5643                           
   5644                           ; Regs used in _checksumVerify: [wreg-fsr0h+status,2+status,0]
   5645  0FB8  087B               	movf	_rxBufferLength,w
   5646  0FB9  00A3               	movwf	checksumVerify@len
   5647                           
-  5648                           ;Main.c: 381: unsigned char checksum = 0;
+  5648                           ;Main.c: 380: unsigned char checksum = 0;
   5649  0FBA  01A2               	clrf	checksumVerify@checksum
   5650                           
-  5651                           ;Main.c: 383: for (unsigned char i=1 ;i<len-2;i++){
+  5651                           ;Main.c: 382: for (unsigned char i=1 ;i<len-2;i++){
   5652  0FBB  01A4               	clrf	checksumVerify@i
   5653  0FBC                     l7594:	
   5654  0FBC  0AA4               	incf	checksumVerify@i,f
@@ -5675,7 +5675,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5669  0FCA  1803               	btfsc	3,0
   5670  0FCB  2FD5               	goto	l7598
   5671                           
-  5672                           ;Main.c: 384: checksum ^= rxBuffer[i];
+  5672                           ;Main.c: 383: checksum ^= rxBuffer[i];
   5673  0FCC  1283               	bcf	3,5	;RP0=0, select bank0
   5674  0FCD  1303               	bcf	3,6	;RP1=0, select bank0
   5675  0FCE  0824               	movf	checksumVerify@i,w
@@ -5687,8 +5687,8 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5681  0FD4  2FBC               	goto	l7594
   5682  0FD5                     l7598:	
   5683                           
-  5684                           ;Main.c: 385: }
-  5685                           ;Main.c: 386: if(rxBuffer[len-2] == checksum){
+  5684                           ;Main.c: 384: }
+  5685                           ;Main.c: 385: if(rxBuffer[len-2] == checksum){
   5686  0FD5  1283               	bcf	3,5	;RP0=0, select bank0
   5687  0FD6  1303               	bcf	3,6	;RP1=0, select bank0
   5688  0FD7  0823               	movf	checksumVerify@len,w
@@ -5700,13 +5700,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5694  0FDD  1D03               	skipz
   5695  0FDE  2FE1               	goto	l7606
   5696                           
-  5697                           ;Main.c: 388: return 1;
+  5697                           ;Main.c: 387: return 1;
   5698  0FDF  1403               	setc
   5699  0FE0  0008               	return
   5700  0FE1                     l7606:	
   5701                           
-  5702                           ;Main.c: 390: else
-  5703                           ;Main.c: 391: return 0;
+  5702                           ;Main.c: 389: else
+  5703                           ;Main.c: 390: return 0;
   5704  0FE1  1003               	clrc
   5705  0FE2  0008               	return
   5706  0FE3                     __end_of_checksumVerify:	
@@ -5795,7 +5795,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5789                           
   5790 ;; *************** function _jdyConfig *****************
   5791 ;; Defined at:
-  5792 ;;		line 140 in file "Main.c"
+  5792 ;;		line 139 in file "Main.c"
   5793 ;; Parameters:    Size  Location     Type
   5794 ;;		None
   5795 ;; Auto vars:     Size  Location     Type
@@ -5824,7 +5824,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5818 ;;
   5819  016D                     _jdyConfig:	
   5820                           
-  5821                           ;Main.c: 141: RC4 = 0;
+  5821                           ;Main.c: 140: RC4 = 0;
   5822                           
   5823                           ; Regs used in _jdyConfig: [wreg-fsr0h+status,2+status,0+pclath+cstack]
   5824  016D  1283               	bcf	3,5	;RP0=0, select bank0
@@ -5832,7 +5832,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5826  016F  1303               	bcf	3,6	;RP1=0, select bank0
   5827  0170  1207               	bcf	7,4
   5828                           
-  5829                           ;Main.c: 142: _delay((unsigned long)((100)*(4000000/4000.0)));
+  5829                           ;Main.c: 141: _delay((unsigned long)((100)*(4000000/4000.0)));
   5830  0171  00A5               	movwf	??_jdyConfig+1
   5831  0172  30DD               	movlw	221
   5832  0173  00A4               	movwf	??_jdyConfig
@@ -5843,7 +5843,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5837  0177  2974               	goto	u1777
   5838  0178  2979               	nop2
   5839                           
-  5840                           ;Main.c: 143: UART_send_String("AT+ADVIN1\r\n",11);
+  5840                           ;Main.c: 142: UART_send_String("AT+ADVIN1\r\n",11);
   5841  0179  300B               	movlw	11
   5842  017A  1283               	bcf	3,5	;RP0=0, select bank0
   5843  017B  1303               	bcf	3,6	;RP1=0, select bank0
@@ -5851,7 +5851,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5845  017D  300F               	movlw	(STR_2-__stringbase)& (0+255)
   5846  017E  21BA  118A         	fcall	_UART_send_String
   5847                           
-  5848                           ;Main.c: 144: _delay((unsigned long)((350)*(4000000/4000.0)));
+  5848                           ;Main.c: 143: _delay((unsigned long)((350)*(4000000/4000.0)));
   5849  0180  3002               	movlw	2
   5850  0181  00A6               	movwf	??_jdyConfig+2
   5851  0182  30C7               	movlw	199
@@ -5867,7 +5867,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5861  018B  2986               	goto	u1787
   5862  018C  0064               	clrwdt
   5863                           
-  5864                           ;Main.c: 145: UART_send_String("AT+STARTEN1\r\n",13);
+  5864                           ;Main.c: 144: UART_send_String("AT+STARTEN1\r\n",13);
   5865  018D  300D               	movlw	13
   5866  018E  1283               	bcf	3,5	;RP0=0, select bank0
   5867  018F  1303               	bcf	3,6	;RP1=0, select bank0
@@ -5875,7 +5875,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5869  0191  3001               	movlw	(STR_3-__stringbase)& (0+255)
   5870  0192  21BA  118A         	fcall	_UART_send_String
   5871                           
-  5872                           ;Main.c: 146: _delay((unsigned long)((350)*(4000000/4000.0)));
+  5872                           ;Main.c: 145: _delay((unsigned long)((350)*(4000000/4000.0)));
   5873  0194  3002               	movlw	2
   5874  0195  00A6               	movwf	??_jdyConfig+2
   5875  0196  30C7               	movlw	199
@@ -5891,7 +5891,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5885  019F  299A               	goto	u1797
   5886  01A0  0064               	clrwdt
   5887                           
-  5888                           ;Main.c: 147: UART_send_String("AT+RST\r\n",8);
+  5888                           ;Main.c: 146: UART_send_String("AT+RST\r\n",8);
   5889  01A1  3008               	movlw	8
   5890  01A2  1283               	bcf	3,5	;RP0=0, select bank0
   5891  01A3  1303               	bcf	3,6	;RP1=0, select bank0
@@ -5899,7 +5899,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5893  01A5  3027               	movlw	(STR_4-__stringbase)& (0+255)
   5894  01A6  21BA  118A         	fcall	_UART_send_String
   5895                           
-  5896                           ;Main.c: 148: _delay((unsigned long)((350)*(4000000/4000.0)));
+  5896                           ;Main.c: 147: _delay((unsigned long)((350)*(4000000/4000.0)));
   5897  01A8  3002               	movlw	2
   5898  01A9  00A6               	movwf	??_jdyConfig+2
   5899  01AA  30C7               	movlw	199
@@ -5915,10 +5915,10 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   5909  01B3  29AE               	goto	u1807
   5910  01B4  0064               	clrwdt
   5911                           
-  5912                           ;Main.c: 149: flagTryConnect = 1;
+  5912                           ;Main.c: 148: flagTryConnect = 1;
   5913  01B5  15FA               	bsf	_flagTryConnect/(0+8),_flagTryConnect& (0+7)
   5914                           
-  5915                           ;Main.c: 150: RC4 = 1;
+  5915                           ;Main.c: 149: RC4 = 1;
   5916  01B6  1283               	bcf	3,5	;RP0=0, select bank0
   5917  01B7  1303               	bcf	3,6	;RP1=0, select bank0
   5918  01B8  1607               	bsf	7,4
@@ -6477,7 +6477,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6471                           
   6472 ;; *************** function _initInterrupt *****************
   6473 ;; Defined at:
-  6474 ;;		line 475 in file "Main.c"
+  6474 ;;		line 474 in file "Main.c"
   6475 ;; Parameters:    Size  Location     Type
   6476 ;;		None
   6477 ;; Auto vars:     Size  Location     Type
@@ -6507,78 +6507,78 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6501  02DD                     _initInterrupt:	
   6502  02DD  300C               	movlw	12
   6503                           
-  6504                           ;Main.c: 476: GIE = 1;
+  6504                           ;Main.c: 475: GIE = 1;
   6505                           
   6506                           ; Regs used in _initInterrupt: [wreg+status,2]
   6507  02DE  178B               	bsf	11,7
   6508                           
-  6509                           ;Main.c: 477: PEIE = 1;
+  6509                           ;Main.c: 476: PEIE = 1;
   6510  02DF  170B               	bsf	11,6
   6511                           
-  6512                           ;Main.c: 480: INTE = 1;
+  6512                           ;Main.c: 479: INTE = 1;
   6513  02E0  160B               	bsf	11,4
   6514                           
-  6515                           ;Main.c: 481: INTF = 0;
+  6515                           ;Main.c: 480: INTF = 0;
   6516  02E1  108B               	bcf	11,1
   6517                           
-  6518                           ;Main.c: 482: INTEDG = 1;
+  6518                           ;Main.c: 481: INTEDG = 1;
   6519  02E2  1701               	bsf	1,6
   6520                           
-  6521                           ;Main.c: 486: T0CS = 0;
+  6521                           ;Main.c: 485: T0CS = 0;
   6522  02E3  1281               	bcf	1,5
   6523                           
-  6524                           ;Main.c: 487: PSA = 0;
+  6524                           ;Main.c: 486: PSA = 0;
   6525  02E4  1181               	bcf	1,3
   6526                           
-  6527                           ;Main.c: 488: PS0 = 1;
+  6527                           ;Main.c: 487: PS0 = 1;
   6528  02E5  1401               	bsf	1,0
   6529                           
-  6530                           ;Main.c: 489: PS1 = 1;
+  6530                           ;Main.c: 488: PS1 = 1;
   6531  02E6  1481               	bsf	1,1
   6532                           
-  6533                           ;Main.c: 490: PS2 = 1;
+  6533                           ;Main.c: 489: PS2 = 1;
   6534  02E7  1501               	bsf	1,2
   6535                           
-  6536                           ;Main.c: 491: TMR0 = 12;
+  6536                           ;Main.c: 490: TMR0 = 12;
   6537  02E8  1283               	bcf	3,5	;RP0=0, select bank0
   6538  02E9  0081               	movwf	1	;volatile
   6539                           
-  6540                           ;Main.c: 492: T0IF = 0;
+  6540                           ;Main.c: 491: T0IF = 0;
   6541  02EA  110B               	bcf	11,2
   6542                           
-  6543                           ;Main.c: 493: T0IE = 1;
+  6543                           ;Main.c: 492: T0IE = 1;
   6544  02EB  168B               	bsf	11,5
   6545                           
-  6546                           ;Main.c: 498: TMR1L = 0x00;
+  6546                           ;Main.c: 497: TMR1L = 0x00;
   6547  02EC  018E               	clrf	14	;volatile
   6548                           
-  6549                           ;Main.c: 499: TMR1H = 0x60;
+  6549                           ;Main.c: 498: TMR1H = 0x60;
   6550  02ED  3060               	movlw	96
   6551  02EE  008F               	movwf	15	;volatile
   6552                           
-  6553                           ;Main.c: 500: T1CKPS0 = 1;
+  6553                           ;Main.c: 499: T1CKPS0 = 1;
   6554  02EF  1610               	bsf	16,4
   6555                           
-  6556                           ;Main.c: 501: T1CKPS1 = 1;
+  6556                           ;Main.c: 500: T1CKPS1 = 1;
   6557  02F0  1690               	bsf	16,5
   6558                           
-  6559                           ;Main.c: 502: TMR1CS = 1;
+  6559                           ;Main.c: 501: TMR1CS = 1;
   6560  02F1  1490               	bsf	16,1
   6561                           
-  6562                           ;Main.c: 503: nT1SYNC = 1;
+  6562                           ;Main.c: 502: nT1SYNC = 1;
   6563  02F2  1510               	bsf	16,2
   6564                           
-  6565                           ;Main.c: 504: T1OSCEN = 1;
+  6565                           ;Main.c: 503: T1OSCEN = 1;
   6566  02F3  1590               	bsf	16,3
   6567                           
-  6568                           ;Main.c: 505: TMR1IF = 0;
+  6568                           ;Main.c: 504: TMR1IF = 0;
   6569  02F4  100C               	bcf	12,0
   6570                           
-  6571                           ;Main.c: 506: TMR1IE = 1;
+  6571                           ;Main.c: 505: TMR1IE = 1;
   6572  02F5  1683               	bsf	3,5	;RP0=1, select bank1
   6573  02F6  140C               	bsf	12,0
   6574                           
-  6575                           ;Main.c: 507: TMR1ON = 1;
+  6575                           ;Main.c: 506: TMR1ON = 1;
   6576  02F7  1283               	bcf	3,5	;RP0=0, select bank0
   6577  02F8  1410               	bsf	16,0
   6578  02F9  0008               	return
@@ -6591,7 +6591,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6585                           
   6586 ;; *************** function _initGPIO *****************
   6587 ;; Defined at:
-  6588 ;;		line 456 in file "Main.c"
+  6588 ;;		line 455 in file "Main.c"
   6589 ;; Parameters:    Size  Location     Type
   6590 ;;		None
   6591 ;; Auto vars:     Size  Location     Type
@@ -6620,48 +6620,48 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6614 ;;
   6615  02FA                     _initGPIO:	
   6616                           
-  6617                           ;Main.c: 457: ANSEL = 0x00;
+  6617                           ;Main.c: 456: ANSEL = 0x00;
   6618                           
   6619                           ; Regs used in _initGPIO: [wreg+status,2]
   6620  02FA  1703               	bsf	3,6	;RP1=1, select bank2
   6621  02FB  019E               	clrf	30	;volatile
   6622                           
-  6623                           ;Main.c: 458: ANSELH = 0x00;
+  6623                           ;Main.c: 457: ANSELH = 0x00;
   6624  02FC  019F               	clrf	31	;volatile
   6625                           
-  6626                           ;Main.c: 459: PORTA = 0;
+  6626                           ;Main.c: 458: PORTA = 0;
   6627  02FD  1303               	bcf	3,6	;RP1=0, select bank0
   6628  02FE  0185               	clrf	5	;volatile
   6629                           
-  6630                           ;Main.c: 460: TRISA = 0b00000100;
+  6630                           ;Main.c: 459: TRISA = 0b00000100;
   6631  02FF  3004               	movlw	4
   6632  0300  1683               	bsf	3,5	;RP0=1, select bank1
   6633  0301  0085               	movwf	5	;volatile
   6634                           
-  6635                           ;Main.c: 461: PORTA = 0;
+  6635                           ;Main.c: 460: PORTA = 0;
   6636  0302  1283               	bcf	3,5	;RP0=0, select bank0
   6637  0303  0185               	clrf	5	;volatile
   6638                           
-  6639                           ;Main.c: 463: PORTB = 0;
+  6639                           ;Main.c: 462: PORTB = 0;
   6640  0304  0186               	clrf	6	;volatile
   6641                           
-  6642                           ;Main.c: 464: TRISB = 0b00000000;
+  6642                           ;Main.c: 463: TRISB = 0b00000000;
   6643  0305  1683               	bsf	3,5	;RP0=1, select bank1
   6644  0306  0186               	clrf	6	;volatile
   6645                           
-  6646                           ;Main.c: 465: PORTB = 0;
+  6646                           ;Main.c: 464: PORTB = 0;
   6647  0307  1283               	bcf	3,5	;RP0=0, select bank0
   6648  0308  0186               	clrf	6	;volatile
   6649                           
-  6650                           ;Main.c: 467: PORTC = 0;
+  6650                           ;Main.c: 466: PORTC = 0;
   6651  0309  0187               	clrf	7	;volatile
   6652                           
-  6653                           ;Main.c: 468: TRISC = 0b00000001;
+  6653                           ;Main.c: 467: TRISC = 0b00000001;
   6654  030A  3001               	movlw	1
   6655  030B  1683               	bsf	3,5	;RP0=1, select bank1
   6656  030C  0087               	movwf	7	;volatile
   6657                           
-  6658                           ;Main.c: 469: PORTC = 0;
+  6658                           ;Main.c: 468: PORTC = 0;
   6659  030D  1283               	bcf	3,5	;RP0=0, select bank0
   6660  030E  0187               	clrf	7	;volatile
   6661  030F  0008               	return
@@ -6872,7 +6872,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6866                           
   6867 ;; *************** function _isr *****************
   6868 ;; Defined at:
-  6869 ;;		line 408 in file "Main.c"
+  6869 ;;		line 407 in file "Main.c"
   6870 ;; Parameters:    Size  Location     Type
   6871 ;;		None
   6872 ;; Auto vars:     Size  Location     Type
@@ -6903,7 +6903,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6897 ;;
   6898  00D9                     _isr:	
   6899                           
-  6900                           ;Main.c: 409: if(RCIE == 1 && RCIF == 1){
+  6900                           ;Main.c: 408: if(RCIE == 1 && RCIF == 1){
   6901  00D9  1683               	bsf	3,5	;RP0=1, select bank1
   6902  00DA  1303               	bcf	3,6	;RP1=0, select bank1
   6903  00DB  1E8C               	btfss	12,5
@@ -6912,77 +6912,77 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6906  00DE  1E8C               	btfss	12,5
   6907  00DF  28E5               	goto	i1l7628
   6908                           
-  6909                           ;Main.c: 410: dataRX = UART_get_char();
+  6909                           ;Main.c: 409: dataRX = UART_get_char();
   6910  00E0  2138  118A         	fcall	_UART_get_char
   6911  00E2  00E1               	movwf	_dataRX
   6912                           
-  6913                           ;Main.c: 411: bufferCreator2(dataRX);
+  6913                           ;Main.c: 410: bufferCreator2(dataRX);
   6914  00E3  2152  118A         	fcall	_bufferCreator2
   6915  00E5                     i1l7628:	
   6916                           
-  6917                           ;Main.c: 412: }
-  6918                           ;Main.c: 413: if (INTE == 1 && INTF == 1){
+  6917                           ;Main.c: 411: }
+  6918                           ;Main.c: 412: if (INTE == 1 && INTF == 1){
   6919  00E5  1A0B               	btfsc	11,4
   6920  00E6  1C8B               	btfss	11,1
   6921  00E7  28F0               	goto	i1l7638
   6922  00E8  30C8               	movlw	200
   6923                           
-  6924                           ;Main.c: 414: INTF = 0;
+  6924                           ;Main.c: 413: INTF = 0;
   6925  00E9  108B               	bcf	11,1
   6926                           
-  6927                           ;Main.c: 416: flagTryConnect = 1;
+  6927                           ;Main.c: 415: flagTryConnect = 1;
   6928  00EA  15FA               	bsf	_flagTryConnect/(0+8),_flagTryConnect& (0+7)
   6929                           
-  6930                           ;Main.c: 417: timeToConnect = 200;
+  6930                           ;Main.c: 416: timeToConnect = 200;
   6931  00EB  1283               	bcf	3,5	;RP0=0, select bank0
   6932  00EC  00E6               	movwf	_timeToConnect
   6933                           
-  6934                           ;Main.c: 418: timeBlinkLed = 5;
+  6934                           ;Main.c: 417: timeBlinkLed = 5;
   6935  00ED  3005               	movlw	5
   6936  00EE  00E5               	movwf	_timeBlinkLed
   6937                           
-  6938                           ;Main.c: 419: RC4 = 0;
+  6938                           ;Main.c: 418: RC4 = 0;
   6939  00EF  1207               	bcf	7,4
   6940  00F0                     i1l7638:	
   6941                           
-  6942                           ;Main.c: 420: }
-  6943                           ;Main.c: 421: if (T0IE == 1 && T0IF == 1){
+  6942                           ;Main.c: 419: }
+  6943                           ;Main.c: 420: if (T0IE == 1 && T0IF == 1){
   6944  00F0  1A8B               	btfsc	11,5
   6945  00F1  1D0B               	btfss	11,2
   6946  00F2  2910               	goto	i1l7664
   6947  00F3  303C               	movlw	60
   6948                           
-  6949                           ;Main.c: 422: T0IE = 1;
+  6949                           ;Main.c: 421: T0IE = 1;
   6950  00F4  168B               	bsf	11,5
   6951                           
-  6952                           ;Main.c: 423: T0IF = 0;
+  6952                           ;Main.c: 422: T0IF = 0;
   6953  00F5  110B               	bcf	11,2
   6954                           
-  6955                           ;Main.c: 424: TMR0 = 60;
+  6955                           ;Main.c: 423: TMR0 = 60;
   6956  00F6  1283               	bcf	3,5	;RP0=0, select bank0
   6957  00F7  0081               	movwf	1	;volatile
   6958                           
-  6959                           ;Main.c: 425: if (serialTimeOut > 0){serialTimeOut--;}
+  6959                           ;Main.c: 424: if (serialTimeOut > 0){serialTimeOut--;}
   6960  00F8  087D               	movf	_serialTimeOut,w
   6961  00F9  1D03               	skipz
   6962  00FA  03FD               	decf	_serialTimeOut,f
   6963                           
-  6964                           ;Main.c: 426: if (serialTimeOut == 0){
+  6964                           ;Main.c: 425: if (serialTimeOut == 0){
   6965  00FB  08FD               	movf	_serialTimeOut,f
   6966  00FC  1D03               	skipz
   6967  00FD  290A               	goto	i1l7656
   6968                           
-  6969                           ;Main.c: 427: serialTimeOut = 10;
+  6969                           ;Main.c: 426: serialTimeOut = 10;
   6970  00FE  300A               	movlw	10
   6971  00FF  00FD               	movwf	_serialTimeOut
   6972                           
-  6973                           ;Main.c: 428: rxBufferPos = 0;
+  6973                           ;Main.c: 427: rxBufferPos = 0;
   6974  0100  01FC               	clrf	_rxBufferPos
   6975                           
-  6976                           ;Main.c: 429: rxBufferLength = 0;
+  6976                           ;Main.c: 428: rxBufferLength = 0;
   6977  0101  01FB               	clrf	_rxBufferLength
   6978                           
-  6979                           ;Main.c: 430: memset(rxBuffer,0,rxBufferLength);
+  6979                           ;Main.c: 429: memset(rxBuffer,0,rxBufferLength);
   6980  0102  01F0               	clrf	?i1_memset
   6981  0103  01F1               	clrf	?i1_memset+1
   6982  0104  087B               	movf	_rxBufferLength,w
@@ -6992,26 +6992,26 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   6986  0108  213E  118A         	fcall	i1_memset
   6987  010A                     i1l7656:	
   6988                           
-  6989                           ;Main.c: 431: }
-  6990                           ;Main.c: 432: if (timeToConnect>0){
+  6989                           ;Main.c: 430: }
+  6990                           ;Main.c: 431: if (timeToConnect>0){
   6991  010A  0866               	movf	_timeToConnect,w
   6992  010B  1D03               	skipz
   6993                           
-  6994                           ;Main.c: 433: timeToConnect--;
+  6994                           ;Main.c: 432: timeToConnect--;
   6995  010C  03E6               	decf	_timeToConnect,f
   6996                           
-  6997                           ;Main.c: 434: }
-  6998                           ;Main.c: 436: if (timeBlinkLed>0){
+  6997                           ;Main.c: 433: }
+  6998                           ;Main.c: 435: if (timeBlinkLed>0){
   6999  010D  0865               	movf	_timeBlinkLed,w
   7000  010E  1D03               	skipz
   7001                           
-  7002                           ;Main.c: 437: timeBlinkLed--;
+  7002                           ;Main.c: 436: timeBlinkLed--;
   7003  010F  03E5               	decf	_timeBlinkLed,f
   7004  0110                     i1l7664:	
   7005                           
-  7006                           ;Main.c: 438: }
-  7007                           ;Main.c: 439: }
-  7008                           ;Main.c: 440: if (TMR1IE == 1 && TMR1IF == 1){
+  7006                           ;Main.c: 437: }
+  7007                           ;Main.c: 438: }
+  7008                           ;Main.c: 439: if (TMR1IE == 1 && TMR1IF == 1){
   7009  0110  1683               	bsf	3,5	;RP0=1, select bank1
   7010  0111  1C0C               	btfss	12,0
   7011  0112  292F               	goto	i1l4939
@@ -7019,24 +7019,24 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   7013  0114  1C0C               	btfss	12,0
   7014  0115  292F               	goto	i1l4939
   7015                           
-  7016                           ;Main.c: 441: TMR1IF = 0;
+  7016                           ;Main.c: 440: TMR1IF = 0;
   7017  0116  100C               	bcf	12,0
   7018                           
-  7019                           ;Main.c: 442: TMR1ON = 0;
+  7019                           ;Main.c: 441: TMR1ON = 0;
   7020  0117  1010               	bcf	16,0
   7021                           
-  7022                           ;Main.c: 443: TMR1L = 0x00;
+  7022                           ;Main.c: 442: TMR1L = 0x00;
   7023  0118  018E               	clrf	14	;volatile
   7024                           
-  7025                           ;Main.c: 444: TMR1H = 0x60;
+  7025                           ;Main.c: 443: TMR1H = 0x60;
   7026  0119  3060               	movlw	96
   7027  011A  008F               	movwf	15	;volatile
   7028  011B  300A               	movlw	10
   7029                           
-  7030                           ;Main.c: 445: TMR1ON = 1;
+  7030                           ;Main.c: 444: TMR1ON = 1;
   7031  011C  1410               	bsf	16,0
   7032                           
-  7033                           ;Main.c: 446: timeNow += 10;
+  7033                           ;Main.c: 445: timeNow += 10;
   7034  011D  07D4               	addwf	_timeNow,f
   7035  011E  3001               	movlw	1
   7036  011F  1803               	skipnc
@@ -7046,13 +7046,13 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
   7040  0123  1803               	skipnc
   7041  0124  07D7               	addwf	_timeNow+3,f
   7042                           
-  7043                           ;Main.c: 447: if (contTimer > 0){
+  7043                           ;Main.c: 446: if (contTimer > 0){
   7044  0125  085D               	movf	_contTimer+1,w
   7045  0126  045C               	iorwf	_contTimer,w
   7046  0127  1903               	skipnz
   7047  0128  292F               	goto	i1l4939
   7048                           
-  7049                           ;Main.c: 448: contTimer --;
+  7049                           ;Main.c: 447: contTimer --;
   7050  0129  3001               	movlw	1
   7051  012A  02DC               	subwf	_contTimer,f
   7052  012B  3000               	movlw	0
@@ -7298,7 +7298,7 @@ HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
 
 
 HI-TECH Software PICC Macro Assembler V9.83 build 10920 
-Symbol Table                                                                                   Sat Oct 14 10:12:43 2023
+Symbol Table                                                                                   Sun Oct 29 19:21:58 2023
 
                  _eepromReadLogPage 0C33                                   pc 0002  
                 ?_eepromReadLogPage 0026                         _startLogCmd 0A3C  

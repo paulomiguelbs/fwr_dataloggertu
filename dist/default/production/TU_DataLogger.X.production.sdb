@@ -2922,7 +2922,7 @@
 `uc 1 SR1 1 0 :1:7 
 ]
 [u S5994 . 1 `S1541 1 . 1 0 `S1548 1 . 1 0 ]
-"25 Main.c
+"24 Main.c
 [v F1758 `(v  1 t 0 ]
 "12 aht10.c
 [v _initAht10 `(v  1 e 0 0 ]
@@ -3072,29 +3072,29 @@
 [v _sda_out `(v  1 e 0 0 ]
 "217
 [v _findDevice `(v  1 e 0 0 ]
-"57 Main.c
+"56 Main.c
 [v _main `(i  1 e 2 0 ]
-"124
+"123
 [v _testeMemoria `(v  1 e 0 0 ]
-"140
+"139
 [v _jdyConfig `(v  1 e 0 0 ]
-"155
+"154
 [v _logSave `(v  1 e 0 0 ]
-"188
+"187
 [v _comandoRx `(v  1 e 0 0 ]
-"336
+"335
 [v _resposta `(v  1 e 0 0 ]
-"344
+"343
 [v _initVars `(v  1 e 0 0 ]
-"379
+"378
 [v _checksumVerify `(b  1 e 0 0 ]
-"397
+"396
 [v _checksumCalc `(uc  1 e 1 0 ]
-"408
+"407
 [v _isr `I(v  1 e 0 0 ]
-"456
+"455
 [v _initGPIO `(v  1 e 0 0 ]
-"475
+"474
 [v _initInterrupt `(v  1 e 0 0 ]
 "13 protocolo.c
 [v _getClockCmd `(v  1 e 0 0 ]
@@ -4006,23 +4006,23 @@
 [v _PSTRCONbits `VES1525  1 e 1 @413 ]
 "1464
 [v _SRCONbits `VES1552  1 e 1 @414 ]
-"42 Main.c
+"41 Main.c
 [v _readUmidity `uc  1 e 1 0 ]
-"43
+"42
 [v _readTemperature `uc  1 e 1 0 ]
-"44
+"43
 [v _readTemperatureDec `uc  1 e 1 0 ]
-"46
+"45
 [v _timeToConnect `uc  1 e 1 0 ]
-"47
+"46
 [v _timeBlinkLed `uc  1 e 1 0 ]
-"49
+"48
 [v _readDataBuffer `[30]uc  1 e 30 0 ]
-"51
+"50
 [v _flagConection `b  1 e 0 0 ]
-"52
+"51
 [v _flagRespostaBLE `b  1 e 0 0 ]
-"53
+"52
 [v _flagTryConnect `b  1 e 0 0 ]
 "29 main.h
 [v _timeNow `ul  1 e 4 0 ]
@@ -4056,43 +4056,43 @@
 [v _serialTimeOut `uc  1 e 1 0 ]
 "28
 [v _flagRxBufferOk `b  1 e 0 0 ]
-"57 Main.c
+"56 Main.c
 [v _main `(i  1 e 2 0 ]
 {
 [v main@argc `i  1 p 2 41 ]
 [v main@argv `**uc  1 p 2 43 ]
-"121
+"120
 } 0
-"188
+"187
 [v _comandoRx `(v  1 e 0 0 ]
 {
-"262
-[v comandoRx@readData `[3]uc  1 a 3 13 ]
-"312
-[v comandoRx@i_6106 `i  1 a 2 25 ]
 "261
+[v comandoRx@readData `[3]uc  1 a 3 13 ]
+"311
+[v comandoRx@i_6106 `i  1 a 2 25 ]
+"260
 [v comandoRx@i `ui  1 a 2 19 ]
-"283
+"282
 [v comandoRx@readData_6105 `[3]uc  1 a 3 16 ]
-"190
-[v comandoRx@numOfBytes `ul  1 a 4 21 ]
-"191
-[v comandoRx@logsToSend `ui  1 a 2 28 ]
 "189
+[v comandoRx@numOfBytes `ul  1 a 4 21 ]
+"190
+[v comandoRx@logsToSend `ui  1 a 2 28 ]
+"188
 [v comandoRx@chk `uc  1 a 1 27 ]
-"335
+"334
 } 0
-"344
+"343
 [v _initVars `(v  1 e 0 0 ]
 {
-"374
+"373
 } 0
-"155
+"154
 [v _logSave `(v  1 e 0 0 ]
 {
-"157
+"156
 [v logSave@auxAddr `ui  1 a 2 39 ]
-"182
+"181
 } 0
 "47 eepromI2c.c
 [v _eepromReadLogPage `(v  1 e 0 0 ]
@@ -4158,10 +4158,10 @@
 [v eepromWriteByte@data `uc  1 p 1 8 ]
 "29
 } 0
-"140 Main.c
+"139 Main.c
 [v _jdyConfig `(v  1 e 0 0 ]
 {
-"151
+"150
 } 0
 "169 I2c.c
 [v _i2cNack `(v  1 e 0 0 ]
@@ -4202,12 +4202,12 @@
 {
 "121
 } 0
-"336 Main.c
+"335 Main.c
 [v _resposta `(v  1 e 0 0 ]
 {
-"337
+"336
 [v resposta@i `uc  1 a 1 1 ]
-"340
+"339
 } 0
 "192 I2c.c
 [v _sda_out `(v  1 e 0 0 ]
@@ -4315,26 +4315,26 @@
 [v memcpy@n `ui  1 p 2 1 ]
 "24
 } 0
-"379 Main.c
+"378 Main.c
 [v _checksumVerify `(b  1 e 0 0 ]
 {
-"383
+"382
 [v checksumVerify@i `uc  1 a 1 4 ]
-"380
+"379
 [v checksumVerify@len `uc  1 a 1 3 ]
-"381
+"380
 [v checksumVerify@checksum `uc  1 a 1 2 ]
-"392
+"391
 } 0
-"475
+"474
 [v _initInterrupt `(v  1 e 0 0 ]
 {
-"508
+"507
 } 0
-"456
+"455
 [v _initGPIO `(v  1 e 0 0 ]
 {
-"470
+"469
 } 0
 "101 I2c.c
 [v _halfclockdelay `(v  1 e 0 0 ]
@@ -4349,18 +4349,18 @@
 [v i2cInitialize@feq_K `DCul  1 p 4 0 ]
 "93
 } 0
-"397 Main.c
+"396 Main.c
 [v _checksumCalc `(uc  1 e 1 0 ]
 {
 [v checksumCalc@buffer `*.0uc  1 a 1 wreg ]
-"399
-[v checksumCalc@i `uc  1 a 1 5 ]
 "398
-[v checksumCalc@chk `uc  1 a 1 4 ]
+[v checksumCalc@i `uc  1 a 1 5 ]
 "397
+[v checksumCalc@chk `uc  1 a 1 4 ]
+"396
 [v checksumCalc@buffer `*.0uc  1 a 1 wreg ]
 [v checksumCalc@len `uc  1 p 1 0 ]
-"403
+"402
 } 0
 "10 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\sources\memset.c
 [v _memset `(*v  1 e 1 0 ]
@@ -4386,10 +4386,10 @@
 {
 "30
 } 0
-"408 Main.c
+"407 Main.c
 [v _isr `I(v  1 e 0 0 ]
 {
-"451
+"450
 } 0
 "107 uart.c
 [v _bufferCreator2 `(v  1 e 0 0 ]

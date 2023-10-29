@@ -1614,10 +1614,10 @@ void sendTriggerMeasurementCmd (void);
 
 char readTemp (void);
 
-# 20 "Main.c"
+# 19 "Main.c"
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF & 0xFFFF");
 
-# 25
+# 24
 void interrupt isr();
 void initGPIO(void);
 void initInterrupt(void);
@@ -1630,7 +1630,7 @@ void resposta(void);
 
 void testeMemoria(void);
 
-# 42
+# 41
 unsigned char readUmidity;
 unsigned char readTemperature;
 unsigned char readTemperatureDec;
@@ -1644,7 +1644,7 @@ bit flagConection = 0;
 bit flagRespostaBLE = 0;
 bit flagTryConnect = 0;
 
-# 57
+# 56
 int main(int argc, char** argv) {
 initGPIO();
 initUART();
@@ -1741,7 +1741,7 @@ flagTryConnect = 1;
 RC4 = 1;
 }
 
-# 155
+# 154
 void logSave(void){
 if (numOfLogs < 10912){
 unsigned int auxAddr;
@@ -1771,7 +1771,7 @@ _delay((unsigned long)((5)*(4000000/4000.0)));
 }
 }
 
-# 188
+# 187
 void comandoRx(void) {
 unsigned char chk = 0;
 unsigned long numOfBytes = 0;
@@ -1926,7 +1926,7 @@ UART_send_char(bufferTx[i]);
 }
 }
 
-# 344
+# 343
 void initVars(void){
 
 timer = eepromReadByte(0x0004);
@@ -1959,7 +1959,7 @@ numOfLogs += eepromReadByte(0x0007);
 _delay((unsigned long)((5)*(4000000/4000.0)));
 }
 
-# 379
+# 378
 bit checksumVerify(void){
 unsigned char len = rxBufferLength;
 unsigned char checksum = 0;
@@ -1975,7 +1975,7 @@ else
 return 0;
 }
 
-# 397
+# 396
 unsigned char checksumCalc(unsigned char* buffer, unsigned char len){
 unsigned char chk = 0;
 for (char i = 1; i< len-2; i++){
@@ -1984,7 +1984,7 @@ chk ^= buffer[i];
 return chk;
 }
 
-# 408
+# 407
 void interrupt isr(){
 if(RCIE == 1 && RCIF == 1){
 dataRX = UART_get_char();
@@ -2030,7 +2030,7 @@ contTimer --;
 }
 }
 
-# 456
+# 455
 void initGPIO(void){
 ANSEL = 0x00;
 ANSELH = 0x00;
@@ -2047,7 +2047,7 @@ TRISC = 0b00000001;
 PORTC = 0;
 }
 
-# 475
+# 474
 void initInterrupt(void){
 GIE = 1;
 PEIE = 1;
