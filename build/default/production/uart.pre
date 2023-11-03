@@ -1553,7 +1553,7 @@ char rxBufferPos = 0;
 char serialTimeOut = 0;
 bit flagRxBufferOk;
 
-# 31 "protocolo.h"
+# 32 "protocolo.h"
 void getClockCmd (void);
 void setTimerCmd (void);
 void getTimerCmd (void);
@@ -1562,7 +1562,7 @@ void stopLogCmd (void);
 void readLogStatus (void);
 void readLogData (void);
 
-# 41
+# 42
 unsigned char bufferTx[40];
 unsigned char bufferTxLen;
 

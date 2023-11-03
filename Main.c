@@ -46,10 +46,12 @@ unsigned char timeToConnect = 0;
 unsigned char timeBlinkLed = 0;
 
 unsigned char readDataBuffer[30];
+unsigned char deviceName[19];
 
 bit flagConection = FALSE;
 bit flagRespostaBLE = FALSE;
 bit flagTryConnect = FALSE;
+bit flagChangeName = FALSE;
 /*******************************************************************************
  ********************* F U N Ç Ã O   P R I N C I P A L *************************
  ******************************************************************************/
@@ -108,7 +110,15 @@ int main(int argc, char** argv) {
                 flagConection = FALSE;
                 flagTryConnect = FALSE;
                 PWRC_PIN = 0; // habilita o modulo BLE para comando AT
-                __delay_ms(100);
+                __delay_ms(200);
+                
+                if (flagChangeName == TRUE){
+                    flagChangeName = FALSE;
+                    UART_send_String(deviceName,19);
+                    __delay_ms(500);    
+                    //UART_send_String("AT+RST\r\n",8);
+                    //__delay_ms(2000); 
+                }
                 UART_send_String("AT+SLEEP2\r\n",11); //sleep mode with no broadcast
                 __delay_ms(350);
                 PWRC_PIN = 1;
@@ -116,7 +126,7 @@ int main(int argc, char** argv) {
             asm("SLEEP");
         }
     }
-    return (EXIT_SUCCESS);
+    return (EXIT_SUCCESS);    
 }
 
 
@@ -191,6 +201,28 @@ void comandoRx(void) {
     if (checksumVerify()){
         memcpy(cmd, rxBuffer, rxBufferLength);
             switch (cmd[1]){
+                case CMD_SET_DEVICE_NAME:
+                    deviceName[0]='A';
+                    deviceName[1]='T';
+                    deviceName[2]='+';
+                    deviceName[3]='N';
+                    deviceName[4]='A';
+                    deviceName[5]='M';
+                    deviceName[6]='E';                    
+                    for(char i=0 ; i<10; i++){
+                        deviceName[i+7] = cmd[i+3];
+                    }
+                    deviceName[17]='\r';
+                    deviceName[18]='\n';
+                    flagChangeName = TRUE;                    
+                    bufferTxLen = 5;
+                    bufferTx[0] = 0x55;
+                    bufferTx[1] = CMD_SET_DEVICE_NAME;
+                    bufferTx[2] = 0x00;
+                    bufferTx[3] = checksumCalc(bufferTx,5);
+                    bufferTx[4] = 0x0A;
+                    resposta();
+                    break;
                 case CMD_GET_CLOCK:
                     getClockCmd();
                     flagRespostaBLE = TRUE;

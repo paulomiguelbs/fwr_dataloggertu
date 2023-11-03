@@ -1553,7 +1553,7 @@ char rxBufferPos = 0;
 char serialTimeOut = 0;
 bit flagRxBufferOk;
 
-# 31 "protocolo.h"
+# 32 "protocolo.h"
 void getClockCmd (void);
 void setTimerCmd (void);
 void getTimerCmd (void);
@@ -1562,7 +1562,7 @@ void stopLogCmd (void);
 void readLogStatus (void);
 void readLogData (void);
 
-# 41
+# 42
 unsigned char bufferTx[40];
 unsigned char bufferTxLen;
 
@@ -1639,12 +1639,14 @@ unsigned char timeToConnect = 0;
 unsigned char timeBlinkLed = 0;
 
 unsigned char readDataBuffer[30];
+unsigned char deviceName[19];
 
 bit flagConection = 0;
 bit flagRespostaBLE = 0;
 bit flagTryConnect = 0;
+bit flagChangeName = 0;
 
-# 56
+# 58
 int main(int argc, char** argv) {
 initGPIO();
 initUART();
@@ -1700,7 +1702,15 @@ if (flagTryConnect == 1 || flagConection == 1){
 flagConection = 0;
 flagTryConnect = 0;
 RC4 = 0;
-_delay((unsigned long)((100)*(4000000/4000.0)));
+_delay((unsigned long)((200)*(4000000/4000.0)));
+
+if (flagChangeName == 1){
+flagChangeName = 0;
+UART_send_String(deviceName,19);
+_delay((unsigned long)((500)*(4000000/4000.0)));
+
+
+}
 UART_send_String("AT+SLEEP2\r\n",11);
 _delay((unsigned long)((350)*(4000000/4000.0)));
 RC4 = 1;
@@ -1741,7 +1751,7 @@ flagTryConnect = 1;
 RC4 = 1;
 }
 
-# 154
+# 164
 void logSave(void){
 if (numOfLogs < 10912){
 unsigned int auxAddr;
@@ -1771,7 +1781,7 @@ _delay((unsigned long)((5)*(4000000/4000.0)));
 }
 }
 
-# 187
+# 197
 void comandoRx(void) {
 unsigned char chk = 0;
 unsigned long numOfBytes = 0;
@@ -1779,6 +1789,28 @@ unsigned int logsToSend = 0;
 if (checksumVerify()){
 memcpy(cmd, rxBuffer, rxBufferLength);
 switch (cmd[1]){
+case 0x30:
+deviceName[0]='A';
+deviceName[1]='T';
+deviceName[2]='+';
+deviceName[3]='N';
+deviceName[4]='A';
+deviceName[5]='M';
+deviceName[6]='E';
+for(char i=0 ; i<10; i++){
+deviceName[i+7] = cmd[i+3];
+}
+deviceName[17]='\r';
+deviceName[18]='\n';
+flagChangeName = 1;
+bufferTxLen = 5;
+bufferTx[0] = 0x55;
+bufferTx[1] = 0x30;
+bufferTx[2] = 0x00;
+bufferTx[3] = checksumCalc(bufferTx,5);
+bufferTx[4] = 0x0A;
+resposta();
+break;
 case 0x31:
 getClockCmd();
 flagRespostaBLE = 1;
@@ -1926,7 +1958,7 @@ UART_send_char(bufferTx[i]);
 }
 }
 
-# 343
+# 375
 void initVars(void){
 
 timer = eepromReadByte(0x0004);
@@ -1959,7 +1991,7 @@ numOfLogs += eepromReadByte(0x0007);
 _delay((unsigned long)((5)*(4000000/4000.0)));
 }
 
-# 378
+# 410
 bit checksumVerify(void){
 unsigned char len = rxBufferLength;
 unsigned char checksum = 0;
@@ -1975,7 +2007,7 @@ else
 return 0;
 }
 
-# 396
+# 428
 unsigned char checksumCalc(unsigned char* buffer, unsigned char len){
 unsigned char chk = 0;
 for (char i = 1; i< len-2; i++){
@@ -1984,7 +2016,7 @@ chk ^= buffer[i];
 return chk;
 }
 
-# 407
+# 439
 void interrupt isr(){
 if(RCIE == 1 && RCIF == 1){
 dataRX = UART_get_char();
@@ -2030,7 +2062,7 @@ contTimer --;
 }
 }
 
-# 455
+# 487
 void initGPIO(void){
 ANSEL = 0x00;
 ANSELH = 0x00;
@@ -2047,7 +2079,7 @@ TRISC = 0b00000001;
 PORTC = 0;
 }
 
-# 474
+# 506
 void initInterrupt(void){
 GIE = 1;
 PEIE = 1;

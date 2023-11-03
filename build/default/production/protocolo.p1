@@ -1157,9 +1157,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _serialTimeOut `uc  1 e ]
 "28 uart.h
 [v _flagRxBufferOk `b  1 e ]
-"41 protocolo.h
-[v _bufferTx `uc  -> 40 `i e ]
 "42 protocolo.h
+[v _bufferTx `uc  -> 40 `i e ]
+"43 protocolo.h
 [v _bufferTxLen `uc  1 e ]
 "29 main.h
 [v _timeNow `ul  1 e ]
@@ -2381,15 +2381,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;uart.h: 27: char serialTimeOut = 0;
 [; ;uart.h: 28: bit flagRxBufferOk;
-[; ;protocolo.h: 31: void getClockCmd (void);
-[; ;protocolo.h: 32: void setTimerCmd (void);
-[; ;protocolo.h: 33: void getTimerCmd (void);
-[; ;protocolo.h: 34: void startLogCmd (void);
-[; ;protocolo.h: 35: void stopLogCmd (void);
-[; ;protocolo.h: 36: void readLogStatus (void);
-[; ;protocolo.h: 37: void readLogData (void);
-[; ;protocolo.h: 41: unsigned char bufferTx[40];
-[; ;protocolo.h: 42: unsigned char bufferTxLen;
+[; ;protocolo.h: 32: void getClockCmd (void);
+[; ;protocolo.h: 33: void setTimerCmd (void);
+[; ;protocolo.h: 34: void getTimerCmd (void);
+[; ;protocolo.h: 35: void startLogCmd (void);
+[; ;protocolo.h: 36: void stopLogCmd (void);
+[; ;protocolo.h: 37: void readLogStatus (void);
+[; ;protocolo.h: 38: void readLogData (void);
+[; ;protocolo.h: 42: unsigned char bufferTx[40];
+[; ;protocolo.h: 43: unsigned char bufferTxLen;
 [; ;main.h: 22: bit checksumVerify (void);
 [; ;main.h: 23: unsigned char checksumCalc (unsigned char*, unsigned char);
 "29 main.h

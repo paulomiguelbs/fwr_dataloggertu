@@ -1157,9 +1157,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _serialTimeOut `uc  1 e ]
 "28 uart.h
 [v _flagRxBufferOk `b  1 e ]
-"41 protocolo.h
-[v _bufferTx `uc  -> 40 `i e ]
 "42 protocolo.h
+[v _bufferTx `uc  -> 40 `i e ]
+"43 protocolo.h
 [v _bufferTxLen `uc  1 e ]
 "29 main.h
 [v _timeNow `ul  1 e ]
@@ -1187,12 +1187,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _timeBlinkLed `uc  1 e ]
 "48 Main.c
 [v _readDataBuffer `uc  -> 30 `i e ]
-"50 Main.c
-[v _flagConection `b  1 e ]
+"49 Main.c
+[v _deviceName `uc  -> 19 `i e ]
 "51 Main.c
-[v _flagRespostaBLE `b  1 e ]
+[v _flagConection `b  1 e ]
 "52 Main.c
+[v _flagRespostaBLE `b  1 e ]
+"53 Main.c
 [v _flagTryConnect `b  1 e ]
+"54 Main.c
+[v _flagChangeName `b  1 e ]
 [p mainexit ]
 "25 Main.c
 [v _initGPIO `(v  0 ef ]
@@ -1229,24 +1233,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _checksumVerify `(b  0 ef ]
 "22 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\string.h
 [v _memcpy `(*v  0 ef3`*v`*Cv`ui ]
-"31 protocolo.h
-[v _getClockCmd `(v  0 ef ]
-"32 protocolo.h
-[v _setTimerCmd `(v  0 ef ]
-"33 protocolo.h
-[v _getTimerCmd `(v  0 ef ]
-"34 protocolo.h
-[v _startLogCmd `(v  0 ef ]
-"35 protocolo.h
-[v _stopLogCmd `(v  0 ef ]
-"36 protocolo.h
-[v _readLogStatus `(v  0 ef ]
-"32 Main.c
-[v _resposta `(v  0 ef ]
-"28 eepromI2c.h
-[v _eepromReadLog `(v  0 ef2`ui`*uc ]
 "23 main.h
 [v _checksumCalc `(uc  0 ef2`*uc`uc ]
+"32 Main.c
+[v _resposta `(v  0 ef ]
+"32 protocolo.h
+[v _getClockCmd `(v  0 ef ]
+"33 protocolo.h
+[v _setTimerCmd `(v  0 ef ]
+"34 protocolo.h
+[v _getTimerCmd `(v  0 ef ]
+"35 protocolo.h
+[v _startLogCmd `(v  0 ef ]
+"36 protocolo.h
+[v _stopLogCmd `(v  0 ef ]
+"37 protocolo.h
+[v _readLogStatus `(v  0 ef ]
+"28 eepromI2c.h
+[v _eepromReadLog `(v  0 ef2`ui`*uc ]
 "29 eepromI2c.h
 [v _eepromReadLogPage `(v  0 ef2`ui`*uc ]
 "13 uart.h
@@ -2454,15 +2458,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;uart.h: 27: char serialTimeOut = 0;
 [; ;uart.h: 28: bit flagRxBufferOk;
-[; ;protocolo.h: 31: void getClockCmd (void);
-[; ;protocolo.h: 32: void setTimerCmd (void);
-[; ;protocolo.h: 33: void getTimerCmd (void);
-[; ;protocolo.h: 34: void startLogCmd (void);
-[; ;protocolo.h: 35: void stopLogCmd (void);
-[; ;protocolo.h: 36: void readLogStatus (void);
-[; ;protocolo.h: 37: void readLogData (void);
-[; ;protocolo.h: 41: unsigned char bufferTx[40];
-[; ;protocolo.h: 42: unsigned char bufferTxLen;
+[; ;protocolo.h: 32: void getClockCmd (void);
+[; ;protocolo.h: 33: void setTimerCmd (void);
+[; ;protocolo.h: 34: void getTimerCmd (void);
+[; ;protocolo.h: 35: void startLogCmd (void);
+[; ;protocolo.h: 36: void stopLogCmd (void);
+[; ;protocolo.h: 37: void readLogStatus (void);
+[; ;protocolo.h: 38: void readLogData (void);
+[; ;protocolo.h: 42: unsigned char bufferTx[40];
+[; ;protocolo.h: 43: unsigned char bufferTxLen;
 [; ;main.h: 22: bit checksumVerify (void);
 [; ;main.h: 23: unsigned char checksumCalc (unsigned char*, unsigned char);
 "29 main.h
@@ -2544,1339 +2548,1441 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;Main.c: 46: unsigned char timeBlinkLed = 0;
 [; ;Main.c: 48: unsigned char readDataBuffer[30];
-"50
+[; ;Main.c: 49: unsigned char deviceName[19];
+"51
 [i _flagConection
 -> 0 `i
 ]
-[; ;Main.c: 50: bit flagConection = 0;
-"51
+[; ;Main.c: 51: bit flagConection = 0;
+"52
 [i _flagRespostaBLE
 -> 0 `i
 ]
-[; ;Main.c: 51: bit flagRespostaBLE = 0;
-"52
+[; ;Main.c: 52: bit flagRespostaBLE = 0;
+"53
 [i _flagTryConnect
 -> 0 `i
 ]
-[; ;Main.c: 52: bit flagTryConnect = 0;
-"56
+[; ;Main.c: 53: bit flagTryConnect = 0;
+"54
+[i _flagChangeName
+-> 0 `i
+]
+[; ;Main.c: 54: bit flagChangeName = 0;
+"58
 [v _main `(i  1 ef2`i`**uc ]
 {
-[; ;Main.c: 56: int main(int argc, char** argv) {
+[; ;Main.c: 58: int main(int argc, char** argv) {
 [e :U _main ]
 [v _argc `i  1 r1 ]
 [v _argv `**uc  1 r2 ]
 [f ]
-[; ;Main.c: 57: initGPIO();
-"57
-[e ( _initGPIO ..  ]
-[; ;Main.c: 58: initUART();
-"58
-[e ( _initUART ..  ]
-[; ;Main.c: 59: i2cInitialize(1000);
+[; ;Main.c: 59: initGPIO();
 "59
-[e ( _i2cInitialize (1 -> -> -> 1000 `i `l `ul ]
-[; ;Main.c: 60: initInterrupt();
+[e ( _initGPIO ..  ]
+[; ;Main.c: 60: initUART();
 "60
-[e ( _initInterrupt ..  ]
-[; ;Main.c: 61: RC4 = 1;
+[e ( _initUART ..  ]
+[; ;Main.c: 61: i2cInitialize(1000);
 "61
-[e = _RC4 -> -> 1 `i `b ]
-[; ;Main.c: 62: _delay((unsigned long)((100)*(4000000/4000.0)));
+[e ( _i2cInitialize (1 -> -> -> 1000 `i `l `ul ]
+[; ;Main.c: 62: initInterrupt();
 "62
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 63: initVars();
+[e ( _initInterrupt ..  ]
+[; ;Main.c: 63: RC4 = 1;
 "63
-[e ( _initVars ..  ]
-[; ;Main.c: 64: initAht10();
+[e = _RC4 -> -> 1 `i `b ]
+[; ;Main.c: 64: _delay((unsigned long)((100)*(4000000/4000.0)));
 "64
-[e ( _initAht10 ..  ]
-[; ;Main.c: 65: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 65: initVars();
 "65
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 66: jdyConfig();
+[e ( _initVars ..  ]
+[; ;Main.c: 66: initAht10();
 "66
-[e ( _jdyConfig ..  ]
-[; ;Main.c: 67: _delay((unsigned long)((250)*(4000000/4000.0)));
+[e ( _initAht10 ..  ]
+[; ;Main.c: 67: _delay((unsigned long)((5)*(4000000/4000.0)));
 "67
-[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 68: memset(rxBuffer,0,30);
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 68: jdyConfig();
 "68
-[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> -> 30 `i `ui ]
-[; ;Main.c: 70: while(1){
+[e ( _jdyConfig ..  ]
+[; ;Main.c: 69: _delay((unsigned long)((250)*(4000000/4000.0)));
+"69
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 70: memset(rxBuffer,0,30);
 "70
+[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> -> 30 `i `ui ]
+[; ;Main.c: 72: while(1){
+"72
 [e :U 138 ]
 {
-[; ;Main.c: 71: if(logStatus == 1 && contTimer == 0){
-"71
+[; ;Main.c: 73: if(logStatus == 1 && contTimer == 0){
+"73
 [e $ ! && == -> _logStatus `i -> 1 `i == _contTimer -> -> 0 `i `ui 140  ]
 {
-[; ;Main.c: 72: contTimer = timer;
-"72
-[e = _contTimer _timer ]
-[; ;Main.c: 74: logSave();
+[; ;Main.c: 74: contTimer = timer;
 "74
+[e = _contTimer _timer ]
+[; ;Main.c: 76: logSave();
+"76
 [e ( _logSave ..  ]
-"75
+"77
 }
 [e :U 140 ]
-[; ;Main.c: 75: }
-[; ;Main.c: 77: if (flagRxBufferOk){
-"77
+[; ;Main.c: 77: }
+[; ;Main.c: 79: if (flagRxBufferOk){
+"79
 [e $ ! _flagRxBufferOk 141  ]
 {
-[; ;Main.c: 78: flagRxBufferOk = 0;
-"78
+[; ;Main.c: 80: flagRxBufferOk = 0;
+"80
 [e = _flagRxBufferOk -> -> 0 `i `b ]
-[; ;Main.c: 79: if (rxBufferLength >= 3){
-"79
+[; ;Main.c: 81: if (rxBufferLength >= 3){
+"81
 [e $ ! >= -> _rxBufferLength `i -> 3 `i 142  ]
 {
-[; ;Main.c: 80: if (rxBuffer[2]+5 == rxBufferLength){
-"80
+[; ;Main.c: 82: if (rxBuffer[2]+5 == rxBufferLength){
+"82
 [e $ ! == + -> *U + &U _rxBuffer * -> -> -> 2 `i `ui `ux -> -> # *U &U _rxBuffer `ui `ux `i -> 5 `i -> _rxBufferLength `i 143  ]
 {
-[; ;Main.c: 81: if (rxBuffer[0] == 0x55 && rxBuffer[rxBufferLength-1] == 0x0A){
-"81
+[; ;Main.c: 83: if (rxBuffer[0] == 0x55 && rxBuffer[rxBufferLength-1] == 0x0A){
+"83
 [e $ ! && == -> *U + &U _rxBuffer * -> -> -> 0 `i `ui `ux -> -> # *U &U _rxBuffer `ui `ux `i -> 85 `i == -> *U + &U _rxBuffer * -> -> - -> _rxBufferLength `i -> 1 `i `ui `ux -> -> # *U &U _rxBuffer `ui `ux `i -> 10 `i 144  ]
 {
-[; ;Main.c: 82: comandoRx();
-"82
-[e ( _comandoRx ..  ]
-[; ;Main.c: 83: rxBufferPos = 0;
-"83
-[e = _rxBufferPos -> -> 0 `i `uc ]
-[; ;Main.c: 84: memset(rxBuffer,0,rxBufferLength);
+[; ;Main.c: 84: comandoRx();
 "84
-[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> _rxBufferLength `ui ]
+[e ( _comandoRx ..  ]
+[; ;Main.c: 85: rxBufferPos = 0;
 "85
-}
-[e :U 144 ]
+[e = _rxBufferPos -> -> 0 `i `uc ]
+[; ;Main.c: 86: memset(rxBuffer,0,rxBufferLength);
 "86
-}
-[e :U 143 ]
+[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> _rxBufferLength `ui ]
 "87
 }
-[e :U 142 ]
+[e :U 144 ]
 "88
 }
+[e :U 143 ]
+"89
+}
+[e :U 142 ]
+"90
+}
 [e :U 141 ]
-[; ;Main.c: 85: }
-[; ;Main.c: 86: }
 [; ;Main.c: 87: }
 [; ;Main.c: 88: }
-[; ;Main.c: 90: if(RC0 == 1){
-"90
+[; ;Main.c: 89: }
+[; ;Main.c: 90: }
+[; ;Main.c: 92: if(RC0 == 1){
+"92
 [e $ ! == -> _RC0 `i -> 1 `i 145  ]
 {
-[; ;Main.c: 91: flagConection = 1;
-"91
-[e = _flagConection -> -> 1 `i `b ]
-[; ;Main.c: 92: timeToConnect = 0;
-"92
-[e = _timeToConnect -> -> 0 `i `uc ]
-[; ;Main.c: 93: RC4 = 1;
+[; ;Main.c: 93: flagConection = 1;
 "93
-[e = _RC4 -> -> 1 `i `b ]
-[; ;Main.c: 94: RC1 = 0;
+[e = _flagConection -> -> 1 `i `b ]
+[; ;Main.c: 94: timeToConnect = 0;
 "94
-[e = _RC1 -> -> 0 `i `b ]
+[e = _timeToConnect -> -> 0 `i `uc ]
+[; ;Main.c: 95: RC4 = 1;
 "95
+[e = _RC4 -> -> 1 `i `b ]
+[; ;Main.c: 96: RC1 = 0;
+"96
+[e = _RC1 -> -> 0 `i `b ]
+"97
 }
 [e :U 145 ]
-[; ;Main.c: 95: }
-[; ;Main.c: 96: if (RC0 == 0 && timeToConnect > 0){
-"96
+[; ;Main.c: 97: }
+[; ;Main.c: 98: if (RC0 == 0 && timeToConnect > 0){
+"98
 [e $ ! && == -> _RC0 `i -> 0 `i > -> _timeToConnect `i -> 0 `i 146  ]
 {
-[; ;Main.c: 97: if (timeBlinkLed == 0){
-"97
+[; ;Main.c: 99: if (timeBlinkLed == 0){
+"99
 [e $ ! == -> _timeBlinkLed `i -> 0 `i 147  ]
 {
-[; ;Main.c: 98: timeBlinkLed = 5;
-"98
+[; ;Main.c: 100: timeBlinkLed = 5;
+"100
 [e = _timeBlinkLed -> -> 5 `i `uc ]
-[; ;Main.c: 99: RC1 = !RC1;
-"99
-[e = _RC1 ! _RC1 ]
+[; ;Main.c: 101: RC1 = !RC1;
 "101
+[e = _RC1 ! _RC1 ]
+"103
 }
 [e :U 147 ]
-"102
+"104
 }
 [e :U 146 ]
-[; ;Main.c: 101: }
-[; ;Main.c: 102: }
-[; ;Main.c: 105: if(RC0 == 0 && timeToConnect == 0){
-"105
+[; ;Main.c: 103: }
+[; ;Main.c: 104: }
+[; ;Main.c: 107: if(RC0 == 0 && timeToConnect == 0){
+"107
 [e $ ! && == -> _RC0 `i -> 0 `i == -> _timeToConnect `i -> 0 `i 148  ]
 {
-[; ;Main.c: 106: RC1 = 1;
-"106
+[; ;Main.c: 108: RC1 = 1;
+"108
 [e = _RC1 -> -> 1 `i `b ]
-[; ;Main.c: 107: if (flagTryConnect == 1 || flagConection == 1){
-"107
+[; ;Main.c: 109: if (flagTryConnect == 1 || flagConection == 1){
+"109
 [e $ ! || == -> _flagTryConnect `i -> 1 `i == -> _flagConection `i -> 1 `i 149  ]
 {
-[; ;Main.c: 108: flagConection = 0;
-"108
-[e = _flagConection -> -> 0 `i `b ]
-[; ;Main.c: 109: flagTryConnect = 0;
-"109
-[e = _flagTryConnect -> -> 0 `i `b ]
-[; ;Main.c: 110: RC4 = 0;
+[; ;Main.c: 110: flagConection = 0;
 "110
-[e = _RC4 -> -> 0 `i `b ]
-[; ;Main.c: 111: _delay((unsigned long)((100)*(4000000/4000.0)));
+[e = _flagConection -> -> 0 `i `b ]
+[; ;Main.c: 111: flagTryConnect = 0;
 "111
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 112: UART_send_String("AT+SLEEP2\r\n",11);
+[e = _flagTryConnect -> -> 0 `i `b ]
+[; ;Main.c: 112: RC4 = 0;
 "112
-[e ( _UART_send_String (2 , -> :s 1C `*uc -> -> 11 `i `uc ]
-[; ;Main.c: 113: _delay((unsigned long)((350)*(4000000/4000.0)));
+[e = _RC4 -> -> 0 `i `b ]
+[; ;Main.c: 113: _delay((unsigned long)((200)*(4000000/4000.0)));
 "113
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 114: RC4 = 1;
-"114
-[e = _RC4 -> -> 1 `i `b ]
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 115: if (flagChangeName == 1){
 "115
+[e $ ! == -> _flagChangeName `i -> 1 `i 150  ]
+{
+[; ;Main.c: 116: flagChangeName = 0;
+"116
+[e = _flagChangeName -> -> 0 `i `b ]
+[; ;Main.c: 117: UART_send_String(deviceName,19);
+"117
+[e ( _UART_send_String (2 , &U _deviceName -> -> 19 `i `uc ]
+[; ;Main.c: 118: _delay((unsigned long)((500)*(4000000/4000.0)));
+"118
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"121
+}
+[e :U 150 ]
+[; ;Main.c: 121: }
+[; ;Main.c: 122: UART_send_String("AT+SLEEP2\r\n",11);
+"122
+[e ( _UART_send_String (2 , -> :s 1C `*uc -> -> 11 `i `uc ]
+[; ;Main.c: 123: _delay((unsigned long)((350)*(4000000/4000.0)));
+"123
+[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 124: RC4 = 1;
+"124
+[e = _RC4 -> -> 1 `i `b ]
+"125
 }
 [e :U 149 ]
-[; ;Main.c: 115: }
-[; ;Main.c: 116: asm("SLEEP");
-"116
+[; ;Main.c: 125: }
+[; ;Main.c: 126: asm("SLEEP");
+"126
 [; SLEEP ;#
-"117
+"127
 }
 [e :U 148 ]
-"118
+"128
 }
 [e :U 137 ]
-"70
+"72
 [e $U 138  ]
 [e :U 139 ]
-[; ;Main.c: 117: }
-[; ;Main.c: 118: }
-[; ;Main.c: 119: return (0);
-"119
+[; ;Main.c: 127: }
+[; ;Main.c: 128: }
+[; ;Main.c: 129: return (0);
+"129
 [e ) -> 0 `i ]
 [e $UE 136  ]
-[; ;Main.c: 120: }
-"120
+[; ;Main.c: 130: }
+"130
 [e :UE 136 ]
 }
-"123
+"133
 [v _testeMemoria `(v  1 ef ]
 {
-[; ;Main.c: 123: void testeMemoria(void){
+[; ;Main.c: 133: void testeMemoria(void){
 [e :U _testeMemoria ]
 [f ]
-"124
+"134
 [v _addr `ui  1 a ]
-[; ;Main.c: 124: unsigned int addr=0x0020;
+[; ;Main.c: 134: unsigned int addr=0x0020;
 [e = _addr -> -> 32 `i `ui ]
-"125
+"135
 [v _data `uc  1 a ]
-[; ;Main.c: 125: unsigned char data = 0x20;
+[; ;Main.c: 135: unsigned char data = 0x20;
 [e = _data -> -> 32 `i `uc ]
-"126
+"136
 [v _i `ui  1 a ]
-"127
+"137
 [v _j `ui  1 a ]
-[; ;Main.c: 126: unsigned int i;
-[; ;Main.c: 127: unsigned int j=0;
+[; ;Main.c: 136: unsigned int i;
+[; ;Main.c: 137: unsigned int j=0;
 [e = _j -> -> 0 `i `ui ]
-[; ;Main.c: 128: for (i=0 ; i< 32736; i++){
-"128
+[; ;Main.c: 138: for (i=0 ; i< 32736; i++){
+"138
 {
 [e = _i -> -> 0 `i `ui ]
-[e $ < _i -> -> 32736 `i `ui 151  ]
-[e $U 152  ]
-[e :U 151 ]
-{
-[; ;Main.c: 129: eepromWriteByte(addr+i,data+j);
-"129
-[e ( _eepromWriteByte (2 , + _addr _i -> + -> _data `ui _j `uc ]
-[; ;Main.c: 130: j++;
-"130
-[e ++ _j -> -> 1 `i `ui ]
-[; ;Main.c: 131: if (j == 10){
-"131
-[e $ ! == _j -> -> 10 `i `ui 154  ]
-{
-[; ;Main.c: 132: j = 0;
-"132
-[e = _j -> -> 0 `i `ui ]
-[; ;Main.c: 133: data = 0x20;
-"133
-[e = _data -> -> 32 `i `uc ]
-"134
-}
-[e :U 154 ]
-[; ;Main.c: 134: }
-[; ;Main.c: 135: _delay((unsigned long)((5)*(4000000/4000.0)));
-"135
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"136
-}
-"128
-[e ++ _i -> -> 1 `i `ui ]
-[e $ < _i -> -> 32736 `i `ui 151  ]
+[e $ < _i -> -> 32736 `i `ui 152  ]
+[e $U 153  ]
 [e :U 152 ]
-"136
-}
-[; ;Main.c: 136: }
-[; ;Main.c: 138: }
-"138
-[e :UE 150 ]
-}
+{
+[; ;Main.c: 139: eepromWriteByte(addr+i,data+j);
 "139
+[e ( _eepromWriteByte (2 , + _addr _i -> + -> _data `ui _j `uc ]
+[; ;Main.c: 140: j++;
+"140
+[e ++ _j -> -> 1 `i `ui ]
+[; ;Main.c: 141: if (j == 10){
+"141
+[e $ ! == _j -> -> 10 `i `ui 155  ]
+{
+[; ;Main.c: 142: j = 0;
+"142
+[e = _j -> -> 0 `i `ui ]
+[; ;Main.c: 143: data = 0x20;
+"143
+[e = _data -> -> 32 `i `uc ]
+"144
+}
+[e :U 155 ]
+[; ;Main.c: 144: }
+[; ;Main.c: 145: _delay((unsigned long)((5)*(4000000/4000.0)));
+"145
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"146
+}
+"138
+[e ++ _i -> -> 1 `i `ui ]
+[e $ < _i -> -> 32736 `i `ui 152  ]
+[e :U 153 ]
+"146
+}
+[; ;Main.c: 146: }
+[; ;Main.c: 148: }
+"148
+[e :UE 151 ]
+}
+"149
 [v _jdyConfig `(v  1 ef ]
 {
-[; ;Main.c: 139: void jdyConfig (void){
+[; ;Main.c: 149: void jdyConfig (void){
 [e :U _jdyConfig ]
 [f ]
-[; ;Main.c: 140: RC4 = 0;
-"140
-[e = _RC4 -> -> 0 `i `b ]
-[; ;Main.c: 141: _delay((unsigned long)((100)*(4000000/4000.0)));
-"141
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 142: UART_send_String("AT+ADVIN1\r\n",11);
-"142
-[e ( _UART_send_String (2 , -> :s 2C `*uc -> -> 11 `i `uc ]
-[; ;Main.c: 143: _delay((unsigned long)((350)*(4000000/4000.0)));
-"143
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 144: UART_send_String("AT+STARTEN1\r\n",13);
-"144
-[e ( _UART_send_String (2 , -> :s 3C `*uc -> -> 13 `i `uc ]
-[; ;Main.c: 145: _delay((unsigned long)((350)*(4000000/4000.0)));
-"145
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 146: UART_send_String("AT+RST\r\n",8);
-"146
-[e ( _UART_send_String (2 , -> :s 4C `*uc -> -> 8 `i `uc ]
-[; ;Main.c: 147: _delay((unsigned long)((350)*(4000000/4000.0)));
-"147
-[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 148: flagTryConnect = 1;
-"148
-[e = _flagTryConnect -> -> 1 `i `b ]
-[; ;Main.c: 149: RC4 = 1;
-"149
-[e = _RC4 -> -> 1 `i `b ]
-[; ;Main.c: 150: }
+[; ;Main.c: 150: RC4 = 0;
 "150
-[e :UE 155 ]
-}
+[e = _RC4 -> -> 0 `i `b ]
+[; ;Main.c: 151: _delay((unsigned long)((100)*(4000000/4000.0)));
+"151
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 152: UART_send_String("AT+ADVIN1\r\n",11);
+"152
+[e ( _UART_send_String (2 , -> :s 2C `*uc -> -> 11 `i `uc ]
+[; ;Main.c: 153: _delay((unsigned long)((350)*(4000000/4000.0)));
+"153
+[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 154: UART_send_String("AT+STARTEN1\r\n",13);
 "154
+[e ( _UART_send_String (2 , -> :s 3C `*uc -> -> 13 `i `uc ]
+[; ;Main.c: 155: _delay((unsigned long)((350)*(4000000/4000.0)));
+"155
+[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 156: UART_send_String("AT+RST\r\n",8);
+"156
+[e ( _UART_send_String (2 , -> :s 4C `*uc -> -> 8 `i `uc ]
+[; ;Main.c: 157: _delay((unsigned long)((350)*(4000000/4000.0)));
+"157
+[e ( __delay (1 -> * -> -> 350 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 158: flagTryConnect = 1;
+"158
+[e = _flagTryConnect -> -> 1 `i `b ]
+[; ;Main.c: 159: RC4 = 1;
+"159
+[e = _RC4 -> -> 1 `i `b ]
+[; ;Main.c: 160: }
+"160
+[e :UE 156 ]
+}
+"164
 [v _logSave `(v  1 ef ]
 {
-[; ;Main.c: 154: void logSave(void){
+[; ;Main.c: 164: void logSave(void){
 [e :U _logSave ]
 [f ]
-[; ;Main.c: 155: if (numOfLogs < 10912){
-"155
-[e $ ! < _numOfLogs -> -> 10912 `i `ui 157  ]
-{
-"156
-[v _auxAddr `ui  1 a ]
-[; ;Main.c: 156: unsigned int auxAddr;
-[; ;Main.c: 158: auxAddr = 0x0020+(numOfLogs*3);
-"158
-[e = _auxAddr + -> -> 32 `i `ui * _numOfLogs -> -> 3 `i `ui ]
-[; ;Main.c: 160: sendTriggerMeasurementCmd();
-"160
-[e ( _sendTriggerMeasurementCmd ..  ]
-[; ;Main.c: 161: _delay((unsigned long)((100)*(4000000/4000.0)));
-"161
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 162: readTemp();
-"162
-[e ( _readTemp ..  ]
-[; ;Main.c: 165: eepromWriteByte(auxAddr,readTemperature);
+[; ;Main.c: 165: if (numOfLogs < 10912){
 "165
-[e ( _eepromWriteByte (2 , _auxAddr _readTemperature ]
-[; ;Main.c: 166: auxAddr++;
+[e $ ! < _numOfLogs -> -> 10912 `i `ui 158  ]
+{
 "166
-[e ++ _auxAddr -> -> 1 `i `ui ]
-[; ;Main.c: 167: _delay((unsigned long)((5)*(4000000/4000.0)));
-"167
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 168: eepromWriteByte(auxAddr,readTemperatureDec);
+[v _auxAddr `ui  1 a ]
+[; ;Main.c: 166: unsigned int auxAddr;
+[; ;Main.c: 168: auxAddr = 0x0020+(numOfLogs*3);
 "168
-[e ( _eepromWriteByte (2 , _auxAddr _readTemperatureDec ]
-[; ;Main.c: 169: auxAddr++;
-"169
-[e ++ _auxAddr -> -> 1 `i `ui ]
-[; ;Main.c: 170: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e = _auxAddr + -> -> 32 `i `ui * _numOfLogs -> -> 3 `i `ui ]
+[; ;Main.c: 170: sendTriggerMeasurementCmd();
 "170
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 171: eepromWriteByte(auxAddr,readUmidity);
+[e ( _sendTriggerMeasurementCmd ..  ]
+[; ;Main.c: 171: _delay((unsigned long)((100)*(4000000/4000.0)));
 "171
-[e ( _eepromWriteByte (2 , _auxAddr _readUmidity ]
-[; ;Main.c: 172: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 172: readTemp();
 "172
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 175: numOfLogs++;
+[e ( _readTemp ..  ]
+[; ;Main.c: 175: eepromWriteByte(auxAddr,readTemperature);
 "175
-[e ++ _numOfLogs -> -> 1 `i `ui ]
-[; ;Main.c: 176: eepromWriteByte(0x0006,numOfLogs>>8);
+[e ( _eepromWriteByte (2 , _auxAddr _readTemperature ]
+[; ;Main.c: 176: auxAddr++;
 "176
-[e ( _eepromWriteByte (2 , -> -> 6 `i `ui -> >> _numOfLogs -> 8 `i `uc ]
+[e ++ _auxAddr -> -> 1 `i `ui ]
 [; ;Main.c: 177: _delay((unsigned long)((5)*(4000000/4000.0)));
 "177
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 178: eepromWriteByte(0x0007,numOfLogs);
+[; ;Main.c: 178: eepromWriteByte(auxAddr,readTemperatureDec);
 "178
-[e ( _eepromWriteByte (2 , -> -> 7 `i `ui -> _numOfLogs `uc ]
-[; ;Main.c: 179: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( _eepromWriteByte (2 , _auxAddr _readTemperatureDec ]
+[; ;Main.c: 179: auxAddr++;
 "179
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e ++ _auxAddr -> -> 1 `i `ui ]
+[; ;Main.c: 180: _delay((unsigned long)((5)*(4000000/4000.0)));
 "180
-}
-[e :U 157 ]
-[; ;Main.c: 180: }
-[; ;Main.c: 181: }
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 181: eepromWriteByte(auxAddr,readUmidity);
 "181
-[e :UE 156 ]
-}
+[e ( _eepromWriteByte (2 , _auxAddr _readUmidity ]
+[; ;Main.c: 182: _delay((unsigned long)((5)*(4000000/4000.0)));
+"182
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 185: numOfLogs++;
+"185
+[e ++ _numOfLogs -> -> 1 `i `ui ]
+[; ;Main.c: 186: eepromWriteByte(0x0006,numOfLogs>>8);
+"186
+[e ( _eepromWriteByte (2 , -> -> 6 `i `ui -> >> _numOfLogs -> 8 `i `uc ]
+[; ;Main.c: 187: _delay((unsigned long)((5)*(4000000/4000.0)));
 "187
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 188: eepromWriteByte(0x0007,numOfLogs);
+"188
+[e ( _eepromWriteByte (2 , -> -> 7 `i `ui -> _numOfLogs `uc ]
+[; ;Main.c: 189: _delay((unsigned long)((5)*(4000000/4000.0)));
+"189
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"190
+}
+[e :U 158 ]
+[; ;Main.c: 190: }
+[; ;Main.c: 191: }
+"191
+[e :UE 157 ]
+}
+"197
 [v _comandoRx `(v  1 ef ]
 {
-[; ;Main.c: 187: void comandoRx(void) {
+[; ;Main.c: 197: void comandoRx(void) {
 [e :U _comandoRx ]
 [f ]
-"188
+"198
 [v _chk `uc  1 a ]
-[; ;Main.c: 188: unsigned char chk = 0;
+[; ;Main.c: 198: unsigned char chk = 0;
 [e = _chk -> -> 0 `i `uc ]
-"189
-[v _numOfBytes `ul  1 a ]
-[; ;Main.c: 189: unsigned long numOfBytes = 0;
-[e = _numOfBytes -> -> -> 0 `i `l `ul ]
-"190
-[v _logsToSend `ui  1 a ]
-[; ;Main.c: 190: unsigned int logsToSend = 0;
-[e = _logsToSend -> -> 0 `i `ui ]
-[; ;Main.c: 191: if (checksumVerify()){
-"191
-[e $ ! ( _checksumVerify ..  159  ]
-{
-[; ;Main.c: 192: memcpy(cmd, rxBuffer, rxBufferLength);
-"192
-[e ( _memcpy (3 , , -> &U _cmd `*v -> &U _rxBuffer `*Cv -> _rxBufferLength `ui ]
-[; ;Main.c: 193: switch (cmd[1]){
-"193
-[e $U 161  ]
-{
-[; ;Main.c: 194: case 0x31:
-"194
-[e :U 162 ]
-[; ;Main.c: 195: getClockCmd();
-"195
-[e ( _getClockCmd ..  ]
-[; ;Main.c: 196: flagRespostaBLE = 1;
-"196
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 197: break;
-"197
-[e $U 160  ]
-[; ;Main.c: 199: case 0x32:
 "199
-[e :U 163 ]
-[; ;Main.c: 200: setTimerCmd();
+[v _numOfBytes `ul  1 a ]
+[; ;Main.c: 199: unsigned long numOfBytes = 0;
+[e = _numOfBytes -> -> -> 0 `i `l `ul ]
 "200
-[e ( _setTimerCmd ..  ]
-[; ;Main.c: 201: flagRespostaBLE = 1;
+[v _logsToSend `ui  1 a ]
+[; ;Main.c: 200: unsigned int logsToSend = 0;
+[e = _logsToSend -> -> 0 `i `ui ]
+[; ;Main.c: 201: if (checksumVerify()){
 "201
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 202: break;
+[e $ ! ( _checksumVerify ..  160  ]
+{
+[; ;Main.c: 202: memcpy(cmd, rxBuffer, rxBufferLength);
 "202
-[e $U 160  ]
-[; ;Main.c: 204: case 0x33:
+[e ( _memcpy (3 , , -> &U _cmd `*v -> &U _rxBuffer `*Cv -> _rxBufferLength `ui ]
+[; ;Main.c: 203: switch (cmd[1]){
+"203
+[e $U 162  ]
+{
+[; ;Main.c: 204: case 0x30:
 "204
-[e :U 164 ]
-[; ;Main.c: 205: getTimerCmd();
+[e :U 163 ]
+[; ;Main.c: 205: deviceName[0]='A';
 "205
-[e ( _getTimerCmd ..  ]
-[; ;Main.c: 206: flagRespostaBLE = 1;
+[e = *U + &U _deviceName * -> -> -> 0 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 65 `ui `uc ]
+[; ;Main.c: 206: deviceName[1]='T';
 "206
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 207: break;
+[e = *U + &U _deviceName * -> -> -> 1 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 84 `ui `uc ]
+[; ;Main.c: 207: deviceName[2]='+';
 "207
-[e $U 160  ]
-[; ;Main.c: 209: case 0x34:
+[e = *U + &U _deviceName * -> -> -> 2 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 43 `ui `uc ]
+[; ;Main.c: 208: deviceName[3]='N';
+"208
+[e = *U + &U _deviceName * -> -> -> 3 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 78 `ui `uc ]
+[; ;Main.c: 209: deviceName[4]='A';
 "209
-[e :U 165 ]
-[; ;Main.c: 210: startLogCmd();
+[e = *U + &U _deviceName * -> -> -> 4 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 65 `ui `uc ]
+[; ;Main.c: 210: deviceName[5]='M';
 "210
-[e ( _startLogCmd ..  ]
-[; ;Main.c: 211: flagRespostaBLE = 1;
+[e = *U + &U _deviceName * -> -> -> 5 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 77 `ui `uc ]
+[; ;Main.c: 211: deviceName[6]='E';
 "211
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 212: break;
+[e = *U + &U _deviceName * -> -> -> 6 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 69 `ui `uc ]
+[; ;Main.c: 212: for(char i=0 ; i<10; i++){
 "212
-[e $U 160  ]
-[; ;Main.c: 214: case 0x35:
-"214
-[e :U 166 ]
-[; ;Main.c: 215: stopLogCmd();
-"215
-[e ( _stopLogCmd ..  ]
-[; ;Main.c: 216: flagRespostaBLE = 1;
-"216
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 217: break;
-"217
-[e $U 160  ]
-[; ;Main.c: 219: case 0x36:
-"219
-[e :U 167 ]
-[; ;Main.c: 220: readLogStatus();
-"220
-[e ( _readLogStatus ..  ]
-[; ;Main.c: 221: flagRespostaBLE = 1;
-"221
-[e = _flagRespostaBLE -> -> 1 `i `b ]
-[; ;Main.c: 222: break;
-"222
-[e $U 160  ]
-[; ;Main.c: 224: case 0x37:
-"224
-[e :U 168 ]
-[; ;Main.c: 225: chk = 0;
-"225
-[e = _chk -> -> 0 `i `uc ]
-[; ;Main.c: 226: bufferTxLen = 14;
-"226
-[e = _bufferTxLen -> -> 14 `i `uc ]
-[; ;Main.c: 227: bufferTx[0] = 0x55;
-"227
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
-[; ;Main.c: 228: bufferTx[1] = 0x37;
-"228
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 55 `i `uc ]
-[; ;Main.c: 229: chk ^= bufferTx[1];
-"229
-[e =^ _chk *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 230: logsToSend = numOfLogs;
-"230
-[e = _logsToSend _numOfLogs ]
-[; ;Main.c: 231: numOfBytes = logsToSend*3;
-"231
-[e = _numOfBytes -> * _logsToSend -> -> 3 `i `ui `ul ]
-[; ;Main.c: 232: numOfBytes+= 9;
-"232
-[e =+ _numOfBytes -> -> -> 9 `i `l `ul ]
-[; ;Main.c: 233: bufferTx[2] = (numOfBytes>>16)&0xFF;
-"233
-[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & >> _numOfBytes -> 16 `i -> -> -> 255 `i `l `ul `uc ]
-[; ;Main.c: 234: chk ^= bufferTx[2];
-"234
-[e =^ _chk *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 235: bufferTx[3] = (numOfBytes>>8)&0xFF;
-"235
-[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & >> _numOfBytes -> 8 `i -> -> -> 255 `i `l `ul `uc ]
-[; ;Main.c: 236: chk ^= bufferTx[3];
-"236
-[e =^ _chk *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 237: bufferTx[4] = (numOfBytes&0xFF);
-"237
-[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & _numOfBytes -> -> -> 255 `i `l `ul `uc ]
-[; ;Main.c: 238: chk ^= bufferTx[4];
-"238
-[e =^ _chk *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 240: bufferTx[5] = startTime>>24;
-"240
-[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 24 `i `uc ]
-[; ;Main.c: 241: chk ^= bufferTx[5];
-"241
-[e =^ _chk *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 242: bufferTx[6] = startTime>>16;
-"242
-[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 16 `i `uc ]
-[; ;Main.c: 243: chk ^= bufferTx[6];
-"243
-[e =^ _chk *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 244: bufferTx[7] = startTime>>8;
-"244
-[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 8 `i `uc ]
-[; ;Main.c: 245: chk ^= bufferTx[7];
-"245
-[e =^ _chk *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 246: bufferTx[8] = startTime;
-"246
-[e = *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _startTime `uc ]
-[; ;Main.c: 247: chk ^= bufferTx[8];
-"247
-[e =^ _chk *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 248: bufferTx[9] = timer>>8;
-"248
-[e = *U + &U _bufferTx * -> -> -> 9 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _timer -> 8 `i `uc ]
-[; ;Main.c: 249: chk ^= bufferTx[9];
-"249
-[e =^ _chk *U + &U _bufferTx * -> -> -> 9 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 250: bufferTx[10] = timer;
-"250
-[e = *U + &U _bufferTx * -> -> -> 10 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _timer `uc ]
-[; ;Main.c: 251: chk ^= bufferTx[10];
-"251
-[e =^ _chk *U + &U _bufferTx * -> -> -> 10 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 252: bufferTx[11] = logsToSend>>8;
-"252
-[e = *U + &U _bufferTx * -> -> -> 11 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _logsToSend -> 8 `i `uc ]
-[; ;Main.c: 253: chk ^= bufferTx[11];
-"253
-[e =^ _chk *U + &U _bufferTx * -> -> -> 11 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 254: bufferTx[12] = logsToSend;
-"254
-[e = *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _logsToSend `uc ]
-[; ;Main.c: 255: chk ^= bufferTx[12];
-"255
-[e =^ _chk *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 256: bufferTx[13] = logStatus;
-"256
-[e = *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> _logStatus `i `uc ]
-[; ;Main.c: 257: chk ^= bufferTx[13];
-"257
-[e =^ _chk *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 258: resposta();
-"258
-[e ( _resposta ..  ]
-[; ;Main.c: 260: for (unsigned int i=0; i<logsToSend; i++){
-"260
-{
-[v _i `ui  1 a ]
-[e = _i -> -> 0 `i `ui ]
-[e $U 172  ]
-[e :U 169 ]
-{
-"261
-[v _readData `uc  -> 3 `i a ]
-[; ;Main.c: 261: unsigned char readData[3];
-[; ;Main.c: 262: bufferTxLen = 3;
-"262
-[e = _bufferTxLen -> -> 3 `i `uc ]
-[; ;Main.c: 263: eepromReadLog(0x0020+(3*i),readData);
-"263
-[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * -> -> 3 `i `ui _i &U _readData ]
-[; ;Main.c: 264: bufferTx[0] = readData[0];
-"264
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 265: bufferTx[1] = readData[1];
-"265
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 266: bufferTx[2] = readData[2];
-"266
-[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 267: chk ^= bufferTx[0];
-"267
-[e =^ _chk *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 268: chk ^= bufferTx[1];
-"268
-[e =^ _chk *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 269: chk ^= bufferTx[2];
-"269
-[e =^ _chk *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
-[; ;Main.c: 270: resposta();
-"270
-[e ( _resposta ..  ]
-"271
-}
-"260
-[e ++ _i -> -> 1 `i `ui ]
-[e :U 172 ]
-[e $ < _i _logsToSend 169  ]
-[e :U 170 ]
-"271
-}
-[; ;Main.c: 271: }
-[; ;Main.c: 272: bufferTx[0] = chk;
-"272
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux _chk ]
-[; ;Main.c: 273: bufferTx[1] = 0x0A;
-"273
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
-[; ;Main.c: 274: bufferTxLen = 2;
-"274
-[e = _bufferTxLen -> -> 2 `i `uc ]
-[; ;Main.c: 275: resposta();
-"275
-[e ( _resposta ..  ]
-[; ;Main.c: 276: break;
-"276
-[e $U 160  ]
-[; ;Main.c: 278: case 0x38:
-"278
-[e :U 173 ]
-[; ;Main.c: 279: logsToSend = cmd[3];
-"279
-[e = _logsToSend -> *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
-[; ;Main.c: 280: logsToSend <<=8;
-"280
-[e =<< _logsToSend -> 8 `i ]
-[; ;Main.c: 281: logsToSend += cmd[4];
-"281
-[e =+ _logsToSend -> *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
-"282
-[v _readData `uc  -> 3 `i a ]
-[; ;Main.c: 282: unsigned char readData[3];
-[; ;Main.c: 283: bufferTxLen = 8;
-"283
-[e = _bufferTxLen -> -> 8 `i `uc ]
-[; ;Main.c: 284: eepromReadLog(0x0020+(logsToSend*3),readData);
-"284
-[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * _logsToSend -> -> 3 `i `ui &U _readData ]
-[; ;Main.c: 286: bufferTx[0] = 0x55;
-"286
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
-[; ;Main.c: 287: bufferTx[1] = 0x38;
-"287
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 56 `i `uc ]
-[; ;Main.c: 288: bufferTx[2] = 0x03;
-"288
-[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 3 `i `uc ]
-[; ;Main.c: 289: bufferTx[3] = readData[0];
-"289
-[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 290: bufferTx[4] = readData[1];
-"290
-[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 291: bufferTx[5] = readData[2];
-"291
-[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;Main.c: 292: bufferTx[6] = checksumCalc(bufferTx,8);
-"292
-[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 8 `i `uc ]
-[; ;Main.c: 293: bufferTx[7] = 0x0A;
-"293
-[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
-[; ;Main.c: 294: resposta();
-"294
-[e ( _resposta ..  ]
-[; ;Main.c: 295: break;
-"295
-[e $U 160  ]
-[; ;Main.c: 297: case 0x39:
-"297
-[e :U 174 ]
-[; ;Main.c: 298: logsToSend = cmd[3];
-"298
-[e = _logsToSend -> *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
-[; ;Main.c: 299: logsToSend <<=8;
-"299
-[e =<< _logsToSend -> 8 `i ]
-[; ;Main.c: 300: logsToSend += cmd[4];
-"300
-[e =+ _logsToSend -> *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
-[; ;Main.c: 302: bufferTxLen = 37;
-"302
-[e = _bufferTxLen -> -> 37 `i `uc ]
-[; ;Main.c: 303: eepromReadLogPage(0x0020+(30*logsToSend),readDataBuffer);
-"303
-[e ( _eepromReadLogPage (2 , + -> -> 32 `i `ui * -> -> 30 `i `ui _logsToSend &U _readDataBuffer ]
-[; ;Main.c: 305: bufferTx[0] = 0x55;
-"305
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
-[; ;Main.c: 306: bufferTx[1] = 0x39;
-"306
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 57 `i `uc ]
-[; ;Main.c: 307: bufferTx[2] = 0x20;
-"307
-[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 32 `i `uc ]
-[; ;Main.c: 308: bufferTx[3] = cmd[3];
-"308
-[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux ]
-[; ;Main.c: 309: bufferTx[4] = cmd[4];
-"309
-[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux ]
-[; ;Main.c: 311: for(int i=0;i<30;i++){
-"311
-{
-[v _i `i  1 a ]
-[e = _i -> 0 `i ]
-[e $ < _i -> 30 `i 175  ]
-[e $U 176  ]
-[e :U 175 ]
-{
-[; ;Main.c: 312: bufferTx[i+5] = readDataBuffer[i];
-"312
-[e = *U + &U _bufferTx * -> -> + _i -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readDataBuffer * -> -> _i `ui `ux -> -> # *U &U _readDataBuffer `ui `ux ]
-"313
-}
-"311
-[e ++ _i -> 1 `i ]
-[e $ < _i -> 30 `i 175  ]
-[e :U 176 ]
-"313
-}
-[; ;Main.c: 313: }
-[; ;Main.c: 314: bufferTx[35] = checksumCalc(bufferTx,37);
-"314
-[e = *U + &U _bufferTx * -> -> -> 35 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 37 `i `uc ]
-[; ;Main.c: 315: bufferTx[36] = 0x0A;
-"315
-[e = *U + &U _bufferTx * -> -> -> 36 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
-[; ;Main.c: 316: resposta();
-"316
-[e ( _resposta ..  ]
-[; ;Main.c: 317: break;
-"317
-[e $U 160  ]
-[; ;Main.c: 318: default:
-"318
-[e :U 178 ]
-[; ;Main.c: 319: break;
-"319
-[e $U 160  ]
-"320
-}
-[; ;Main.c: 320: }
-[e $U 160  ]
-"193
-[e :U 161 ]
-[e [\ *U + &U _cmd * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd `ui `ux , $ -> -> 49 `i `uc 162
- , $ -> -> 50 `i `uc 163
- , $ -> -> 51 `i `uc 164
- , $ -> -> 52 `i `uc 165
- , $ -> -> 53 `i `uc 166
- , $ -> -> 54 `i `uc 167
- , $ -> -> 55 `i `uc 168
- , $ -> -> 56 `i `uc 173
- , $ -> -> 57 `i `uc 174
- 178 ]
-"320
-[e :U 160 ]
-[; ;Main.c: 321: if (flagRespostaBLE){
-"321
-[e $ ! _flagRespostaBLE 179  ]
-{
-[; ;Main.c: 322: flagRespostaBLE = 0;
-"322
-[e = _flagRespostaBLE -> -> 0 `i `b ]
-[; ;Main.c: 323: resposta();
-"323
-[e ( _resposta ..  ]
-"324
-}
-[e :U 179 ]
-"325
-}
-[; ;Main.c: 324: }
-[; ;Main.c: 325: }
-[e $U 180  ]
-"326
-[e :U 159 ]
-[; ;Main.c: 326: else{
-{
-[; ;Main.c: 327: UART_send_char(0x55);
-"327
-[e ( _UART_send_char (1 -> -> 85 `i `uc ]
-[; ;Main.c: 328: UART_send_char(0x40);
-"328
-[e ( _UART_send_char (1 -> -> 64 `i `uc ]
-[; ;Main.c: 329: UART_send_char(0x00);
-"329
-[e ( _UART_send_char (1 -> -> 0 `i `uc ]
-[; ;Main.c: 330: UART_send_char(0x40);
-"330
-[e ( _UART_send_char (1 -> -> 64 `i `uc ]
-[; ;Main.c: 331: UART_send_char(0x0A);
-"331
-[e ( _UART_send_char (1 -> -> 10 `i `uc ]
-"332
-}
-[e :U 180 ]
-[; ;Main.c: 332: }
-[; ;Main.c: 334: }
-"334
-[e :UE 158 ]
-}
-"335
-[v _resposta `(v  1 ef ]
-{
-[; ;Main.c: 335: void resposta (void){
-[e :U _resposta ]
-[f ]
-[; ;Main.c: 336: for (char i=0 ; i<bufferTxLen ; i++){
-"336
 {
 [v _i `uc  1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $U 185  ]
-[e :U 182 ]
+[e $ < -> _i `i -> 10 `i 164  ]
+[e $U 165  ]
+[e :U 164 ]
 {
-[; ;Main.c: 337: UART_send_char(bufferTx[i]);
-"337
-[e ( _UART_send_char (1 *U + &U _bufferTx * -> _i `ux -> -> # *U &U _bufferTx `ui `ux ]
-"338
+[; ;Main.c: 213: deviceName[i+7] = cmd[i+3];
+"213
+[e = *U + &U _deviceName * -> -> + -> _i `i -> 7 `i `ui `ux -> -> # *U &U _deviceName `ui `ux *U + &U _cmd * -> -> + -> _i `i -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux ]
+"214
 }
-"336
+"212
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 185 ]
-[e $ < -> _i `i -> _bufferTxLen `i 182  ]
-[e :U 183 ]
-"338
+[e $ < -> _i `i -> 10 `i 164  ]
+[e :U 165 ]
+"214
 }
-[; ;Main.c: 338: }
-[; ;Main.c: 339: }
+[; ;Main.c: 214: }
+[; ;Main.c: 215: deviceName[17]='\r';
+"215
+[e = *U + &U _deviceName * -> -> -> 17 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 13 `ui `uc ]
+[; ;Main.c: 216: deviceName[18]='\n';
+"216
+[e = *U + &U _deviceName * -> -> -> 18 `i `ui `ux -> -> # *U &U _deviceName `ui `ux -> -> 10 `ui `uc ]
+[; ;Main.c: 217: flagChangeName = 1;
+"217
+[e = _flagChangeName -> -> 1 `i `b ]
+[; ;Main.c: 218: bufferTxLen = 5;
+"218
+[e = _bufferTxLen -> -> 5 `i `uc ]
+[; ;Main.c: 219: bufferTx[0] = 0x55;
+"219
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
+[; ;Main.c: 220: bufferTx[1] = 0x30;
+"220
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 48 `i `uc ]
+[; ;Main.c: 221: bufferTx[2] = 0x00;
+"221
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 0 `i `uc ]
+[; ;Main.c: 222: bufferTx[3] = checksumCalc(bufferTx,5);
+"222
+[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 5 `i `uc ]
+[; ;Main.c: 223: bufferTx[4] = 0x0A;
+"223
+[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[; ;Main.c: 224: resposta();
+"224
+[e ( _resposta ..  ]
+[; ;Main.c: 225: break;
+"225
+[e $U 161  ]
+[; ;Main.c: 226: case 0x31:
+"226
+[e :U 167 ]
+[; ;Main.c: 227: getClockCmd();
+"227
+[e ( _getClockCmd ..  ]
+[; ;Main.c: 228: flagRespostaBLE = 1;
+"228
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 229: break;
+"229
+[e $U 161  ]
+[; ;Main.c: 231: case 0x32:
+"231
+[e :U 168 ]
+[; ;Main.c: 232: setTimerCmd();
+"232
+[e ( _setTimerCmd ..  ]
+[; ;Main.c: 233: flagRespostaBLE = 1;
+"233
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 234: break;
+"234
+[e $U 161  ]
+[; ;Main.c: 236: case 0x33:
+"236
+[e :U 169 ]
+[; ;Main.c: 237: getTimerCmd();
+"237
+[e ( _getTimerCmd ..  ]
+[; ;Main.c: 238: flagRespostaBLE = 1;
+"238
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 239: break;
+"239
+[e $U 161  ]
+[; ;Main.c: 241: case 0x34:
+"241
+[e :U 170 ]
+[; ;Main.c: 242: startLogCmd();
+"242
+[e ( _startLogCmd ..  ]
+[; ;Main.c: 243: flagRespostaBLE = 1;
+"243
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 244: break;
+"244
+[e $U 161  ]
+[; ;Main.c: 246: case 0x35:
+"246
+[e :U 171 ]
+[; ;Main.c: 247: stopLogCmd();
+"247
+[e ( _stopLogCmd ..  ]
+[; ;Main.c: 248: flagRespostaBLE = 1;
+"248
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 249: break;
+"249
+[e $U 161  ]
+[; ;Main.c: 251: case 0x36:
+"251
+[e :U 172 ]
+[; ;Main.c: 252: readLogStatus();
+"252
+[e ( _readLogStatus ..  ]
+[; ;Main.c: 253: flagRespostaBLE = 1;
+"253
+[e = _flagRespostaBLE -> -> 1 `i `b ]
+[; ;Main.c: 254: break;
+"254
+[e $U 161  ]
+[; ;Main.c: 256: case 0x37:
+"256
+[e :U 173 ]
+[; ;Main.c: 257: chk = 0;
+"257
+[e = _chk -> -> 0 `i `uc ]
+[; ;Main.c: 258: bufferTxLen = 14;
+"258
+[e = _bufferTxLen -> -> 14 `i `uc ]
+[; ;Main.c: 259: bufferTx[0] = 0x55;
+"259
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
+[; ;Main.c: 260: bufferTx[1] = 0x37;
+"260
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 55 `i `uc ]
+[; ;Main.c: 261: chk ^= bufferTx[1];
+"261
+[e =^ _chk *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 262: logsToSend = numOfLogs;
+"262
+[e = _logsToSend _numOfLogs ]
+[; ;Main.c: 263: numOfBytes = logsToSend*3;
+"263
+[e = _numOfBytes -> * _logsToSend -> -> 3 `i `ui `ul ]
+[; ;Main.c: 264: numOfBytes+= 9;
+"264
+[e =+ _numOfBytes -> -> -> 9 `i `l `ul ]
+[; ;Main.c: 265: bufferTx[2] = (numOfBytes>>16)&0xFF;
+"265
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & >> _numOfBytes -> 16 `i -> -> -> 255 `i `l `ul `uc ]
+[; ;Main.c: 266: chk ^= bufferTx[2];
+"266
+[e =^ _chk *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 267: bufferTx[3] = (numOfBytes>>8)&0xFF;
+"267
+[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & >> _numOfBytes -> 8 `i -> -> -> 255 `i `l `ul `uc ]
+[; ;Main.c: 268: chk ^= bufferTx[3];
+"268
+[e =^ _chk *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 269: bufferTx[4] = (numOfBytes&0xFF);
+"269
+[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> & _numOfBytes -> -> -> 255 `i `l `ul `uc ]
+[; ;Main.c: 270: chk ^= bufferTx[4];
+"270
+[e =^ _chk *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 272: bufferTx[5] = startTime>>24;
+"272
+[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 24 `i `uc ]
+[; ;Main.c: 273: chk ^= bufferTx[5];
+"273
+[e =^ _chk *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 274: bufferTx[6] = startTime>>16;
+"274
+[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 16 `i `uc ]
+[; ;Main.c: 275: chk ^= bufferTx[6];
+"275
+[e =^ _chk *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 276: bufferTx[7] = startTime>>8;
+"276
+[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _startTime -> 8 `i `uc ]
+[; ;Main.c: 277: chk ^= bufferTx[7];
+"277
+[e =^ _chk *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 278: bufferTx[8] = startTime;
+"278
+[e = *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _startTime `uc ]
+[; ;Main.c: 279: chk ^= bufferTx[8];
+"279
+[e =^ _chk *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 280: bufferTx[9] = timer>>8;
+"280
+[e = *U + &U _bufferTx * -> -> -> 9 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _timer -> 8 `i `uc ]
+[; ;Main.c: 281: chk ^= bufferTx[9];
+"281
+[e =^ _chk *U + &U _bufferTx * -> -> -> 9 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 282: bufferTx[10] = timer;
+"282
+[e = *U + &U _bufferTx * -> -> -> 10 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _timer `uc ]
+[; ;Main.c: 283: chk ^= bufferTx[10];
+"283
+[e =^ _chk *U + &U _bufferTx * -> -> -> 10 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 284: bufferTx[11] = logsToSend>>8;
+"284
+[e = *U + &U _bufferTx * -> -> -> 11 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _logsToSend -> 8 `i `uc ]
+[; ;Main.c: 285: chk ^= bufferTx[11];
+"285
+[e =^ _chk *U + &U _bufferTx * -> -> -> 11 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 286: bufferTx[12] = logsToSend;
+"286
+[e = *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _logsToSend `uc ]
+[; ;Main.c: 287: chk ^= bufferTx[12];
+"287
+[e =^ _chk *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 288: bufferTx[13] = logStatus;
+"288
+[e = *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> _logStatus `i `uc ]
+[; ;Main.c: 289: chk ^= bufferTx[13];
+"289
+[e =^ _chk *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 290: resposta();
+"290
+[e ( _resposta ..  ]
+[; ;Main.c: 292: for (unsigned int i=0; i<logsToSend; i++){
+"292
+{
+[v _i `ui  1 a ]
+[e = _i -> -> 0 `i `ui ]
+[e $U 177  ]
+[e :U 174 ]
+{
+"293
+[v _readData `uc  -> 3 `i a ]
+[; ;Main.c: 293: unsigned char readData[3];
+[; ;Main.c: 294: bufferTxLen = 3;
+"294
+[e = _bufferTxLen -> -> 3 `i `uc ]
+[; ;Main.c: 295: eepromReadLog(0x0020+(3*i),readData);
+"295
+[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * -> -> 3 `i `ui _i &U _readData ]
+[; ;Main.c: 296: bufferTx[0] = readData[0];
+"296
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 297: bufferTx[1] = readData[1];
+"297
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 298: bufferTx[2] = readData[2];
+"298
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 299: chk ^= bufferTx[0];
+"299
+[e =^ _chk *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 300: chk ^= bufferTx[1];
+"300
+[e =^ _chk *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 301: chk ^= bufferTx[2];
+"301
+[e =^ _chk *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ]
+[; ;Main.c: 302: resposta();
+"302
+[e ( _resposta ..  ]
+"303
+}
+"292
+[e ++ _i -> -> 1 `i `ui ]
+[e :U 177 ]
+[e $ < _i _logsToSend 174  ]
+[e :U 175 ]
+"303
+}
+[; ;Main.c: 303: }
+[; ;Main.c: 304: bufferTx[0] = chk;
+"304
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux _chk ]
+[; ;Main.c: 305: bufferTx[1] = 0x0A;
+"305
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[; ;Main.c: 306: bufferTxLen = 2;
+"306
+[e = _bufferTxLen -> -> 2 `i `uc ]
+[; ;Main.c: 307: resposta();
+"307
+[e ( _resposta ..  ]
+[; ;Main.c: 308: break;
+"308
+[e $U 161  ]
+[; ;Main.c: 310: case 0x38:
+"310
+[e :U 178 ]
+[; ;Main.c: 311: logsToSend = cmd[3];
+"311
+[e = _logsToSend -> *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
+[; ;Main.c: 312: logsToSend <<=8;
+"312
+[e =<< _logsToSend -> 8 `i ]
+[; ;Main.c: 313: logsToSend += cmd[4];
+"313
+[e =+ _logsToSend -> *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
+"314
+[v _readData `uc  -> 3 `i a ]
+[; ;Main.c: 314: unsigned char readData[3];
+[; ;Main.c: 315: bufferTxLen = 8;
+"315
+[e = _bufferTxLen -> -> 8 `i `uc ]
+[; ;Main.c: 316: eepromReadLog(0x0020+(logsToSend*3),readData);
+"316
+[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * _logsToSend -> -> 3 `i `ui &U _readData ]
+[; ;Main.c: 318: bufferTx[0] = 0x55;
+"318
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
+[; ;Main.c: 319: bufferTx[1] = 0x38;
+"319
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 56 `i `uc ]
+[; ;Main.c: 320: bufferTx[2] = 0x03;
+"320
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 3 `i `uc ]
+[; ;Main.c: 321: bufferTx[3] = readData[0];
+"321
+[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 322: bufferTx[4] = readData[1];
+"322
+[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 323: bufferTx[5] = readData[2];
+"323
+[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;Main.c: 324: bufferTx[6] = checksumCalc(bufferTx,8);
+"324
+[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 8 `i `uc ]
+[; ;Main.c: 325: bufferTx[7] = 0x0A;
+"325
+[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[; ;Main.c: 326: resposta();
+"326
+[e ( _resposta ..  ]
+[; ;Main.c: 327: break;
+"327
+[e $U 161  ]
+[; ;Main.c: 329: case 0x39:
+"329
+[e :U 179 ]
+[; ;Main.c: 330: logsToSend = cmd[3];
+"330
+[e = _logsToSend -> *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
+[; ;Main.c: 331: logsToSend <<=8;
+"331
+[e =<< _logsToSend -> 8 `i ]
+[; ;Main.c: 332: logsToSend += cmd[4];
+"332
+[e =+ _logsToSend -> *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux `ui ]
+[; ;Main.c: 334: bufferTxLen = 37;
+"334
+[e = _bufferTxLen -> -> 37 `i `uc ]
+[; ;Main.c: 335: eepromReadLogPage(0x0020+(30*logsToSend),readDataBuffer);
+"335
+[e ( _eepromReadLogPage (2 , + -> -> 32 `i `ui * -> -> 30 `i `ui _logsToSend &U _readDataBuffer ]
+[; ;Main.c: 337: bufferTx[0] = 0x55;
+"337
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
+[; ;Main.c: 338: bufferTx[1] = 0x39;
+"338
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 57 `i `uc ]
+[; ;Main.c: 339: bufferTx[2] = 0x20;
 "339
-[e :UE 181 ]
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 32 `i `uc ]
+[; ;Main.c: 340: bufferTx[3] = cmd[3];
+"340
+[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _cmd * -> -> -> 3 `i `ui `ux -> -> # *U &U _cmd `ui `ux ]
+[; ;Main.c: 341: bufferTx[4] = cmd[4];
+"341
+[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _cmd * -> -> -> 4 `i `ui `ux -> -> # *U &U _cmd `ui `ux ]
+[; ;Main.c: 343: for(int i=0;i<30;i++){
+"343
+{
+[v _i `i  1 a ]
+[e = _i -> 0 `i ]
+[e $ < _i -> 30 `i 180  ]
+[e $U 181  ]
+[e :U 180 ]
+{
+[; ;Main.c: 344: bufferTx[i+5] = readDataBuffer[i];
+"344
+[e = *U + &U _bufferTx * -> -> + _i -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readDataBuffer * -> -> _i `ui `ux -> -> # *U &U _readDataBuffer `ui `ux ]
+"345
 }
 "343
-[v _initVars `(v  1 ef ]
-{
-[; ;Main.c: 343: void initVars(void){
-[e :U _initVars ]
-[f ]
-[; ;Main.c: 345: timer = eepromReadByte(0x0004);
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 30 `i 180  ]
+[e :U 181 ]
 "345
-[e = _timer -> ( _eepromReadByte (1 -> -> 4 `i `ui `ui ]
-[; ;Main.c: 346: timer<<=8;
+}
+[; ;Main.c: 345: }
+[; ;Main.c: 346: bufferTx[35] = checksumCalc(bufferTx,37);
 "346
-[e =<< _timer -> 8 `i ]
-[; ;Main.c: 347: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e = *U + &U _bufferTx * -> -> -> 35 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 37 `i `uc ]
+[; ;Main.c: 347: bufferTx[36] = 0x0A;
 "347
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 348: timer += eepromReadByte(0x0005);
+[e = *U + &U _bufferTx * -> -> -> 36 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[; ;Main.c: 348: resposta();
 "348
-[e =+ _timer -> ( _eepromReadByte (1 -> -> 5 `i `ui `ui ]
-[; ;Main.c: 349: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( _resposta ..  ]
+[; ;Main.c: 349: break;
 "349
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 351: contTimer = timer;
+[e $U 161  ]
+[; ;Main.c: 350: default:
+"350
+[e :U 183 ]
+[; ;Main.c: 351: break;
 "351
-[e = _contTimer _timer ]
-[; ;Main.c: 352: newTimer = timer;
+[e $U 161  ]
 "352
-[e = _newTimer _timer ]
-[; ;Main.c: 355: startTime = eepromReadByte(0x0000);
+}
+[; ;Main.c: 352: }
+[e $U 161  ]
+"203
+[e :U 162 ]
+[e [\ *U + &U _cmd * -> -> -> 1 `i `ui `ux -> -> # *U &U _cmd `ui `ux , $ -> -> 48 `i `uc 163
+ , $ -> -> 49 `i `uc 167
+ , $ -> -> 50 `i `uc 168
+ , $ -> -> 51 `i `uc 169
+ , $ -> -> 52 `i `uc 170
+ , $ -> -> 53 `i `uc 171
+ , $ -> -> 54 `i `uc 172
+ , $ -> -> 55 `i `uc 173
+ , $ -> -> 56 `i `uc 178
+ , $ -> -> 57 `i `uc 179
+ 183 ]
+"352
+[e :U 161 ]
+[; ;Main.c: 353: if (flagRespostaBLE){
+"353
+[e $ ! _flagRespostaBLE 184  ]
+{
+[; ;Main.c: 354: flagRespostaBLE = 0;
+"354
+[e = _flagRespostaBLE -> -> 0 `i `b ]
+[; ;Main.c: 355: resposta();
 "355
-[e = _startTime -> ( _eepromReadByte (1 -> -> 0 `i `ui `ul ]
-[; ;Main.c: 356: startTime<<=8;
+[e ( _resposta ..  ]
 "356
-[e =<< _startTime -> 8 `i ]
-[; ;Main.c: 357: _delay((unsigned long)((5)*(4000000/4000.0)));
+}
+[e :U 184 ]
 "357
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 358: startTime += eepromReadByte(0x0001);
+}
+[; ;Main.c: 356: }
+[; ;Main.c: 357: }
+[e $U 185  ]
 "358
-[e =+ _startTime -> ( _eepromReadByte (1 -> -> 1 `i `ui `ul ]
-[; ;Main.c: 359: startTime<<=8;
+[e :U 160 ]
+[; ;Main.c: 358: else{
+{
+[; ;Main.c: 359: UART_send_char(0x55);
 "359
-[e =<< _startTime -> 8 `i ]
-[; ;Main.c: 360: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( _UART_send_char (1 -> -> 85 `i `uc ]
+[; ;Main.c: 360: UART_send_char(0x40);
 "360
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 361: startTime += eepromReadByte(0x0002);
+[e ( _UART_send_char (1 -> -> 64 `i `uc ]
+[; ;Main.c: 361: UART_send_char(0x00);
 "361
-[e =+ _startTime -> ( _eepromReadByte (1 -> -> 2 `i `ui `ul ]
-[; ;Main.c: 362: startTime<<=8;
+[e ( _UART_send_char (1 -> -> 0 `i `uc ]
+[; ;Main.c: 362: UART_send_char(0x40);
 "362
-[e =<< _startTime -> 8 `i ]
-[; ;Main.c: 363: _delay((unsigned long)((5)*(4000000/4000.0)));
+[e ( _UART_send_char (1 -> -> 64 `i `uc ]
+[; ;Main.c: 363: UART_send_char(0x0A);
 "363
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 364: startTime += eepromReadByte(0x0003);
+[e ( _UART_send_char (1 -> -> 10 `i `uc ]
 "364
-[e =+ _startTime -> ( _eepromReadByte (1 -> -> 3 `i `ui `ul ]
-[; ;Main.c: 365: _delay((unsigned long)((5)*(4000000/4000.0)));
-"365
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 368: numOfLogs = eepromReadByte(0x0006);
+}
+[e :U 185 ]
+[; ;Main.c: 364: }
+[; ;Main.c: 366: }
+"366
+[e :UE 159 ]
+}
+"367
+[v _resposta `(v  1 ef ]
+{
+[; ;Main.c: 367: void resposta (void){
+[e :U _resposta ]
+[f ]
+[; ;Main.c: 368: for (char i=0 ; i<bufferTxLen ; i++){
 "368
-[e = _numOfLogs -> ( _eepromReadByte (1 -> -> 6 `i `ui `ui ]
-[; ;Main.c: 369: _delay((unsigned long)((5)*(4000000/4000.0)));
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 190  ]
+[e :U 187 ]
+{
+[; ;Main.c: 369: UART_send_char(bufferTx[i]);
 "369
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 370: numOfLogs <<= 8;
+[e ( _UART_send_char (1 *U + &U _bufferTx * -> _i `ux -> -> # *U &U _bufferTx `ui `ux ]
 "370
-[e =<< _numOfLogs -> 8 `i ]
-[; ;Main.c: 371: numOfLogs += eepromReadByte(0x0007);
+}
+"368
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 190 ]
+[e $ < -> _i `i -> _bufferTxLen `i 187  ]
+[e :U 188 ]
+"370
+}
+[; ;Main.c: 370: }
+[; ;Main.c: 371: }
 "371
-[e =+ _numOfLogs -> ( _eepromReadByte (1 -> -> 7 `i `ui `ui ]
-[; ;Main.c: 372: _delay((unsigned long)((5)*(4000000/4000.0)));
-"372
-[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-[; ;Main.c: 373: }
-"373
 [e :UE 186 ]
 }
+"375
+[v _initVars `(v  1 ef ]
+{
+[; ;Main.c: 375: void initVars(void){
+[e :U _initVars ]
+[f ]
+[; ;Main.c: 377: timer = eepromReadByte(0x0004);
+"377
+[e = _timer -> ( _eepromReadByte (1 -> -> 4 `i `ui `ui ]
+[; ;Main.c: 378: timer<<=8;
 "378
+[e =<< _timer -> 8 `i ]
+[; ;Main.c: 379: _delay((unsigned long)((5)*(4000000/4000.0)));
+"379
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 380: timer += eepromReadByte(0x0005);
+"380
+[e =+ _timer -> ( _eepromReadByte (1 -> -> 5 `i `ui `ui ]
+[; ;Main.c: 381: _delay((unsigned long)((5)*(4000000/4000.0)));
+"381
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 383: contTimer = timer;
+"383
+[e = _contTimer _timer ]
+[; ;Main.c: 384: newTimer = timer;
+"384
+[e = _newTimer _timer ]
+[; ;Main.c: 387: startTime = eepromReadByte(0x0000);
+"387
+[e = _startTime -> ( _eepromReadByte (1 -> -> 0 `i `ui `ul ]
+[; ;Main.c: 388: startTime<<=8;
+"388
+[e =<< _startTime -> 8 `i ]
+[; ;Main.c: 389: _delay((unsigned long)((5)*(4000000/4000.0)));
+"389
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 390: startTime += eepromReadByte(0x0001);
+"390
+[e =+ _startTime -> ( _eepromReadByte (1 -> -> 1 `i `ui `ul ]
+[; ;Main.c: 391: startTime<<=8;
+"391
+[e =<< _startTime -> 8 `i ]
+[; ;Main.c: 392: _delay((unsigned long)((5)*(4000000/4000.0)));
+"392
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 393: startTime += eepromReadByte(0x0002);
+"393
+[e =+ _startTime -> ( _eepromReadByte (1 -> -> 2 `i `ui `ul ]
+[; ;Main.c: 394: startTime<<=8;
+"394
+[e =<< _startTime -> 8 `i ]
+[; ;Main.c: 395: _delay((unsigned long)((5)*(4000000/4000.0)));
+"395
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 396: startTime += eepromReadByte(0x0003);
+"396
+[e =+ _startTime -> ( _eepromReadByte (1 -> -> 3 `i `ui `ul ]
+[; ;Main.c: 397: _delay((unsigned long)((5)*(4000000/4000.0)));
+"397
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 400: numOfLogs = eepromReadByte(0x0006);
+"400
+[e = _numOfLogs -> ( _eepromReadByte (1 -> -> 6 `i `ui `ui ]
+[; ;Main.c: 401: _delay((unsigned long)((5)*(4000000/4000.0)));
+"401
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 402: numOfLogs <<= 8;
+"402
+[e =<< _numOfLogs -> 8 `i ]
+[; ;Main.c: 403: numOfLogs += eepromReadByte(0x0007);
+"403
+[e =+ _numOfLogs -> ( _eepromReadByte (1 -> -> 7 `i `ui `ui ]
+[; ;Main.c: 404: _delay((unsigned long)((5)*(4000000/4000.0)));
+"404
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;Main.c: 405: }
+"405
+[e :UE 191 ]
+}
+"410
 [v _checksumVerify `(b  1 ef ]
 {
-[; ;Main.c: 378: bit checksumVerify(void){
+[; ;Main.c: 410: bit checksumVerify(void){
 [e :U _checksumVerify ]
 [f ]
-"379
+"411
 [v _len `uc  1 a ]
-[; ;Main.c: 379: unsigned char len = rxBufferLength;
+[; ;Main.c: 411: unsigned char len = rxBufferLength;
 [e = _len _rxBufferLength ]
-"380
+"412
 [v _checksum `uc  1 a ]
-[; ;Main.c: 380: unsigned char checksum = 0;
+[; ;Main.c: 412: unsigned char checksum = 0;
 [e = _checksum -> -> 0 `i `uc ]
-[; ;Main.c: 382: for (unsigned char i=1 ;i<len-2;i++){
-"382
+[; ;Main.c: 414: for (unsigned char i=1 ;i<len-2;i++){
+"414
 {
 [v _i `uc  1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $U 191  ]
-[e :U 188 ]
-{
-[; ;Main.c: 383: checksum ^= rxBuffer[i];
-"383
-[e =^ _checksum *U + &U _rxBuffer * -> _i `ux -> -> # *U &U _rxBuffer `ui `ux ]
-"384
-}
-"382
-[e ++ _i -> -> 1 `i `uc ]
-[e :U 191 ]
-[e $ < -> _i `i - -> _len `i -> 2 `i 188  ]
-[e :U 189 ]
-"384
-}
-[; ;Main.c: 384: }
-[; ;Main.c: 385: if(rxBuffer[len-2] == checksum){
-"385
-[e $ ! == -> *U + &U _rxBuffer * -> -> - -> _len `i -> 2 `i `ui `ux -> -> # *U &U _rxBuffer `ui `ux `i -> _checksum `i 192  ]
-{
-[; ;Main.c: 387: return 1;
-"387
-[e ) -> -> 1 `i `b ]
-[e $UE 187  ]
-"388
-}
-[; ;Main.c: 388: }
-[e $U 193  ]
-"389
-[e :U 192 ]
-[; ;Main.c: 389: else
-[; ;Main.c: 390: return 0;
-"390
-[e ) -> -> 0 `i `b ]
-[e $UE 187  ]
+[e $U 196  ]
 [e :U 193 ]
-[; ;Main.c: 391: }
-"391
-[e :UE 187 ]
+{
+[; ;Main.c: 415: checksum ^= rxBuffer[i];
+"415
+[e =^ _checksum *U + &U _rxBuffer * -> _i `ux -> -> # *U &U _rxBuffer `ui `ux ]
+"416
 }
-"396
+"414
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 196 ]
+[e $ < -> _i `i - -> _len `i -> 2 `i 193  ]
+[e :U 194 ]
+"416
+}
+[; ;Main.c: 416: }
+[; ;Main.c: 417: if(rxBuffer[len-2] == checksum){
+"417
+[e $ ! == -> *U + &U _rxBuffer * -> -> - -> _len `i -> 2 `i `ui `ux -> -> # *U &U _rxBuffer `ui `ux `i -> _checksum `i 197  ]
+{
+[; ;Main.c: 419: return 1;
+"419
+[e ) -> -> 1 `i `b ]
+[e $UE 192  ]
+"420
+}
+[; ;Main.c: 420: }
+[e $U 198  ]
+"421
+[e :U 197 ]
+[; ;Main.c: 421: else
+[; ;Main.c: 422: return 0;
+"422
+[e ) -> -> 0 `i `b ]
+[e $UE 192  ]
+[e :U 198 ]
+[; ;Main.c: 423: }
+"423
+[e :UE 192 ]
+}
+"428
 [v _checksumCalc `(uc  1 ef2`*uc`uc ]
 {
-[; ;Main.c: 396: unsigned char checksumCalc(unsigned char* buffer, unsigned char len){
+[; ;Main.c: 428: unsigned char checksumCalc(unsigned char* buffer, unsigned char len){
 [e :U _checksumCalc ]
 [v _buffer `*uc  1 r1 ]
 [v _len `uc  1 r2 ]
 [f ]
-"397
+"429
 [v _chk `uc  1 a ]
-[; ;Main.c: 397: unsigned char chk = 0;
+[; ;Main.c: 429: unsigned char chk = 0;
 [e = _chk -> -> 0 `i `uc ]
-[; ;Main.c: 398: for (char i = 1; i< len-2; i++){
-"398
+[; ;Main.c: 430: for (char i = 1; i< len-2; i++){
+"430
 {
 [v _i `uc  1 a ]
 [e = _i -> -> 1 `i `uc ]
-[e $U 198  ]
-[e :U 195 ]
+[e $U 203  ]
+[e :U 200 ]
 {
-[; ;Main.c: 399: chk ^= buffer[i];
-"399
+[; ;Main.c: 431: chk ^= buffer[i];
+"431
 [e =^ _chk *U + _buffer * -> _i `ux -> -> # *U _buffer `ui `ux ]
-"400
+"432
 }
-"398
+"430
 [e ++ _i -> -> 1 `i `uc ]
-[e :U 198 ]
-[e $ < -> _i `i - -> _len `i -> 2 `i 195  ]
-[e :U 196 ]
-"400
+[e :U 203 ]
+[e $ < -> _i `i - -> _len `i -> 2 `i 200  ]
+[e :U 201 ]
+"432
 }
-[; ;Main.c: 400: }
-[; ;Main.c: 401: return chk;
-"401
+[; ;Main.c: 432: }
+[; ;Main.c: 433: return chk;
+"433
 [e ) _chk ]
-[e $UE 194  ]
-[; ;Main.c: 402: }
-"402
-[e :UE 194 ]
+[e $UE 199  ]
+[; ;Main.c: 434: }
+"434
+[e :UE 199 ]
 }
 "24
 [v F1758 `(v  1 tf ]
-"407
+"439
 [v _isr `IF1758  1 e ]
 {
-[; ;Main.c: 407: void interrupt isr(){
+[; ;Main.c: 439: void interrupt isr(){
 [e :U _isr ]
 [f ]
-[; ;Main.c: 408: if(RCIE == 1 && RCIF == 1){
-"408
-[e $ ! && == -> _RCIE `i -> 1 `i == -> _RCIF `i -> 1 `i 200  ]
+[; ;Main.c: 440: if(RCIE == 1 && RCIF == 1){
+"440
+[e $ ! && == -> _RCIE `i -> 1 `i == -> _RCIF `i -> 1 `i 205  ]
 {
-[; ;Main.c: 409: dataRX = UART_get_char();
-"409
+[; ;Main.c: 441: dataRX = UART_get_char();
+"441
 [e = _dataRX ( _UART_get_char ..  ]
-[; ;Main.c: 410: bufferCreator2(dataRX);
-"410
+[; ;Main.c: 442: bufferCreator2(dataRX);
+"442
 [e ( _bufferCreator2 (1 _dataRX ]
-"411
+"443
 }
-[e :U 200 ]
-[; ;Main.c: 411: }
-[; ;Main.c: 412: if (INTE == 1 && INTF == 1){
-"412
-[e $ ! && == -> _INTE `i -> 1 `i == -> _INTF `i -> 1 `i 201  ]
+[e :U 205 ]
+[; ;Main.c: 443: }
+[; ;Main.c: 444: if (INTE == 1 && INTF == 1){
+"444
+[e $ ! && == -> _INTE `i -> 1 `i == -> _INTF `i -> 1 `i 206  ]
 {
-[; ;Main.c: 413: INTF = 0;
-"413
+[; ;Main.c: 445: INTF = 0;
+"445
 [e = _INTF -> -> 0 `i `b ]
-[; ;Main.c: 415: flagTryConnect = 1;
-"415
+[; ;Main.c: 447: flagTryConnect = 1;
+"447
 [e = _flagTryConnect -> -> 1 `i `b ]
-[; ;Main.c: 416: timeToConnect = 200;
-"416
+[; ;Main.c: 448: timeToConnect = 200;
+"448
 [e = _timeToConnect -> -> 200 `i `uc ]
-[; ;Main.c: 417: timeBlinkLed = 5;
-"417
+[; ;Main.c: 449: timeBlinkLed = 5;
+"449
 [e = _timeBlinkLed -> -> 5 `i `uc ]
-[; ;Main.c: 418: RC4 = 0;
-"418
+[; ;Main.c: 450: RC4 = 0;
+"450
 [e = _RC4 -> -> 0 `i `b ]
-"419
+"451
 }
-[e :U 201 ]
-[; ;Main.c: 419: }
-[; ;Main.c: 420: if (T0IE == 1 && T0IF == 1){
-"420
-[e $ ! && == -> _T0IE `i -> 1 `i == -> _T0IF `i -> 1 `i 202  ]
+[e :U 206 ]
+[; ;Main.c: 451: }
+[; ;Main.c: 452: if (T0IE == 1 && T0IF == 1){
+"452
+[e $ ! && == -> _T0IE `i -> 1 `i == -> _T0IF `i -> 1 `i 207  ]
 {
-[; ;Main.c: 421: T0IE = 1;
-"421
+[; ;Main.c: 453: T0IE = 1;
+"453
 [e = _T0IE -> -> 1 `i `b ]
-[; ;Main.c: 422: T0IF = 0;
-"422
+[; ;Main.c: 454: T0IF = 0;
+"454
 [e = _T0IF -> -> 0 `i `b ]
-[; ;Main.c: 423: TMR0 = 60;
-"423
+[; ;Main.c: 455: TMR0 = 60;
+"455
 [e = _TMR0 -> -> 60 `i `uc ]
-[; ;Main.c: 424: if (serialTimeOut > 0){serialTimeOut--;}
-"424
-[e $ ! > -> _serialTimeOut `i -> 0 `i 203  ]
+[; ;Main.c: 456: if (serialTimeOut > 0){serialTimeOut--;}
+"456
+[e $ ! > -> _serialTimeOut `i -> 0 `i 208  ]
 {
 [e -- _serialTimeOut -> -> 1 `i `uc ]
 }
-[e :U 203 ]
-[; ;Main.c: 425: if (serialTimeOut == 0){
-"425
-[e $ ! == -> _serialTimeOut `i -> 0 `i 204  ]
-{
-[; ;Main.c: 426: serialTimeOut = 10;
-"426
-[e = _serialTimeOut -> -> 10 `i `uc ]
-[; ;Main.c: 427: rxBufferPos = 0;
-"427
-[e = _rxBufferPos -> -> 0 `i `uc ]
-[; ;Main.c: 428: rxBufferLength = 0;
-"428
-[e = _rxBufferLength -> -> 0 `i `uc ]
-[; ;Main.c: 429: memset(rxBuffer,0,rxBufferLength);
-"429
-[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> _rxBufferLength `ui ]
-"430
-}
-[e :U 204 ]
-[; ;Main.c: 430: }
-[; ;Main.c: 431: if (timeToConnect>0){
-"431
-[e $ ! > -> _timeToConnect `i -> 0 `i 205  ]
-{
-[; ;Main.c: 432: timeToConnect--;
-"432
-[e -- _timeToConnect -> -> 1 `i `uc ]
-"433
-}
-[e :U 205 ]
-[; ;Main.c: 433: }
-[; ;Main.c: 435: if (timeBlinkLed>0){
-"435
-[e $ ! > -> _timeBlinkLed `i -> 0 `i 206  ]
-{
-[; ;Main.c: 436: timeBlinkLed--;
-"436
-[e -- _timeBlinkLed -> -> 1 `i `uc ]
-"437
-}
-[e :U 206 ]
-"438
-}
-[e :U 202 ]
-[; ;Main.c: 437: }
-[; ;Main.c: 438: }
-[; ;Main.c: 439: if (TMR1IE == 1 && TMR1IF == 1){
-"439
-[e $ ! && == -> _TMR1IE `i -> 1 `i == -> _TMR1IF `i -> 1 `i 207  ]
-{
-[; ;Main.c: 440: TMR1IF = 0;
-"440
-[e = _TMR1IF -> -> 0 `i `b ]
-[; ;Main.c: 441: TMR1ON = 0;
-"441
-[e = _TMR1ON -> -> 0 `i `b ]
-[; ;Main.c: 442: TMR1L = 0x00;
-"442
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;Main.c: 443: TMR1H = 0x60;
-"443
-[e = _TMR1H -> -> 96 `i `uc ]
-[; ;Main.c: 444: TMR1ON = 1;
-"444
-[e = _TMR1ON -> -> 1 `i `b ]
-[; ;Main.c: 445: timeNow += 10;
-"445
-[e =+ _timeNow -> -> -> 10 `i `l `ul ]
-[; ;Main.c: 446: if (contTimer > 0){
-"446
-[e $ ! > _contTimer -> -> 0 `i `ui 208  ]
-{
-[; ;Main.c: 447: contTimer --;
-"447
-[e -- _contTimer -> -> 1 `i `ui ]
-"448
-}
 [e :U 208 ]
-"449
+[; ;Main.c: 457: if (serialTimeOut == 0){
+"457
+[e $ ! == -> _serialTimeOut `i -> 0 `i 209  ]
+{
+[; ;Main.c: 458: serialTimeOut = 10;
+"458
+[e = _serialTimeOut -> -> 10 `i `uc ]
+[; ;Main.c: 459: rxBufferPos = 0;
+"459
+[e = _rxBufferPos -> -> 0 `i `uc ]
+[; ;Main.c: 460: rxBufferLength = 0;
+"460
+[e = _rxBufferLength -> -> 0 `i `uc ]
+[; ;Main.c: 461: memset(rxBuffer,0,rxBufferLength);
+"461
+[e ( _memset (3 , , -> &U _rxBuffer `*v -> 0 `i -> _rxBufferLength `ui ]
+"462
+}
+[e :U 209 ]
+[; ;Main.c: 462: }
+[; ;Main.c: 463: if (timeToConnect>0){
+"463
+[e $ ! > -> _timeToConnect `i -> 0 `i 210  ]
+{
+[; ;Main.c: 464: timeToConnect--;
+"464
+[e -- _timeToConnect -> -> 1 `i `uc ]
+"465
+}
+[e :U 210 ]
+[; ;Main.c: 465: }
+[; ;Main.c: 467: if (timeBlinkLed>0){
+"467
+[e $ ! > -> _timeBlinkLed `i -> 0 `i 211  ]
+{
+[; ;Main.c: 468: timeBlinkLed--;
+"468
+[e -- _timeBlinkLed -> -> 1 `i `uc ]
+"469
+}
+[e :U 211 ]
+"470
 }
 [e :U 207 ]
-[; ;Main.c: 448: }
-[; ;Main.c: 449: }
-[; ;Main.c: 450: }
-"450
-[e :UE 199 ]
+[; ;Main.c: 469: }
+[; ;Main.c: 470: }
+[; ;Main.c: 471: if (TMR1IE == 1 && TMR1IF == 1){
+"471
+[e $ ! && == -> _TMR1IE `i -> 1 `i == -> _TMR1IF `i -> 1 `i 212  ]
+{
+[; ;Main.c: 472: TMR1IF = 0;
+"472
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;Main.c: 473: TMR1ON = 0;
+"473
+[e = _TMR1ON -> -> 0 `i `b ]
+[; ;Main.c: 474: TMR1L = 0x00;
+"474
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;Main.c: 475: TMR1H = 0x60;
+"475
+[e = _TMR1H -> -> 96 `i `uc ]
+[; ;Main.c: 476: TMR1ON = 1;
+"476
+[e = _TMR1ON -> -> 1 `i `b ]
+[; ;Main.c: 477: timeNow += 10;
+"477
+[e =+ _timeNow -> -> -> 10 `i `l `ul ]
+[; ;Main.c: 478: if (contTimer > 0){
+"478
+[e $ ! > _contTimer -> -> 0 `i `ui 213  ]
+{
+[; ;Main.c: 479: contTimer --;
+"479
+[e -- _contTimer -> -> 1 `i `ui ]
+"480
 }
-"455
+[e :U 213 ]
+"481
+}
+[e :U 212 ]
+[; ;Main.c: 480: }
+[; ;Main.c: 481: }
+[; ;Main.c: 482: }
+"482
+[e :UE 204 ]
+}
+"487
 [v _initGPIO `(v  1 ef ]
 {
-[; ;Main.c: 455: void initGPIO(void){
+[; ;Main.c: 487: void initGPIO(void){
 [e :U _initGPIO ]
 [f ]
-[; ;Main.c: 456: ANSEL = 0x00;
-"456
+[; ;Main.c: 488: ANSEL = 0x00;
+"488
 [e = _ANSEL -> -> 0 `i `uc ]
-[; ;Main.c: 457: ANSELH = 0x00;
-"457
+[; ;Main.c: 489: ANSELH = 0x00;
+"489
 [e = _ANSELH -> -> 0 `i `uc ]
-[; ;Main.c: 458: PORTA = 0;
-"458
+[; ;Main.c: 490: PORTA = 0;
+"490
 [e = _PORTA -> -> 0 `i `uc ]
-[; ;Main.c: 459: TRISA = 0b00000100;
-"459
+[; ;Main.c: 491: TRISA = 0b00000100;
+"491
 [e = _TRISA -> -> 4 `i `uc ]
-[; ;Main.c: 460: PORTA = 0;
-"460
+[; ;Main.c: 492: PORTA = 0;
+"492
 [e = _PORTA -> -> 0 `i `uc ]
-[; ;Main.c: 462: PORTB = 0;
-"462
+[; ;Main.c: 494: PORTB = 0;
+"494
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;Main.c: 463: TRISB = 0b00000000;
-"463
+[; ;Main.c: 495: TRISB = 0b00000000;
+"495
 [e = _TRISB -> -> 0 `i `uc ]
-[; ;Main.c: 464: PORTB = 0;
-"464
+[; ;Main.c: 496: PORTB = 0;
+"496
 [e = _PORTB -> -> 0 `i `uc ]
-[; ;Main.c: 466: PORTC = 0;
-"466
+[; ;Main.c: 498: PORTC = 0;
+"498
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;Main.c: 467: TRISC = 0b00000001;
-"467
+[; ;Main.c: 499: TRISC = 0b00000001;
+"499
 [e = _TRISC -> -> 1 `i `uc ]
-[; ;Main.c: 468: PORTC = 0;
-"468
+[; ;Main.c: 500: PORTC = 0;
+"500
 [e = _PORTC -> -> 0 `i `uc ]
-[; ;Main.c: 469: }
-"469
-[e :UE 209 ]
+[; ;Main.c: 501: }
+"501
+[e :UE 214 ]
 }
-"474
+"506
 [v _initInterrupt `(v  1 ef ]
 {
-[; ;Main.c: 474: void initInterrupt(void){
+[; ;Main.c: 506: void initInterrupt(void){
 [e :U _initInterrupt ]
 [f ]
-[; ;Main.c: 475: GIE = 1;
-"475
-[e = _GIE -> -> 1 `i `b ]
-[; ;Main.c: 476: PEIE = 1;
-"476
-[e = _PEIE -> -> 1 `i `b ]
-[; ;Main.c: 479: INTE = 1;
-"479
-[e = _INTE -> -> 1 `i `b ]
-[; ;Main.c: 480: INTF = 0;
-"480
-[e = _INTF -> -> 0 `i `b ]
-[; ;Main.c: 481: INTEDG = 1;
-"481
-[e = _INTEDG -> -> 1 `i `b ]
-[; ;Main.c: 485: T0CS = 0;
-"485
-[e = _T0CS -> -> 0 `i `b ]
-[; ;Main.c: 486: PSA = 0;
-"486
-[e = _PSA -> -> 0 `i `b ]
-[; ;Main.c: 487: PS0 = 1;
-"487
-[e = _PS0 -> -> 1 `i `b ]
-[; ;Main.c: 488: PS1 = 1;
-"488
-[e = _PS1 -> -> 1 `i `b ]
-[; ;Main.c: 489: PS2 = 1;
-"489
-[e = _PS2 -> -> 1 `i `b ]
-[; ;Main.c: 490: TMR0 = 12;
-"490
-[e = _TMR0 -> -> 12 `i `uc ]
-[; ;Main.c: 491: T0IF = 0;
-"491
-[e = _T0IF -> -> 0 `i `b ]
-[; ;Main.c: 492: T0IE = 1;
-"492
-[e = _T0IE -> -> 1 `i `b ]
-[; ;Main.c: 497: TMR1L = 0x00;
-"497
-[e = _TMR1L -> -> 0 `i `uc ]
-[; ;Main.c: 498: TMR1H = 0x60;
-"498
-[e = _TMR1H -> -> 96 `i `uc ]
-[; ;Main.c: 499: T1CKPS0 = 1;
-"499
-[e = _T1CKPS0 -> -> 1 `i `b ]
-[; ;Main.c: 500: T1CKPS1 = 1;
-"500
-[e = _T1CKPS1 -> -> 1 `i `b ]
-[; ;Main.c: 501: TMR1CS = 1;
-"501
-[e = _TMR1CS -> -> 1 `i `b ]
-[; ;Main.c: 502: nT1SYNC = 1;
-"502
-[e = _nT1SYNC -> -> 1 `i `b ]
-[; ;Main.c: 503: T1OSCEN = 1;
-"503
-[e = _T1OSCEN -> -> 1 `i `b ]
-[; ;Main.c: 504: TMR1IF = 0;
-"504
-[e = _TMR1IF -> -> 0 `i `b ]
-[; ;Main.c: 505: TMR1IE = 1;
-"505
-[e = _TMR1IE -> -> 1 `i `b ]
-[; ;Main.c: 506: TMR1ON = 1;
-"506
-[e = _TMR1ON -> -> 1 `i `b ]
-[; ;Main.c: 507: }
+[; ;Main.c: 507: GIE = 1;
 "507
-[e :UE 210 ]
+[e = _GIE -> -> 1 `i `b ]
+[; ;Main.c: 508: PEIE = 1;
+"508
+[e = _PEIE -> -> 1 `i `b ]
+[; ;Main.c: 511: INTE = 1;
+"511
+[e = _INTE -> -> 1 `i `b ]
+[; ;Main.c: 512: INTF = 0;
+"512
+[e = _INTF -> -> 0 `i `b ]
+[; ;Main.c: 513: INTEDG = 1;
+"513
+[e = _INTEDG -> -> 1 `i `b ]
+[; ;Main.c: 517: T0CS = 0;
+"517
+[e = _T0CS -> -> 0 `i `b ]
+[; ;Main.c: 518: PSA = 0;
+"518
+[e = _PSA -> -> 0 `i `b ]
+[; ;Main.c: 519: PS0 = 1;
+"519
+[e = _PS0 -> -> 1 `i `b ]
+[; ;Main.c: 520: PS1 = 1;
+"520
+[e = _PS1 -> -> 1 `i `b ]
+[; ;Main.c: 521: PS2 = 1;
+"521
+[e = _PS2 -> -> 1 `i `b ]
+[; ;Main.c: 522: TMR0 = 12;
+"522
+[e = _TMR0 -> -> 12 `i `uc ]
+[; ;Main.c: 523: T0IF = 0;
+"523
+[e = _T0IF -> -> 0 `i `b ]
+[; ;Main.c: 524: T0IE = 1;
+"524
+[e = _T0IE -> -> 1 `i `b ]
+[; ;Main.c: 529: TMR1L = 0x00;
+"529
+[e = _TMR1L -> -> 0 `i `uc ]
+[; ;Main.c: 530: TMR1H = 0x60;
+"530
+[e = _TMR1H -> -> 96 `i `uc ]
+[; ;Main.c: 531: T1CKPS0 = 1;
+"531
+[e = _T1CKPS0 -> -> 1 `i `b ]
+[; ;Main.c: 532: T1CKPS1 = 1;
+"532
+[e = _T1CKPS1 -> -> 1 `i `b ]
+[; ;Main.c: 533: TMR1CS = 1;
+"533
+[e = _TMR1CS -> -> 1 `i `b ]
+[; ;Main.c: 534: nT1SYNC = 1;
+"534
+[e = _nT1SYNC -> -> 1 `i `b ]
+[; ;Main.c: 535: T1OSCEN = 1;
+"535
+[e = _T1OSCEN -> -> 1 `i `b ]
+[; ;Main.c: 536: TMR1IF = 0;
+"536
+[e = _TMR1IF -> -> 0 `i `b ]
+[; ;Main.c: 537: TMR1IE = 1;
+"537
+[e = _TMR1IE -> -> 1 `i `b ]
+[; ;Main.c: 538: TMR1ON = 1;
+"538
+[e = _TMR1ON -> -> 1 `i `b ]
+[; ;Main.c: 539: }
+"539
+[e :UE 215 ]
 }
 [a 4C 65 84 43 82 83 84 13 10 0 ]
 [a 1C 65 84 43 83 76 69 69 80 50 13 10 0 ]
