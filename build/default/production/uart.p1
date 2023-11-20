@@ -1161,19 +1161,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _bufferTx `uc  -> 40 `i e ]
 "43 protocolo.h
 [v _bufferTxLen `uc  1 e ]
-"29 main.h
-[v _timeNow `ul  1 e ]
-"30 main.h
-[v _startTime `ul  1 e ]
-"31 main.h
-[v _timer `ui  1 e ]
 "32 main.h
-[v _newTimer `ui  1 e ]
+[v _timeNow `ul  1 e ]
 "33 main.h
-[v _contTimer `ui  1 e ]
+[v _startTime `ul  1 e ]
 "34 main.h
-[v _numOfLogs `ui  1 e ]
+[v _timer `ui  1 e ]
 "35 main.h
+[v _newTimer `ui  1 e ]
+"36 main.h
+[v _contTimer `ui  1 e ]
+"37 main.h
+[v _numOfLogs `ui  1 e ]
+"38 main.h
 [v _logStatus `b  1 e ]
 "24 C:\Program Files (x86)\HI-TECH Software\PICC\9.83\include\string.h
 [v _memset `(*v  0 ef3`*v`i`ui ]
@@ -2383,39 +2383,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;protocolo.h: 38: void readLogData (void);
 [; ;protocolo.h: 42: unsigned char bufferTx[40];
 [; ;protocolo.h: 43: unsigned char bufferTxLen;
-[; ;main.h: 22: bit checksumVerify (void);
-[; ;main.h: 23: unsigned char checksumCalc (unsigned char*, unsigned char);
-"29 main.h
+[; ;main.h: 25: bit checksumVerify (void);
+[; ;main.h: 26: unsigned char checksumCalc (unsigned char*, unsigned char);
+"32 main.h
 [i _timeNow
 -> -> 1641006000 `l `ul
 ]
-[; ;main.h: 29: unsigned long timeNow = 1641006000;
-"30
+[; ;main.h: 32: unsigned long timeNow = 1641006000;
+"33
 [i _startTime
 -> -> 1641006000 `l `ul
 ]
-[; ;main.h: 30: unsigned long startTime = 1641006000;
-"31
+[; ;main.h: 33: unsigned long startTime = 1641006000;
+"34
 [i _timer
 -> -> 1 `i `ui
 ]
-[; ;main.h: 31: unsigned int timer = 1;
-"32
+[; ;main.h: 34: unsigned int timer = 1;
+"35
 [i _newTimer
 -> -> 1 `i `ui
 ]
-[; ;main.h: 32: unsigned int newTimer = 1;
-[; ;main.h: 33: unsigned int contTimer;
-"34
+[; ;main.h: 35: unsigned int newTimer = 1;
+[; ;main.h: 36: unsigned int contTimer;
+"37
 [i _numOfLogs
 -> -> 0 `i `ui
 ]
-[; ;main.h: 34: unsigned int numOfLogs = 0;
-"35
+[; ;main.h: 37: unsigned int numOfLogs = 0;
+"38
 [i _logStatus
 -> 0 `i
 ]
-[; ;main.h: 35: bit logStatus = 0;
+[; ;main.h: 38: bit logStatus = 0;
 "7 uart.c
 [v _initUART `(v  1 ef ]
 {

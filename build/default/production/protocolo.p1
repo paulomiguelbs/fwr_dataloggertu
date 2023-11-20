@@ -1161,21 +1161,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _bufferTx `uc  -> 40 `i e ]
 "43 protocolo.h
 [v _bufferTxLen `uc  1 e ]
-"29 main.h
-[v _timeNow `ul  1 e ]
-"30 main.h
-[v _startTime `ul  1 e ]
-"31 main.h
-[v _timer `ui  1 e ]
 "32 main.h
-[v _newTimer `ui  1 e ]
+[v _timeNow `ul  1 e ]
 "33 main.h
-[v _contTimer `ui  1 e ]
+[v _startTime `ul  1 e ]
 "34 main.h
-[v _numOfLogs `ui  1 e ]
+[v _timer `ui  1 e ]
 "35 main.h
+[v _newTimer `ui  1 e ]
+"36 main.h
+[v _contTimer `ui  1 e ]
+"37 main.h
+[v _numOfLogs `ui  1 e ]
+"38 main.h
 [v _logStatus `b  1 e ]
-"23 main.h
+"26 main.h
 [v _checksumCalc `(uc  0 ef2`*uc`uc ]
 "27 eepromI2c.h
 [v _eepromWriteByte `(v  0 ef2`ui`uc ]
@@ -2390,39 +2390,39 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;protocolo.h: 38: void readLogData (void);
 [; ;protocolo.h: 42: unsigned char bufferTx[40];
 [; ;protocolo.h: 43: unsigned char bufferTxLen;
-[; ;main.h: 22: bit checksumVerify (void);
-[; ;main.h: 23: unsigned char checksumCalc (unsigned char*, unsigned char);
-"29 main.h
+[; ;main.h: 25: bit checksumVerify (void);
+[; ;main.h: 26: unsigned char checksumCalc (unsigned char*, unsigned char);
+"32 main.h
 [i _timeNow
 -> -> 1641006000 `l `ul
 ]
-[; ;main.h: 29: unsigned long timeNow = 1641006000;
-"30
+[; ;main.h: 32: unsigned long timeNow = 1641006000;
+"33
 [i _startTime
 -> -> 1641006000 `l `ul
 ]
-[; ;main.h: 30: unsigned long startTime = 1641006000;
-"31
+[; ;main.h: 33: unsigned long startTime = 1641006000;
+"34
 [i _timer
 -> -> 1 `i `ui
 ]
-[; ;main.h: 31: unsigned int timer = 1;
-"32
+[; ;main.h: 34: unsigned int timer = 1;
+"35
 [i _newTimer
 -> -> 1 `i `ui
 ]
-[; ;main.h: 32: unsigned int newTimer = 1;
-[; ;main.h: 33: unsigned int contTimer;
-"34
+[; ;main.h: 35: unsigned int newTimer = 1;
+[; ;main.h: 36: unsigned int contTimer;
+"37
 [i _numOfLogs
 -> -> 0 `i `ui
 ]
-[; ;main.h: 34: unsigned int numOfLogs = 0;
-"35
+[; ;main.h: 37: unsigned int numOfLogs = 0;
+"38
 [i _logStatus
 -> 0 `i
 ]
-[; ;main.h: 35: bit logStatus = 0;
+[; ;main.h: 38: bit logStatus = 0;
 [; ;eepromI2c.h: 26: unsigned char eepromReadByte(unsigned int addr);
 [; ;eepromI2c.h: 27: void eepromWriteByte(unsigned int addr, unsigned char data);
 [; ;eepromI2c.h: 28: void eepromReadLog(unsigned int addr, unsigned char* buff);
@@ -2702,9 +2702,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;protocolo.c: 130: void readLogStatus (void){
 [e :U _readLogStatus ]
 [f ]
-[; ;protocolo.c: 132: bufferTxLen = 14;
+[; ;protocolo.c: 132: bufferTxLen = 17;
 "132
-[e = _bufferTxLen -> -> 14 `i `uc ]
+[e = _bufferTxLen -> -> 17 `i `uc ]
 [; ;protocolo.c: 133: bufferTx[0] = 0x55;
 "133
 [e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
@@ -2741,77 +2741,86 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;protocolo.c: 144: bufferTx[11] = logStatus;
 "144
 [e = *U + &U _bufferTx * -> -> -> 11 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> _logStatus `i `uc ]
-[; ;protocolo.c: 145: bufferTx[12] = checksumCalc(bufferTx,14);
+[; ;protocolo.c: 145: bufferTx[12] = 1;
 "145
-[e = *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 14 `i `uc ]
-[; ;protocolo.c: 146: bufferTx[13] = 0x0A;
+[e = *U + &U _bufferTx * -> -> -> 12 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 1 `i `uc ]
+[; ;protocolo.c: 146: bufferTx[13] = 0;
 "146
-[e = *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
-[; ;protocolo.c: 147: }
+[e = *U + &U _bufferTx * -> -> -> 13 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 0 `i `uc ]
+[; ;protocolo.c: 147: bufferTx[14] = 0;
 "147
+[e = *U + &U _bufferTx * -> -> -> 14 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 0 `i `uc ]
+[; ;protocolo.c: 148: bufferTx[15] = checksumCalc(bufferTx,17);
+"148
+[e = *U + &U _bufferTx * -> -> -> 15 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 17 `i `uc ]
+[; ;protocolo.c: 149: bufferTx[16] = 0x0A;
+"149
+[e = *U + &U _bufferTx * -> -> -> 16 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[; ;protocolo.c: 150: }
+"150
 [e :UE 141 ]
 }
-"151
+"154
 [v _readLogData `(v  1 ef ]
 {
-[; ;protocolo.c: 151: void readLogData (void){
+[; ;protocolo.c: 154: void readLogData (void){
 [e :U _readLogData ]
 [f ]
-"152
+"155
 [v _readData `uc  -> 3 `i a ]
-[; ;protocolo.c: 152: unsigned char readData[3];
-[; ;protocolo.c: 153: for (unsigned int i=0; i<numOfLogs; i++){
-"153
+[; ;protocolo.c: 155: unsigned char readData[3];
+[; ;protocolo.c: 156: for (unsigned int i=0; i<numOfLogs; i++){
+"156
 {
 [v _i `ui  1 a ]
 [e = _i -> -> 0 `i `ui ]
 [e $U 146  ]
 [e :U 143 ]
 {
-[; ;protocolo.c: 154: eepromReadLog(0x0020+(3*i),readData);
-"154
-[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * -> -> 3 `i `ui _i &U _readData ]
-[; ;protocolo.c: 156: bufferTxLen = 9;
-"156
-[e = _bufferTxLen -> -> 9 `i `uc ]
-[; ;protocolo.c: 157: bufferTx[0] = 0x55;
+[; ;protocolo.c: 157: eepromReadLog(0x0020+(3*i),readData);
 "157
-[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
-[; ;protocolo.c: 158: bufferTx[1] = 0x37;
-"158
-[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 55 `i `uc ]
-[; ;protocolo.c: 159: bufferTx[2] = i>>8;
+[e ( _eepromReadLog (2 , + -> -> 32 `i `ui * -> -> 3 `i `ui _i &U _readData ]
+[; ;protocolo.c: 159: bufferTxLen = 9;
 "159
-[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _i -> 8 `i `uc ]
-[; ;protocolo.c: 160: bufferTx[3] = i;
+[e = _bufferTxLen -> -> 9 `i `uc ]
+[; ;protocolo.c: 160: bufferTx[0] = 0x55;
 "160
-[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _i `uc ]
-[; ;protocolo.c: 161: bufferTx[4] = readData[0];
+[e = *U + &U _bufferTx * -> -> -> 0 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 85 `i `uc ]
+[; ;protocolo.c: 161: bufferTx[1] = 0x37;
 "161
-[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;protocolo.c: 162: bufferTx[5] = readData[1];
+[e = *U + &U _bufferTx * -> -> -> 1 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 55 `i `uc ]
+[; ;protocolo.c: 162: bufferTx[2] = i>>8;
 "162
-[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;protocolo.c: 163: bufferTx[6] = readData[2];
+[e = *U + &U _bufferTx * -> -> -> 2 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> >> _i -> 8 `i `uc ]
+[; ;protocolo.c: 163: bufferTx[3] = i;
 "163
-[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
-[; ;protocolo.c: 164: bufferTx[7] = checksumCalc(bufferTx,9);
+[e = *U + &U _bufferTx * -> -> -> 3 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> _i `uc ]
+[; ;protocolo.c: 164: bufferTx[4] = readData[0];
 "164
-[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 9 `i `uc ]
-[; ;protocolo.c: 165: bufferTx[8] = 0x0A;
+[e = *U + &U _bufferTx * -> -> -> 4 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 0 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;protocolo.c: 165: bufferTx[5] = readData[1];
 "165
-[e = *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+[e = *U + &U _bufferTx * -> -> -> 5 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 1 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;protocolo.c: 166: bufferTx[6] = readData[2];
 "166
+[e = *U + &U _bufferTx * -> -> -> 6 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux *U + &U _readData * -> -> -> 2 `i `ui `ux -> -> # *U &U _readData `ui `ux ]
+[; ;protocolo.c: 167: bufferTx[7] = checksumCalc(bufferTx,9);
+"167
+[e = *U + &U _bufferTx * -> -> -> 7 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux ( _checksumCalc (2 , &U _bufferTx -> -> 9 `i `uc ]
+[; ;protocolo.c: 168: bufferTx[8] = 0x0A;
+"168
+[e = *U + &U _bufferTx * -> -> -> 8 `i `ui `ux -> -> # *U &U _bufferTx `ui `ux -> -> 10 `i `uc ]
+"169
 }
-"153
+"156
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 146 ]
 [e $ < _i _numOfLogs 143  ]
 [e :U 144 ]
-"166
+"169
 }
-[; ;protocolo.c: 166: }
-[; ;protocolo.c: 167: }
-"167
+[; ;protocolo.c: 169: }
+[; ;protocolo.c: 170: }
+"170
 [e :UE 142 ]
 }

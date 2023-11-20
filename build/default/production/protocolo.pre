@@ -1566,11 +1566,11 @@ void readLogData (void);
 unsigned char bufferTx[40];
 unsigned char bufferTxLen;
 
-# 22 "main.h"
+# 25 "main.h"
 bit checksumVerify (void);
 unsigned char checksumCalc (unsigned char*, unsigned char);
 
-# 29
+# 32
 unsigned long timeNow = 1641006000;
 unsigned long startTime = 1641006000;
 unsigned int timer = 1;
@@ -1700,7 +1700,7 @@ bufferTx[4] = 0x0A;
 # 130
 void readLogStatus (void){
 
-bufferTxLen = 14;
+bufferTxLen = 17;
 bufferTx[0] = 0x55;
 bufferTx[1] = 0x36;
 bufferTx[2] = 0x09;
@@ -1713,11 +1713,14 @@ bufferTx[8] = timer;
 bufferTx[9] = numOfLogs>>8;
 bufferTx[10] = numOfLogs;
 bufferTx[11] = logStatus;
-bufferTx[12] = checksumCalc(bufferTx,14);
-bufferTx[13] = 0x0A;
+bufferTx[12] = 1;
+bufferTx[13] = 0;
+bufferTx[14] = 0;
+bufferTx[15] = checksumCalc(bufferTx,17);
+bufferTx[16] = 0x0A;
 }
 
-# 151
+# 154
 void readLogData (void){
 unsigned char readData[3];
 for (unsigned int i=0; i<numOfLogs; i++){

@@ -4,7 +4,7 @@
  * Project Type: Application - Configuration: default
  * Device
  * PIC16F690
- * Checksum: 0x909A
+ * Checksum: 0xC4F3
  * CRC32: 0x8F3BD5C5
  * Packs
  * PIC16Fxxx_DFP (1.3.42)

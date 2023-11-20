@@ -15,7 +15,7 @@ Linker command line:
   -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
   -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA \
   -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\Paulo\AppData\Local\Temp\s6no.obj \
+  C:\Users\Paulo\AppData\Local\Temp\sdr8.obj \
   dist/default/production\TU_DataLogger.X.production.obj 
 
 Object code version is 3.10
@@ -25,39 +25,39 @@ Machine type is 16F690
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Paulo\AppData\Local\Temp\s6no.obj
+C:\Users\Paulo\AppData\Local\Temp\sdr8.obj
                 end_init                              D        D        2        8       0
                 reset_vec                             0        0        2        0       0
 dist/default/production\TU_DataLogger.X.production.obj
                 intentry                              4        4        9        8       0
                 config                             2007     2007        1     400E       0
                 text1035                            E80      E80       94     1D00       0
-                text1034                            C97      C97       15     192E       0
-                text1032                            C83      C83       14     1906       0
-                text1030                            C77      C77        4     18EE       0
-                text1028                            CC1      CC1       16     1982       0
-                text1027                            CD7      CD7       1D     19AE       0
-                text1026                            D50      D50       2B     1AA0       0
-                text1025                            CF4      CF4       1D     19E8       0
-                text1019                            DAA      DAA       35     1B54       0
-                text1018                            D2F      D2F       21     1A5E       0
-                text1017                            D11      D11       1E     1A22       0
-                text1016                            CAC      CAC       15     1958       0
-                text1015                            DDF      DDF       3A     1BBE       0
+                text1034                            C93      C93       15     1926       0
+                text1032                            C7F      C7F       14     18FE       0
+                text1030                            C73      C73        4     18E6       0
+                text1028                            CBD      CBD       16     197A       0
+                text1027                            CD3      CD3       1D     19A6       0
+                text1026                            D4C      D4C       2B     1A98       0
+                text1025                            CF0      CF0       1D     19E0       0
+                text1019                            DA6      DA6       35     1B4C       0
+                text1018                            D2B      D2B       21     1A56       0
+                text1017                            D0D      D0D       1E     1A1A       0
+                text1016                            CA8      CA8       15     1950       0
+                text1015                            DDB      DDB       3E     1BB6       0
                 text1005                            E19      E19       67     1C32       0
                 text1001                              F        F      7F1        8       0
                 swtext1                             83F      83F       14     107E       0
                 maintext                            F14      F14       EC     1E28       0
                 cstackBANK0                          20       20       30       20       1
                 cstackCOMMON                         70       70        A       70       1
-                clrtext                             C7B      C7B        8     18F6       0
+                clrtext                             C77      C77        8     18EE       0
                 bssBANK2                            120      120       4F      120       1
                 bssBANK1                             A0       A0       46       A0       1
                 dataBANK0                            50       50        C       20       1
                 bssBANK0                             5C       5C        B       20       1
                 bssCOMMON                            7B       7B        3       70       1
                 bitbssCOMMON                        3D0       7A        6       70       1     8
-                cinit                               D7B      D7B       2F     1AF6       0
+                cinit                               D77      D77       2F     1AEE       0
                 strings                             800      800       3F     1000       0
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -69,23 +69,23 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intentry                              4        4        9         0
                 reset_vec                             0        0        2         0
                 text1035                            E80      E80       94         0
-                text1034                            C97      C97       15         0
-                text1032                            C83      C83       14         0
-                text1030                            C77      C77        4         0
-                text1028                            CC1      CC1       16         0
-                text1027                            CD7      CD7       1D         0
-                text1026                            D50      D50       2B         0
-                text1025                            CF4      CF4       1D         0
-                text1019                            DAA      DAA       35         0
-                text1018                            D2F      D2F       21         0
-                text1017                            D11      D11       1E         0
-                text1016                            CAC      CAC       15         0
-                text1015                            DDF      DDF       3A         0
+                text1034                            C93      C93       15         0
+                text1032                            C7F      C7F       14         0
+                text1030                            C73      C73        4         0
+                text1028                            CBD      CBD       16         0
+                text1027                            CD3      CD3       1D         0
+                text1026                            D4C      D4C       2B         0
+                text1025                            CF0      CF0       1D         0
+                text1019                            DA6      DA6       35         0
+                text1018                            D2B      D2B       21         0
+                text1017                            D0D      D0D       1E         0
+                text1016                            CA8      CA8       15         0
+                text1015                            DDB      DDB       3E         0
                 text1005                            E19      E19       67         0
                 text1001                              F        F      7F1         0
                 maintext                            F14      F14       EC         0
-                clrtext                             C7B      C7B        8         0
-                cinit                               D7B      D7B       2F         0
+                clrtext                             C77      C77        8         0
+                cinit                               D77      D77       2F         0
 
         CLASS   STRCODE        
 
@@ -144,20 +144,20 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 bssBANK2                       000120  00004F  00016F       120       1  BANK2       1
                 strings                        000800  00003F  00083F      1000       0  STRING      2
                 swtext1                        00083F  000014  000853      107E       0  CONST       2
-                text1030                       000C77  000004  000C7B      18EE       0  CODE        2
-                clrtext                        000C7B  000008  000C83      18F6       0  CODE        2
-                text1032                       000C83  000014  000C97      1906       0  CODE        2
-                text1034                       000C97  000015  000CAC      192E       0  CODE        2
-                text1016                       000CAC  000015  000CC1      1958       0  CODE        2
-                text1028                       000CC1  000016  000CD7      1982       0  CODE        2
-                text1027                       000CD7  00001D  000CF4      19AE       0  CODE        2
-                text1025                       000CF4  00001D  000D11      19E8       0  CODE        2
-                text1017                       000D11  00001E  000D2F      1A22       0  CODE        2
-                text1018                       000D2F  000021  000D50      1A5E       0  CODE        2
-                text1026                       000D50  00002B  000D7B      1AA0       0  CODE        2
-                cinit                          000D7B  00002F  000DAA      1AF6       0  CODE        2
-                text1019                       000DAA  000035  000DDF      1B54       0  CODE        2
-                text1015                       000DDF  00003A  000E19      1BBE       0  CODE        2
+                text1030                       000C73  000004  000C77      18E6       0  CODE        2
+                clrtext                        000C77  000008  000C7F      18EE       0  CODE        2
+                text1032                       000C7F  000014  000C93      18FE       0  CODE        2
+                text1034                       000C93  000015  000CA8      1926       0  CODE        2
+                text1016                       000CA8  000015  000CBD      1950       0  CODE        2
+                text1028                       000CBD  000016  000CD3      197A       0  CODE        2
+                text1027                       000CD3  00001D  000CF0      19A6       0  CODE        2
+                text1025                       000CF0  00001D  000D0D      19E0       0  CODE        2
+                text1017                       000D0D  00001E  000D2B      1A1A       0  CODE        2
+                text1018                       000D2B  000021  000D4C      1A56       0  CODE        2
+                text1026                       000D4C  00002B  000D77      1A98       0  CODE        2
+                cinit                          000D77  00002F  000DA6      1AEE       0  CODE        2
+                text1019                       000DA6  000035  000DDB      1B4C       0  CODE        2
+                text1015                       000DDB  00003E  000E19      1BB6       0  CODE        2
                 text1005                       000E19  000067  000E80      1C32       0  CODE        2
                 text1035                       000E80  000094  000F14      1D00       0  CODE        2
                 maintext                       000F14  0000EC  001000      1E28       0  CODE        2
@@ -171,12 +171,12 @@ UNUSED ADDRESS RANGES
         BANK1            00E6-00EF              A           1
         BANK2            016F-016F              1           1
         CODE             0002-0003              2           2
-                         0853-0C76            424
+                         0853-0C72            420
         CONST            0002-0003              2           2
-                         0853-0C76            100
+                         0853-0C72            100
         EEDATA           2100-21FF            100           2
         ENTRY            0002-0003              2           2
-                         0853-0C76            100
+                         0853-0C72            100
         IDLOC            2000-2003              4           2
         RAM              0067-006F              9           1
                          00E6-00EF              A
@@ -186,9 +186,9 @@ UNUSED ADDRESS RANGES
         SFR2             0100-011F             20           1
         SFR3             0180-01EF             70           1
         STRCODE          0002-0003              2           2
-                         0853-0C76            424
+                         0853-0C72            420
         STRING           0002-0003              2           2
-                         0853-0C76            100
+                         0853-0C72            100
 
                                   Symbol Table
 
@@ -449,17 +449,17 @@ __end_of___lmul                     text1001     07F9
 __end_of___wmul                     text1001     03A3
 __end_of_bufferCreator2             text1035     0F14
 __end_of_checksumCalc               text1001     0778
-__end_of_checksumVerify             text1026     0D7B
+__end_of_checksumVerify             text1026     0D77
 __end_of_comandoRx                  text1001     01FF
 __end_of_eepromReadByte             text1001     047B
 __end_of_eepromReadLog              text1001     04E0
 __end_of_eepromReadLogPage          text1001     04B7
 __end_of_eepromWriteByte            text1001     038A
-__end_of_getClockCmd                text1019     0DDF
-__end_of_getTimerCmd                text1017     0D2F
+__end_of_getClockCmd                text1019     0DDB
+__end_of_getTimerCmd                text1017     0D2B
 __end_of_halfclockdelay             text1001     0800
 __end_of_i2cAck                     text1001     06F3
-__end_of_i2cInitialize              text1030     0C7B
+__end_of_i2cInitialize              text1030     0C77
 __end_of_i2cNack                    text1001     072F
 __end_of_i2cRead                    text1001     06A0
 __end_of_i2cRestart                 text1001     07FA
@@ -467,25 +467,25 @@ __end_of_i2cStart                   text1001     0745
 __end_of_i2cStop                    text1001     074D
 __end_of_i2cWrite                   text1001     0715
 __end_of_initAht10                  text1001     002D
-__end_of_initGPIO                   text1028     0CD7
-__end_of_initInterrupt              text1027     0CF4
-__end_of_initUART                   text1034     0CAC
+__end_of_initGPIO                   text1028     0CD3
+__end_of_initInterrupt              text1027     0CF0
+__end_of_initUART                   text1034     0CA8
 __end_of_initVars                   text1001     0463
 __end_of_isr                        text1035     0EDF
 __end_of_jdyConfig                  text1005     0E66
 __end_of_logSave                    text1001     0284
 __end_of_main                       maintext     1000
-__end_of_memcpy                     text1025     0D11
-__end_of_memset                     text1032     0C97
+__end_of_memcpy                     text1025     0D0D
+__end_of_memset                     text1032     0C93
 __end_of_readLogStatus              text1015     0E19
 __end_of_readTemp                   text1001     068B
 __end_of_resposta                   text1001     07C6
 __end_of_scl_out                    text1001     0724
 __end_of_sda_out                    text1001     073A
 __end_of_sendTriggerMeasurementCmd  text1001     001E
-__end_of_setTimerCmd                text1018     0D50
+__end_of_setTimerCmd                text1018     0D4C
 __end_of_startLogCmd                text1001     037B
-__end_of_stopLogCmd                 text1016     0CC1
+__end_of_stopLogCmd                 text1016     0CBD
 __end_ofi1_memset                   text1035     0EF9
 __pbitbssCOMMON                     bitbssCOMMON 03D0
 __pbssBANK0                         bssBANK0     005C
@@ -515,26 +515,26 @@ __ptext1011                         text1001     073A
 __ptext1012                         text1001     07B6
 __ptext1013                         text1001     072F
 __ptext1014                         text1001     0715
-__ptext1015                         text1015     0DDF
-__ptext1016                         text1016     0CAC
-__ptext1017                         text1017     0D11
-__ptext1018                         text1018     0D2F
-__ptext1019                         text1019     0DAA
+__ptext1015                         text1015     0DDB
+__ptext1016                         text1016     0CA8
+__ptext1017                         text1017     0D0D
+__ptext1018                         text1018     0D2B
+__ptext1019                         text1019     0DA6
 __ptext1020                         text1005     0E66
 __ptext1021                         text1001     06A0
 __ptext1022                         text1001     0778
 __ptext1023                         text1001     07C6
 __ptext1024                         text1001     038A
-__ptext1025                         text1025     0CF4
-__ptext1026                         text1026     0D50
-__ptext1027                         text1027     0CD7
-__ptext1028                         text1028     0CC1
+__ptext1025                         text1025     0CF0
+__ptext1026                         text1026     0D4C
+__ptext1027                         text1027     0CD3
+__ptext1028                         text1028     0CBD
 __ptext1029                         text1001     07FA
-__ptext1030                         text1030     0C77
+__ptext1030                         text1030     0C73
 __ptext1031                         text1001     0757
-__ptext1032                         text1032     0C83
+__ptext1032                         text1032     0C7F
 __ptext1033                         text1001     074D
-__ptext1034                         text1034     0C97
+__ptext1034                         text1034     0C93
 __ptext1035                         text1035     0E80
 __ptext1036                         text1035     0EF9
 __ptext1037                         text1035     0EE5
@@ -598,7 +598,7 @@ _bufferCreator2                     text1035     0EF9
 _bufferTx                           bssBANK1     00A0
 _bufferTxLen                        bssBANK0     0060
 _checksumCalc                       text1001     0757
-_checksumVerify                     text1026     0D50
+_checksumVerify                     text1026     0D4C
 _cmd                                bssBANK1     00C8
 _comandoRx                          text1001     002D
 _contTimer                          bssBANK0     005C
@@ -614,11 +614,11 @@ _flagConection                      bitbssCOMMON 03D1
 _flagRespostaBLE                    bitbssCOMMON 03D2
 _flagRxBufferOk                     bitbssCOMMON 03D3
 _flagTryConnect                     bitbssCOMMON 03D4
-_getClockCmd                        text1019     0DAA
-_getTimerCmd                        text1017     0D11
+_getClockCmd                        text1019     0DA6
+_getTimerCmd                        text1017     0D0D
 _halfclockdelay                     text1001     07FA
 _i2cAck                             text1001     06E8
-_i2cInitialize                      text1030     0C77
+_i2cInitialize                      text1030     0C73
 _i2cNack                            text1001     0724
 _i2cRead                            text1001     068B
 _i2cRestart                         text1001     07F9
@@ -626,22 +626,22 @@ _i2cStart                           text1001     073A
 _i2cStop                            text1001     0745
 _i2cWrite                           text1001     06F3
 _initAht10                          text1001     001E
-_initGPIO                           text1028     0CC1
-_initInterrupt                      text1027     0CD7
-_initUART                           text1034     0C97
+_initGPIO                           text1028     0CBD
+_initInterrupt                      text1027     0CD3
+_initUART                           text1034     0C93
 _initVars                           text1001     03A3
 _isr                                text1035     0E80
 _jdyConfig                          text1005     0E19
 _logSave                            text1001     01FF
 _logStatus                          bitbssCOMMON 03D5
 _main                               maintext     0F14
-_memcpy                             text1025     0CF4
-_memset                             text1032     0C83
+_memcpy                             text1025     0CF0
+_memset                             text1032     0C7F
 _nT1SYNC                            (abs)        0082
 _newTimer                           dataBANK0    0058
 _numOfLogs                          bssBANK0     005E
 _readDataBuffer                     bssBANK2     0120
-_readLogStatus                      text1015     0DDF
+_readLogStatus                      text1015     0DDB
 _readTemp                           text1001     04E0
 _readTemperature                    bssBANK0     0062
 _readTemperatureDec                 bssBANK0     0063
@@ -654,10 +654,10 @@ _scl_out                            text1001     0715
 _sda_out                            text1001     072F
 _sendTriggerMeasurementCmd          text1001     000F
 _serialTimeOut                      bssCOMMON    007D
-_setTimerCmd                        text1018     0D2F
+_setTimerCmd                        text1018     0D2B
 _startLogCmd                        text1001     0284
 _startTime                          dataBANK0    0050
-_stopLogCmd                         text1016     0CAC
+_stopLogCmd                         text1016     0CA8
 _timeBlinkLed                       bssBANK0     0065
 _timeNow                            dataBANK0    0054
 _timeToConnect                      bssBANK0     0066
@@ -671,7 +671,7 @@ checksumCalc@len                    cstackBANK0  0020
 checksumVerify@checksum             cstackBANK0  0022
 checksumVerify@i                    cstackBANK0  0024
 checksumVerify@len                  cstackBANK0  0023
-clear_ram                           clrtext      0C7B
+clear_ram                           clrtext      0C77
 comandoRx@chk                       cstackBANK0  003C
 comandoRx@i                         cstackBANK0  003B
 comandoRx@i_6106                    cstackBANK0  0033
@@ -689,35 +689,35 @@ eepromReadLogPage@buff              cstackBANK0  0028
 eepromReadLogPage@i                 cstackBANK0  002A
 eepromWriteByte@addr                cstackBANK0  0026
 eepromWriteByte@data                cstackBANK0  0028
-end_of_initialization               cinit        0DA7
+end_of_initialization               cinit        0DA3
 halfclockdelay@downcount            cstackBANK0  0021
 i1_memset                           text1035     0EE5
 i1l5815                                              
-i1l7526                                              
-i1l7542                                              
-i1l7546                                              
+i1l7532                                              
 i1l7548                                              
-i1l7550                                              
 i1l7552                                              
+i1l7554                                              
 i1l7556                                              
-i1l7660                                              
+i1l7558                                              
+i1l7562                                              
 i1l7666                                              
-i1l7674                                              
-i1l7676                                              
-i1l7684                                              
-i1l7686                                              
+i1l7672                                              
+i1l7680                                              
+i1l7682                                              
 i1l7690                                              
 i1l7692                                              
-i1l7694                                              
+i1l7696                                              
 i1l7698                                              
-i1l7702                                              
-i1l7710                                              
-i1l7712                                              
-i1l7714                                              
+i1l7700                                              
+i1l7704                                              
+i1l7708                                              
 i1l7716                                              
 i1l7718                                              
-i1l7796                                              
-i1l7800                                              
+i1l7720                                              
+i1l7722                                              
+i1l7724                                              
+i1l7802                                              
+i1l7806                                              
 i1l937                                               
 i1memset@c                          cstackCOMMON 0070
 i1memset@n                          cstackCOMMON 0072
@@ -772,9 +772,6 @@ l5827
 l5902                                                
 l5984                                                
 l6003                                                
-l7502                                                
-l7504                                                
-l7506                                                
 l7508                                                
 l7510                                                
 l7512                                                
@@ -784,14 +781,14 @@ l7518
 l7520                                                
 l7522                                                
 l7524                                                
-l7534                                                
-l7538                                                
-l7558                                                
-l7560                                                
-l7572                                                
-l7582                                                
-l7584                                                
-l7586                                                
+l7526                                                
+l7528                                                
+l7530                                                
+l7540                                                
+l7544                                                
+l7564                                                
+l7566                                                
+l7578                                                
 l7588                                                
 l7590                                                
 l7592                                                
@@ -814,27 +811,27 @@ l7624
 l7626                                                
 l7628                                                
 l7630                                                
-l7650                                                
-l7654                                                
+l7632                                                
+l7634                                                
+l7636                                                
 l7656                                                
-l7722                                                
-l7730                                                
-l7732                                                
+l7660                                                
+l7662                                                
+l7728                                                
+l7736                                                
 l7738                                                
 l7744                                                
 l7750                                                
-l7764                                                
+l7756                                                
 l7770                                                
-l7772                                                
-l7782                                                
-l7786                                                
-l7790                                                
-l7804                                                
-l7808                                                
+l7776                                                
+l7778                                                
+l7788                                                
+l7792                                                
+l7796                                                
 l7810                                                
 l7814                                                
 l7816                                                
-l7818                                                
 l7820                                                
 l7822                                                
 l7824                                                
@@ -853,26 +850,26 @@ l7848
 l7850                                                
 l7852                                                
 l7854                                                
+l7856                                                
+l7858                                                
 l7860                                                
 l7862                                                
-l7870                                                
-l7878                                                
-l7886                                                
-l7888                                                
+l7864                                                
+l7866                                                
+l7872                                                
+l7874                                                
+l7882                                                
 l7890                                                
-l7894                                                
-l7896                                                
+l7898                                                
 l7900                                                
+l7902                                                
 l7906                                                
 l7908                                                
-l7910                                                
 l7912                                                
 l7918                                                
 l7920                                                
 l7922                                                
 l7924                                                
-l7926                                                
-l7928                                                
 l7930                                                
 l7932                                                
 l7934                                                
@@ -883,12 +880,12 @@ l7942
 l7944                                                
 l7946                                                
 l7948                                                
+l7950                                                
+l7952                                                
+l7954                                                
+l7956                                                
+l7958                                                
 l7960                                                
-l7962                                                
-l7964                                                
-l7966                                                
-l7968                                                
-l7970                                                
 l7972                                                
 l7974                                                
 l7976                                                
@@ -914,12 +911,12 @@ l8014
 l8016                                                
 l8018                                                
 l8020                                                
+l8022                                                
 l8024                                                
 l8026                                                
 l8028                                                
 l8030                                                
 l8032                                                
-l8034                                                
 l8036                                                
 l8038                                                
 l8040                                                
@@ -955,17 +952,17 @@ l8098
 l8100                                                
 l8102                                                
 l8104                                                
+l8106                                                
 l8108                                                
 l8110                                                
-l8118                                                
-l8124                                                
-l8128                                                
-l8132                                                
-l8134                                                
+l8112                                                
+l8114                                                
+l8116                                                
+l8120                                                
+l8122                                                
+l8130                                                
 l8136                                                
-l8138                                                
 l8140                                                
-l8142                                                
 l8144                                                
 l8146                                                
 l8148                                                
@@ -994,19 +991,19 @@ l8192
 l8194                                                
 l8196                                                
 l8198                                                
+l8200                                                
+l8202                                                
 l8204                                                
-l8212                                                
-l8214                                                
-l8218                                                
-l8220                                                
-l8222                                                
+l8206                                                
+l8208                                                
+l8210                                                
+l8216                                                
 l8224                                                
-l8254                                                
-l8256                                                
-l8258                                                
-l8260                                                
-l8262                                                
-l8264                                                
+l8226                                                
+l8230                                                
+l8232                                                
+l8234                                                
+l8236                                                
 l8266                                                
 l8268                                                
 l8270                                                
@@ -1034,56 +1031,62 @@ l8312
 l8314                                                
 l8316                                                
 l8318                                                
+l8320                                                
 l8322                                                
 l8324                                                
 l8326                                                
 l8328                                                
 l8330                                                
-l8332                                                
 l8334                                                
 l8336                                                
 l8338                                                
+l8340                                                
+l8342                                                
+l8344                                                
 l8346                                                
 l8348                                                
 l8350                                                
-l8352                                                
-l8354                                                
-l8356                                                
 l8358                                                
 l8360                                                
+l8362                                                
+l8364                                                
 l8366                                                
 l8368                                                
 l8370                                                
 l8372                                                
-l8374                                                
-l8376                                                
 l8378                                                
+l8380                                                
+l8382                                                
+l8384                                                
 l8386                                                
 l8388                                                
-l8392                                                
-l8402                                                
-l8412                                                
+l8390                                                
+l8398                                                
+l8400                                                
+l8404                                                
 l8414                                                
-l8416                                                
-l8418                                                
-l8420                                                
-l8422                                                
 l8424                                                
 l8426                                                
 l8428                                                
+l8430                                                
+l8432                                                
+l8434                                                
 l8436                                                
-l8442                                                
-l8452                                                
+l8438                                                
+l8440                                                
+l8448                                                
 l8454                                                
-l8460                                                
-l8462                                                
 l8464                                                
-l8470                                                
+l8466                                                
+l8472                                                
+l8474                                                
+l8476                                                
 l8482                                                
-l8484                                                
-l8488                                                
-l8490                                                
 l8494                                                
+l8496                                                
+l8500                                                
+l8502                                                
+l8506                                                
 l921                                                 
 l927                                                 
 l933                                                 
@@ -1108,5 +1111,5 @@ saved_w                             (abs)        007E
 scl_out@value                       cstackBANK0  0022
 sda_out@value                       cstackBANK0  0022
 start                               init         000D
-start_initialization                cinit        0D7B
+start_initialization                cinit        0D77
 wtemp0                              (abs)        007E

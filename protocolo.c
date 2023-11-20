@@ -129,7 +129,7 @@ void stopLogCmd (void){
  * STOP LOG COMMAND ***********************************************************/
 void readLogStatus (void){    
     //responde no BLE
-    bufferTxLen = 14;
+    bufferTxLen = 17;
     bufferTx[0] = 0x55;
     bufferTx[1] = CMD_READ_LOG_STATUS;
     bufferTx[2] = 0x09;
@@ -141,9 +141,12 @@ void readLogStatus (void){
     bufferTx[8] = timer;
     bufferTx[9] = numOfLogs>>8;
     bufferTx[10] = numOfLogs;
-    bufferTx[11] = logStatus;    
-    bufferTx[12] = checksumCalc(bufferTx,14);
-    bufferTx[13] = 0x0A;
+    bufferTx[11] = logStatus;
+    bufferTx[12] = FW_VERSION_1;
+    bufferTx[13] = FW_VERSION_2;
+    bufferTx[14] = FW_VERSION_3;
+    bufferTx[15] = checksumCalc(bufferTx,17);
+    bufferTx[16] = 0x0A;
 }
 
 /*******************************************************************************
